@@ -1046,7 +1046,12 @@
 
   function setupDialogs() {
     $$("[data-open]").forEach((el) => {
-      el.addEventListener("click", () => openDialog(el.dataset.open));
+      el.addEventListener("click", () => {
+        // гостевая подгружается только при первом открытии
+        const frame = $("iframe[data-src]", document.getElementById(el.dataset.open));
+        if (frame && frame.src === "about:blank") frame.src = frame.dataset.src;
+        openDialog(el.dataset.open);
+      });
     });
 
     $$("a[data-dialup]").forEach((link) => {

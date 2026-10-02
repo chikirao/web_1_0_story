@@ -1140,6 +1140,9 @@ code {
 }
 
 .window--dialup .window__icon { width: 59px; }
+.window--guest { width: min(720px, calc(100vw - 32px)); }
+.window__frame { display: block; width: calc(100% - 20px); height: min(560px, 70svh); margin: 10px; background: #fff; border: 2px inset #fff; }
+.window__foot { margin: 0; padding: 0 12px; font: 13px var(--f-ui); }
 .dialup__status { font-weight: bold; min-height: 18px; }
 .dialup__bar {
   height: 16px;

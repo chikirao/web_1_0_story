@@ -162,7 +162,7 @@
                 <li><a href="./slides/05-indieweb.html">IndieWeb сегодня</a></li>
                 <li><a href="./slides/06-epilogue.html">Послесловие</a> <img src="./assets/gifs/new-arrow.gif" alt="новое" width="32" height="21" class="navlist__new"></li>
                 <li class="navlist__gap"><button type="button" class="linklike" data-open="about">О проекте</button></li>
-                <li><button type="button" class="linklike" data-bunny-say="Гостевая книга на ремонте: её снова засыпали спамом про виагру. Классика!">Гостевая книга</button></li>
+                <li><button type="button" class="linklike" data-open="guestbook">Гостевая книга</button></li>
               </ul>
             </section>
 
@@ -394,6 +394,22 @@
   </div>
   <form class="window__actions" method="dialog">
     <button class="btn btn--default" value="ok">OK</button>
+  </form>
+</dialog>
+
+<!-- ===== Окно «Гостевая книга» ===== -->
+<dialog class="window window--guest" id="guestbook" aria-labelledby="guestbook-title">
+  <div class="titlebar titlebar--dialog">
+    <span class="titlebar__stripes" aria-hidden="true"></span>
+    <h2 class="titlebar__title" id="guestbook-title">Гостевая книга Чикиряо</h2>
+    <span class="titlebar__stripes" aria-hidden="true"></span>
+  </div>
+  <iframe class="window__frame" src="about:blank" data-src="https://chikirao.atabook.org/" title="Гостевая книга"></iframe>
+  <p class="window__foot">
+    Не грузится? <a href="https://chikirao.atabook.org/" target="_blank" rel="noopener">Открой гостевую в новой вкладке ↗</a>
+  </p>
+  <form class="window__actions" method="dialog">
+    <button class="btn btn--default" value="ok">Закрыть</button>
   </form>
 </dialog>
 
