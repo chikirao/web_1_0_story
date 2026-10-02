@@ -232,23 +232,37 @@
             <code>+погода +москва -реферат</code>, слова в кавычках, <code>AND</code>, <code>NEAR</code>.
           </p>
 
+          <p class="slide__p">
+            Ниже <b>настоящие страницы выдачи</b> Яндекса и AltaVista 2000–2001 годов: кто-то тогда
+            искал, а Интернет-архив сохранил результат. Справа тот же запрос в сегодняшнем поисковике.
+          </p>
+
           <div class="vs" data-vs>
             <div class="vs__bar">
               <span class="vs__label">Запрос:</span>
               <div class="vs__queries" role="radiogroup" aria-label="Запрос" data-vs-queries>
-                <button class="btn" type="button" role="radio" aria-checked="true" data-q="weather">погода москва</button>
-                <button class="btn" type="button" role="radio" aria-checked="false" data-q="pancakes">рецепт блинов</button>
-                <button class="btn" type="button" role="radio" aria-checked="false" data-q="winamp">скачать winamp</button>
+                <button class="btn" type="button" role="radio" aria-checked="true" data-q="sms">как отправить SMS</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-q="nokia">nokia 3310</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-q="google">google</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-q="winamp">winamp</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-q="y2k">y2k</button>
               </div>
-              <button class="btn btn--default vs__how" type="button" data-vs-how aria-pressed="false">Как считал поисковик</button>
             </div>
             <div class="vs__cols">
               <div class="vs__old">
-                <p class="vs__head">Поиск, 1998 год</p>
-                <div class="vs__serp" data-vs-old aria-live="polite"></div>
+                <p class="vs__head"><span data-vs-old-head>Яндекс, 20 апреля 2001</span>
+                  <span class="vs__btns">
+                    <button class="btn btn--small" type="button" data-vs-zoom aria-pressed="false">Читать крупнее</button>
+                    <a class="btn btn--small" data-vs-open href="https://web.archive.org/" target="_blank" rel="noopener">В архиве ↗</a>
+                  </span></p>
+                <div class="vs__screen" data-vs-screen tabindex="0" role="region" aria-label="Страница выдачи из Интернет-архива">
+                  <iframe class="vs__frame" data-vs-frame title="Страница выдачи из Интернет-архива"
+                          sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+                          referrerpolicy="no-referrer"></iframe>
+                </div>
               </div>
               <div class="vs__new">
-                <p class="vs__head">Поиск сегодня</p>
+                <p class="vs__head">Сегодня</p>
                 <div class="vs__now" data-vs-new aria-live="polite"></div>
               </div>
             </div>
@@ -383,7 +397,7 @@
   <li>Тут про то, как в старом интернете что-то находили. Адресов никто не помнил, их писали на бумажках.</li>
   <li>Сначала были каталоги: сайты раскладывали по рубрикам вручную, как книги в библиотеке. Попасть туда можно было только по заявке.</li>
   <li>В окне «Поисковые системы» пощёлкай названия. Где есть кнопка, можно открыть копию сайта тех лет.</li>
-  <li>Ниже сравнение. Выбери запрос и нажми «Как считал поисковик»: увидишь спрятанный белый текст и почему мусор оказался первым.</li>
+  <li>Ниже сравнение. Слева настоящая выдача 2001 года из архива, справа тот же запрос сегодня. Пощёлкай запросы и полистай старую страницу.</li>
   <li>Google считал ссылки на сайт, а русским поисковикам ещё приходилось разбираться с падежами и кодировками.</li>
   <li>И третий способ: веб-кольцо. Жми «след.» и «случайный», и ходи от сайта к сайту по кругу.</li>
   <li>Дальше поговорим, что в этом интернете было неудобно и что ломалось.</li>

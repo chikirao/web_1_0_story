@@ -1,7 +1,7 @@
 /* =====================================================================
    Слайд 03 «Поиск»: интерактив
      1. Окно «Поисковые системы»: список и справка
-     2. Тогда и сейчас: один запрос в выдаче 1998 года и сегодня
+     2. Тогда и сейчас: настоящая выдача 2000–2001 годов из архива и та же выдача сегодня
      3. Веб-кольцо: пред / след / случайный
    ===================================================================== */
 
@@ -13,11 +13,12 @@
 
 
   /* ---------- 1. Поисковые системы ----------
+     shot: скриншот главной страницы тех лет (assets/search/, снимает tools/shoot_archive.py)
      archive: копия сайта из assets/archive/ (та же, что в машине времени на слайде 02) */
 
   const ENGINES = {
     yahoo: {
-      name: "Yahoo!", where: "США, 1994",
+      name: "Yahoo!", where: "США, 1994", shot: "октябрь 1996",
       text: `<p>Начинался как список ссылок двух студентов Стэнфорда, Джерри Янга и Дэвида Фило.
         Это <b>каталог</b>: сайты добавляли люди и раскладывали по рубрикам.</p>
         <p>Название шуточное: «Yet Another Hierarchical Officious Oracle», «ещё один иерархический
@@ -25,21 +26,21 @@
       archive: "yahoo", year: 1998,
     },
     lycos: {
-      name: "Lycos", where: "США, 1994",
+      name: "Lycos", where: "США, 1994", shot: "октябрь 1996",
       text: `<p>Один из первых настоящих поисковиков: робот сам обходил сайты. Сделан в университете
         Карнеги-Меллон.</p>
         <p>Название от латинского имени паука-волка: он не плетёт паутину, а бегает и ловит добычу.
         На логотипе при этом была собака.</p>`,
     },
     altavista: {
-      name: "AltaVista", where: "США, 1995",
+      name: "AltaVista", where: "США, 1995", shot: "октябрь 1996",
       text: `<p>Его сделала компания DEC, чтобы показать, какие мощные у неё серверы. Одной из первых
         хранила <b>весь текст страниц</b>, а не только заголовки, и отвечала за секунду.</p>
         <p>Понимала операторы: <code>+слово</code>, <code>-слово</code>, кавычки, <code>NEAR</code>.
         В конце 90-х главный поисковик мира, закрыта в 2013 году.</p>`,
     },
     rambler: {
-      name: "Rambler", where: "Россия, 1996",
+      name: "Rambler", where: "Россия, 1996", shot: "декабрь 1997",
       text: `<p>Первый большой русский поисковик. Его сделали в подмосковном Пущино, в городе учёных,
         осенью 1996 года.</p>
         <p>Главной фишкой стал рейтинг <b>Rambler Top100</b>: сайты ставили счётчик и соревновались,
@@ -47,13 +48,13 @@
       archive: "rambler", year: 2000,
     },
     ask: {
-      name: "Ask Jeeves", where: "США, 1997",
+      name: "Ask Jeeves", where: "США, 1997", shot: "декабрь 1997",
       text: `<p>Тут можно было не подбирать ключевые слова, а <b>задать вопрос</b> целиком:
         «Где купить билет в кино?».</p>
         <p>Отвечал дворецкий Дживс, персонаж из книг Вудхауса, нарисованный на логотипе.</p>`,
     },
     aport: {
-      name: "Апорт", where: "Россия, 1997",
+      name: "Апорт", where: "Россия, 1997", shot: "декабрь 1998",
       text: `<p>Один из первых русских поисковиков, команда «Агама». На главной всё сразу: поиск,
         каталог, погода, курсы валют.</p>
         <p>В начале 2000-х был в тройке вместе с Яндексом и Рамблером, потом сдал позиции
@@ -61,14 +62,14 @@
       archive: "aport", year: 2000,
     },
     yandex: {
-      name: "Яндекс", where: "Россия, 1997",
+      name: "Яндекс", where: "Россия, 1997", shot: "декабрь 1998",
       text: `<p>Открылся 23 сентября 1997 года. Название от «Yet Another iNDEXer», «ещё один индексатор»,
         а русская «Я» вместо английской «Y» появилась уже потом.</p>
         <p>Главное отличие: понимал <b>морфологию</b>. По запросу «блины» находил и «блинов»,
         и «блинами».</p>`,
     },
     google: {
-      name: "Google", where: "США, 1998",
+      name: "Google", where: "США, 1998", shot: "ноябрь 1998, ещё на сервере Стэнфорда",
       text: `<p>Ларри Пейдж и Сергей Брин, аспиранты Стэнфорда. Считал не только слова, но и <b>ссылки</b>:
         чем больше сайтов ссылается на страницу, тем она важнее. Это называется PageRank.</p>
         <p>В первом индексе было около 26 миллионов страниц. Сегодня сотни миллиардов.</p>`,
@@ -88,7 +89,13 @@
         ? `<p class="helpwin__see"><a class="btn btn--small" href="../assets/archive/${e.archive}/index.html"
              target="_blank" rel="noopener">Открыть копию ${e.year} года ↗</a></p>`
         : "";
-      page.innerHTML = `<h3>${e.name}</h3><p class="engwin__where">${e.where}</p>${e.text}${copy}`;
+      page.innerHTML = `
+        <figure class="engwin__shot">
+          <img src="../assets/search/${btn.dataset.engine}.webp" width="800" height="600"
+               alt="Главная страница ${e.name}, ${e.shot}">
+          <figcaption>${e.shot}</figcaption>
+        </figure>
+        <h3>${e.name}</h3><p class="engwin__where">${e.where}</p>${e.text}${copy}`;
     }
 
     tabs.forEach((b) => b.addEventListener("click", () => pick(b)));
@@ -107,103 +114,199 @@
 
 
   /* ---------- 2. Тогда и сейчас ----------
-     Выдача заготовлена заранее. hits: сколько раз на странице встречаются слова запроса,
-     по ним старый поисковик и сортировал. hidden: спрятанный белый текст. */
+     Слева настоящая страница выдачи из Интернет-архива (assets/archive/q-*),
+     справа тот же запрос в духе сегодняшнего поисковика. Сегодняшняя выдача
+     собрана вручную по образцу настоящей: ответ сверху, карты, вопросы, видео. */
+
+  const site = (letter, color, name, url) =>
+    `<p class="now__site"><span class="now__fav" style="background:${color}">${letter}</span>
+       <span><b>${name}</b><br><small>${url}</small></span></p>`;
+
+  const result = (fav, title, text) =>
+    `<div class="now__res">${fav}<p class="now__link">${title}</p><p class="now__snip">${text}</p></div>`;
 
   const QUERIES = {
-    weather: {
-      found: "12 840",
-      old: [
-        { title: "ПОГОДА!!! ПОГОДА МОСКВА ПОГОДА БЕСПЛАТНО", url: "members.tripod.com/~megaportal/", hits: 214,
-          text: "Самый лучший портал рунета!!! Знакомства, анекдоты, рефераты, картинки…",
-          hidden: "погода погода москва погода бесплатно погода прогноз погода москва погода реферат погода погода москва" },
-        { title: "Погода в Москве на 12 марта", url: "www.moscow-info.ru/weather.htm", hits: 9,
-          text: "Ночью −8, днём −3, небольшой снег. Страница обновлена 3 месяца назад." },
-        { title: "Москва: путеводитель. Климат", url: "www.guide.ru/moscow/climate.html", hits: 6,
-          text: "Климат Москвы умеренно континентальный. Средняя температура января −10…" },
-        { title: "Гидрометцентр России", url: "www.meteo.ru/", hits: 3,
-          text: "Прогноз погоды по городам России. Выберите регион на карте." },
-        { title: "Форум: какая погода в москве?? ответьте плиз", url: "www.chat.ru/forum/1532.html", hits: 2,
-          text: "Еду в субботу, не знаю что одеть. Кто из москвы, напишите!!!" },
-      ],
-      now: `<div class="now__weather">
-              <p class="now__big">+4°</p>
-              <p><b>Москва, сейчас</b><br>облачно, ветер 3 м/с</p>
-            </div>
-            <p class="now__days"><span>Пт +6°</span><span>Сб +2°</span><span>Вс +5°</span><span>Пн +7°</span></p>
-            <p class="now__note">Ответ сразу наверху, по вашему местоположению. Открывать сайт не нужно.</p>`,
+    sms: {
+      q: "как отправить SMS собщение", engine: "Яндекс", date: "20 апреля 2001",
+      ts: "20010420102501", url: "http://www.yandex.ru:80/yandsearch?text=%EA%E0%EA+%EE%F2%EF%F0%E0%E2%E8%F2%FC+SMS++%F1%EE%E1%F9%E5%ED%E8%E5",
+      found: "Найдено около 12 млн результатов",
+      fix: "Показаны результаты по запросу «как отправить SMS <b>сообщение</b>»",
+      now: `
+        <div class="now__card now__answer">
+          <p class="now__h">Быстрый ответ</p>
+          <ol class="now__steps">
+            <li>Откройте приложение «Сообщения».</li>
+            <li>Нажмите «Новое сообщение» и выберите контакт или введите номер.</li>
+            <li>Напишите текст и нажмите «Отправить».</li>
+          </ol>
+          ${site("S", "#3478f6", "Справка по телефону", "support › сообщения › отправка")}
+        </div>
+        <div class="now__card">
+          <p class="now__h">Видео</p>
+          <div class="now__videos">
+            <span><i>1:24</i>Как отправить СМС на Android</span>
+            <span><i>0:58</i>Отправка сообщений на iPhone</span>
+            <span><i>2:10</i>Если SMS не отправляется</span>
+          </div>
+        </div>
+        ${result(site("M", "#e64a19", "Мобильный оператор", "operator.ru › help › sms"),
+          "Не отправляются SMS: 7 причин и что делать",
+          "Проверьте номер SMS-центра, баланс и режим полёта. Если сообщение всё равно не уходит…")}`,
     },
-    pancakes: {
-      found: "3 517",
-      old: [
-        { title: "РЕЦЕПТЫ рецепт блинов БЛИНЫ рецепты бесплатно", url: "www.geocities.com/Heartland/9931/", hits: 168,
-          text: "Добро пожаловать!!! Тут будет много рецептов. Раздел строится.",
-          hidden: "рецепт блинов рецепт блины рецепт рецепты блинов блинов блины рецепт блинов рецепт" },
-        { title: "Кулинарная страничка Тани", url: "tanya-kitchen.narod.ru/", hits: 11,
-          text: "Мои любимые рецепты: салаты, пироги, блины. Пишите в гостевую книгу!" },
-        { title: "Блины. История блюда", url: "www.kuhnya.ru/history/bliny.html", hits: 7,
-          text: "Блины на Руси пекли ещё в языческие времена, на Масленицу…" },
-        { title: "Ресторан «Блинная» на Арбате", url: "www.arbat-bliny.ru/", hits: 5,
-          text: "Блины с икрой, с мёдом, со сметаной. Ждём вас с 10 до 22." },
-        { title: "Рецепты блинов", url: "www.recepty.ru/bliny.htm", hits: 4,
-          text: "Ошибка 404. Страница не найдена." },
-      ],
-      now: `<p class="now__title"><b>Блины на молоке</b> · 30 минут</p>
-            <ul class="now__list"><li>молоко, 500 мл</li><li>яйца, 2 шт</li><li>мука, 250 г</li><li>сахар, соль, масло</li></ul>
-            <p class="now__note">Сразу рецепт, время, фото, отзывы и десяток вариантов на выбор.</p>`,
+    nokia: {
+      q: "{nokia 3310}", engine: "Яндекс", date: "20 апреля 2001",
+      ts: "20010420105041", url: "http://www.yandex.ru:80/yandsearch?text=%7bnokia+3310%7d",
+      found: "Найдено около 9 млн результатов",
+      now: `
+        <div class="now__card now__panel">
+          <p class="now__big">Nokia 3310</p>
+          <p class="now__muted">Мобильный телефон · Nokia</p>
+          <dl class="now__facts">
+            <dt>Выпуск</dt><dd>сентябрь 2000</dd>
+            <dt>Продано</dt><dd>около 126 млн штук</dd>
+            <dt>Экран</dt><dd>84×48 точек, монохромный</dd>
+            <dt>Игры</dt><dd>«Змейка II», Space Impact…</dd>
+          </dl>
+        </div>
+        <div class="now__card">
+          <p class="now__h">Товары</p>
+          <div class="now__shop">
+            <span><b>Nokia 3310 (2017)</b><br>от 4 990 ₽</span>
+            <span><b>Nokia 3310, оригинал 2000</b><br>Б/у, от 2 500 ₽</span>
+            <span><b>Корпус для 3310</b><br>от 690 ₽</span>
+          </div>
+        </div>
+        ${result(site("W", "#888", "Википедия", "ru.wikipedia.org › Nokia_3310"),
+          "Nokia 3310: Википедия",
+          "Сотовый телефон, выпущенный компанией Nokia в 2000 году. Один из самых продаваемых телефонов в истории, известен своей прочностью…")}`,
+    },
+    google: {
+      q: "google", engine: "Яндекс", date: "30 апреля 2001",
+      ts: "20010430142219", url: "http://www.yandex.ru:80/yandsearch?text=google&stype=",
+      found: "Найдено около 25 млрд результатов",
+      now: `
+        ${result(site("G", "#4285f4", "Google", "google.com"),
+          "Google",
+          "Поиск информации в интернете: веб-страницы, картинки, видео и многое другое.")}
+        <div class="now__sub">
+          <span>Картинки</span><span>Переводчик</span><span>Карты</span><span>Почта</span>
+        </div>
+        <div class="now__card now__panel">
+          <p class="now__big">Google</p>
+          <p class="now__muted">Технологическая компания</p>
+          <dl class="now__facts">
+            <dt>Основана</dt><dd>4 сентября 1998 года</dd>
+            <dt>Основатели</dt><dd>Ларри Пейдж, Сергей Брин</dd>
+            <dt>Штаб-квартира</dt><dd>Маунтин-Вью, Калифорния</dd>
+          </dl>
+        </div>
+        <div class="now__card">
+          <p class="now__h">Люди также спрашивают</p>
+          <p class="now__q">Что означает слово Google?</p>
+          <p class="now__q">Как Google выглядел в 1998 году?</p>
+        </div>`,
     },
     winamp: {
-      found: "1 284",
-      old: [
-        { title: "WINAMP СКАЧАТЬ WINAMP БЕСПЛАТНО MP3 WINAMP КРЯК", url: "free-mp3-zone.chat.ru/", hits: 302,
-          text: "Всё бесплатно!!! Музыка, программы, кряки, серийники. Самая большая коллекция!",
-          hidden: "winamp скачать winamp скачать бесплатно winamp mp3 скачать winamp winamp winamp скачать" },
-        { title: "Каталог программ: Winamp 1.91 (1,1 Мб)", url: "www.freeware.ru/audio/winamp.html", hits: 12,
-          text: "Проигрыватель MP3. Скачать: зеркало 1, зеркало 2 (медленное)." },
-        { title: "Скачать winamp", url: "www.soft.narod.ru/winamp.htm", hits: 8,
-          text: "Файл перенесён. Новый адрес скоро будет!" },
-        { title: "Nullsoft Winamp", url: "www.winamp.com/", hits: 4,
-          text: "Winamp: the definitive audio player for Windows." },
-        { title: "Скины для Winamp: 500 штук!", url: "skins.boom.ru/", hits: 3,
-          text: "Самые прикольные скины. Качайте, не забудьте проголосовать в Top100!" },
-      ],
-      now: `<p class="now__title"><b>Winamp</b> · официальный сайт</p>
-            <p>winamp.com · Скачать для Windows</p>
-            <p class="now__note">Первая строка: официальный сайт. Сайты-ловушки с «кряками» поисковик убирает вниз или прячет.</p>`,
+      q: "+winamp", engine: "AltaVista", date: "25 апреля 2000",
+      ts: "20000425002256", url: "http://www.altavista.com:80/cgi-bin/query?pg=q&KL=en&enc=iso88591&sc=on&hl=on&q=+winamp",
+      found: "Найдено около 30 млн результатов",
+      now: `
+        ${result(site("W", "#f7a400", "Winamp", "winamp.com"),
+          "Winamp: официальный сайт",
+          "Легендарный музыкальный плеер. Скачать для Windows, скины, плагины…")}
+        <div class="now__sub">
+          <span>Скачать</span><span>Скины</span><span>Плагины</span><span>Winamp для Android</span>
+        </div>
+        <div class="now__card now__panel">
+          <p class="now__big">Winamp</p>
+          <p class="now__muted">Медиапроигрыватель · Nullsoft, 1997</p>
+          <p>Один из самых популярных MP3-плееров конца 90-х. Известен скинами и фразой
+            «It really whips the llama's ass».</p>
+        </div>
+        <div class="now__card">
+          <p class="now__h">Люди также спрашивают</p>
+          <p class="now__q">Работает ли Winamp сейчас?</p>
+          <p class="now__q">Как поставить классический скин Winamp?</p>
+        </div>`,
+    },
+    y2k: {
+      q: "y2k", engine: "AltaVista", date: "24 апреля 2000",
+      ts: "20000424120930", url: "http://www.altavista.com:80/cgi-bin/query?pg=g&user=MSND&q=y2k",
+      found: "Найдено около 90 млн результатов",
+      note: "В 2000 году это «проблема 2000 года», а сегодня ещё и стиль в моде.",
+      now: `
+        <div class="now__card now__panel">
+          <p class="now__big">Проблема 2000 года</p>
+          <p class="now__muted">Y2K · компьютерная ошибка</p>
+          <p>Многие программы хранили год двумя цифрами, и 2000 год для них превращался в 1900-й.
+            Ждали сбоев в банках и на транспорте, на исправления по всему миру ушли сотни
+            миллиардов долларов. Серьёзных аварий не случилось.</p>
+        </div>
+        <div class="now__card">
+          <p class="now__h">Картинки</p>
+          <div class="now__shop">
+            <span><b>Эстетика Y2K</b><br>серебро, блёстки, стразы</span>
+            <span><b>Одежда в стиле Y2K</b><br>джинсы клёш, топы</span>
+            <span><b>Обои Y2K</b><br>хром и голограммы</span>
+          </div>
+        </div>
+        ${result(site("V", "#111", "Журнал о моде", "magazine.ru › trends › y2k"),
+          "Стиль Y2K: как одеваться в духе нулевых",
+          "Блестящие ткани, низкая посадка и телефоны-раскладушки снова в моде. Рассказываем, откуда взялся тренд…")}`,
     },
   };
 
   const vs = $("[data-vs]");
   if (vs) {
-    const oldEl = $("[data-vs-old]", vs);
-    const newEl = $("[data-vs-new]", vs);
-    const how = $("[data-vs-how]", vs);
+    const frame = $("[data-vs-frame]", vs);
+    const screen = $("[data-vs-screen]", vs);
+    const oldHead = $("[data-vs-old-head]", vs);
+    const openEl = $("[data-vs-open]", vs);
+    const nowEl = $("[data-vs-new]", vs);
     const qBtns = $$("[data-q]", vs);
+
+    // страница выдачи рисуется шириной 800 px и уменьшается под колонку
+    const zoom = $("[data-vs-zoom]", vs);
+    function fit() {
+      const s = vs.classList.contains("is-readable") ? 1 : Math.min(screen.clientWidth / 800, 1);
+      screen.style.setProperty("--vs-s", s.toFixed(3));
+    }
 
     function render(id) {
       const q = QUERIES[id];
       qBtns.forEach((b) => b.setAttribute("aria-checked", String(b.dataset.q === id)));
-      oldEl.innerHTML =
-        `<p class="serp__found">Найдено документов: <b>${q.found}</b>. Показаны 1–5.</p>` +
-        q.old.map((r, i) => `
-          <div class="serp__item">
-            <p class="serp__title">${i + 1}. <a href="#vs-title">${r.title}</a>
-              <span class="serp__hits">совпадений: ${r.hits}</span></p>
-            <p class="serp__text">${r.text}</p>
-            ${r.hidden ? `<p class="serp__hidden">${r.hidden}</p>` : ""}
-            <p class="serp__url">${r.url}</p>
-          </div>`).join("");
-      newEl.innerHTML = q.now;
+      oldHead.textContent = `${q.engine}, ${q.date}`;
+      screen.style.setProperty("--vs-h", 600);   // настоящую высоту узнаем после загрузки
+      frame.src = `../assets/archive/q-${id}/index.html`;
+      openEl.href = `https://web.archive.org/web/${q.ts}/${q.url}`;
+      nowEl.innerHTML = `
+        <div class="now__top">
+          <p class="now__box">${q.q.replace(/[{}+]/g, "").trim()}<span aria-hidden="true">×</span></p>
+          <p class="now__tabs"><b>Все</b><span>Картинки</span><span>Видео</span><span>Карты</span><span>Новости</span></p>
+        </div>
+        <p class="now__muted now__found">${q.found}</p>
+        ${q.fix ? `<p class="now__fix">${q.fix}</p>` : ""}
+        ${q.note ? `<p class="now__note">${q.note}</p>` : ""}
+        ${q.now}`;
+      fit();
     }
 
-    qBtns.forEach((b) => b.addEventListener("click", () => render(b.dataset.q)));
-    how.addEventListener("click", () => {
-      const on = !vs.classList.contains("is-how");
-      vs.classList.toggle("is-how", on);
-      how.setAttribute("aria-pressed", String(on));
-      how.textContent = on ? "Спрятать подсказки" : "Как считал поисковик";
+    // высоту страницы узнаём после загрузки, чтобы прокручивалась вся выдача
+    frame.addEventListener("load", () => {
+      const doc = frame.contentDocument;
+      if (doc) screen.style.setProperty("--vs-h", doc.documentElement.scrollHeight);
+      screen.scrollTop = 0;
     });
-    render("weather");
+    // на узком экране страница мелкая: «Читать крупнее» показывает её в настоящем размере с прокруткой вбок
+    zoom.addEventListener("click", () => {
+      const on = vs.classList.toggle("is-readable");
+      zoom.setAttribute("aria-pressed", String(on));
+      zoom.textContent = on ? "Показать целиком" : "Читать крупнее";
+      fit();
+    });
+    qBtns.forEach((b) => b.addEventListener("click", () => render(b.dataset.q)));
+    window.addEventListener("resize", fit);
+    render("sms");
   }
 
 

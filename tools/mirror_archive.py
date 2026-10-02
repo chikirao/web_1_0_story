@@ -9,6 +9,7 @@
     python tools/mirror_archive.py --fix      # докачать то, что архив не отдал (missing.txt)
 
 Список сайтов совпадает с SITES в assets/js/design.js (name = папка).
+SEARCH: страницы для слайда 03 (главные поисковиков и настоящие страницы выдачи).
 """
 import hashlib
 import html
@@ -36,6 +37,23 @@ SITES = [
     ("aport", "20001219162400", "http://www.aport.ru/"),
     ("mail", "20000304084227", "http://koi.mail.ru/cgi-bin/splash"),
     ("narod", "20001019035001", "http://narod.yandex.ru/"),
+]
+
+# слайд 03 «Поиск»: главные страницы поисковиков (для скриншотов) и сохранённая выдача
+SEARCH = [
+    ("s-yahoo", "19961017235908", "http://www2.yahoo.com:80/"),
+    ("s-lycos", "19961022175214", "http://www.lycos.com:80/"),
+    ("s-altavista", "19961022174555", "http://altavista.digital.com:80/"),
+    ("s-ask", "19971211202422", "http://www.askjeeves.com:80/"),
+    ("s-rambler", "19971210074218", "http://www.rambler.ru:80/"),
+    ("s-aport", "19981206142350", "http://www.aport.ru:80/"),
+    ("s-yandex", "19981206201051", "http://yandex.ru:80/"),
+    ("s-google", "19981111183552", "http://google.stanford.edu:80/"),
+    ("q-sms", "20010420102501", "http://www.yandex.ru:80/yandsearch?text=%EA%E0%EA+%EE%F2%EF%F0%E0%E2%E8%F2%FC+SMS++%F1%EE%E1%F9%E5%ED%E8%E5"),
+    ("q-nokia", "20010420105041", "http://www.yandex.ru:80/yandsearch?text=%7bnokia+3310%7d"),
+    ("q-google", "20010430142219", "http://www.yandex.ru:80/yandsearch?text=google&stype="),
+    ("q-winamp", "20000425002256", "http://www.altavista.com:80/cgi-bin/query?pg=q&KL=en&enc=iso88591&sc=on&hl=on&q=+winamp"),
+    ("q-y2k", "20000424120930", "http://www.altavista.com:80/cgi-bin/query?pg=g&user=MSND&q=y2k"),
 ]
 
 UA = {"User-Agent": "Mozilla/5.0 (web10 slide mirror; personal study project)"}
@@ -103,6 +121,12 @@ def mirror(name, ts, url, force):
     raw, charset, _ = fetch(base)
     if raw is None:
         return
+    # архив не всегда передаёт кодировку: ищем её в самой странице, а русский текст без пометки считаем cp1251
+    if not charset:
+        m = re.search(rb"<meta[^>]+charset\s*=\s*[\"']?([\w-]+)", raw[:8000], re.I)
+        charset = m.group(1).decode() if m else None
+    if not charset and sum(b >= 0xC0 for b in raw) > 50:
+        charset = "cp1251"
     text = raw.decode(charset or "cp1252", errors="replace")
 
     # вырезаем вставки архива и все скрипты
@@ -214,7 +238,9 @@ def fix(name):
 if __name__ == "__main__":
     force = "--force" in sys.argv
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
-    for name, ts, url in SITES:
+    for name, ts, url in SITES + SEARCH:
+        if url is None:
+            continue
         if only and name not in only:
             continue
         if "--fix" in sys.argv:

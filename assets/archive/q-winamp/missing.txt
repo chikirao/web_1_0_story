@@ -1,0 +1,3 @@
+r39a9e8fdd8	https://web.archive.org/web/20000425002256im_/http://ad.doubleclick.net/ad/altavista.digital.com/result_front;kw=winamp;lang=en;cat=stext;ord=14386048
+r0c9c2287fb	https://web.archive.org/web/20000425002256im_/http://ad.doubleclick.net/ad/tile.av.com/;sz=130x34;kw=crystal123;ord=14386048
+rf4c5e8d3f0	https://web.archive.org/web/20000425002256im_/http://ad.doubleclick.net/ad/tile2.av.com/;sz=130x34;kw=crystal123;ord=14386048

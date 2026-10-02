@@ -35,6 +35,8 @@
 ## Старые сайты (слайд 02)
 Скачаны из [Wayback Machine](https://web.archive.org/) Интернет-архива скриптом `tools/mirror_archive.py` в `assets/archive/<имя>/` (страница + картинки, без скриптов, текст в UTF-8). Архив отвечает медленно, поэтому на слайде показываются локальные копии. Ссылки внутри страниц ведут в настоящий архив. Список снимков: в скрипте и в начале `assets/js/design.js`.
 
+Для слайда 03 там же лежат главные страницы поисковиков 1996–1998 годов (`s-*`) и настоящие страницы выдачи Яндекса 2001 и AltaVista 2000 (`q-*`). Со страниц `s-*` скрипт `tools/shoot_archive.py` снимает скриншоты 800×600 в `assets/search/*.webp`.
+
 ## Блинкиз: `assets/blinkies/`
 **glitter-graphics.com** (раздел Blinkies): `loading`, `im-online`, `computer-addict`, `browser-history`, `webmistress`, `welcome-pixel`, `updated`, `no-internet-housework`.
 
