@@ -195,12 +195,71 @@
      Собирает настоящую страничку в духе 1999 года. В предпросмотре картинки берутся
      с этого сайта, в скачанном файле по полному адресу web1.chikirao.ru. */
 
+  // css: фон страницы (с анимацией), js: скрипт для фона (только у «Хакера»)
   const THEMES = {
-    space: { bg: "radial-gradient(#fff 1px, transparent 2px) 0 0 / 40px 40px, radial-gradient(#ffd 1px, transparent 2px) 20px 13px / 57px 57px, #000", body: "#fff", head: "#ffff00", link: "#00ffff", box: "#000033" },
-    pink: { bg: "#ffd6ec", body: "#7a004a", head: "#ff1493", link: "#c71585", box: "#fff0f8" },
-    matrix: { bg: "#000", body: "#00ff66", head: "#00ff66", link: "#ccffcc", box: "#001a00" },
-    paper: { bg: "repeating-linear-gradient(#fffbe6 0 27px, #b6d4ff 27px 28px)", body: "#202060", head: "#c00000", link: "#0000cc", box: "#ffffff" },
-    sky: { bg: "#87ceeb", body: "#002050", head: "#ffffff", link: "#0000aa", box: "#e8f6ff" },
+    space: {
+      body: "#fff", head: "#ffff00", link: "#00ffff", box: "rgba(0, 0, 40, .85)",
+      css: `body { background: #000; }
+  body::before { content: ""; position: fixed; inset: 0; z-index: -1;
+    background: radial-gradient(#fff 1px, transparent 2px) 0 0 / 40px 40px,
+                radial-gradient(#ffd 1px, transparent 2px) 20px 13px / 57px 57px,
+                radial-gradient(#9cf 1.5px, transparent 2.5px) 7px 31px / 91px 91px;
+    animation: twinkle 3s steps(2) infinite; }
+  @keyframes twinkle { 50% { opacity: .55; } }`,
+    },
+    pink: {
+      body: "#7a004a", head: "#ff1493", link: "#c71585", box: "rgba(255, 240, 248, .92)",
+      css: `body { background:
+    radial-gradient(circle, #fff 0 1.5px, transparent 2px) 0 0 / 22px 22px,
+    radial-gradient(circle, #ff69b4 0 1.5px, transparent 2px) 11px 11px / 22px 22px,
+    radial-gradient(circle, #fff 0 1px, transparent 1.5px) 5px 16px / 13px 13px,
+    linear-gradient(45deg, #ffc0e0 25%, #ffd6ec 25% 50%, #ffc0e0 50% 75%, #ffd6ec 75%) 0 0 / 40px 40px; }
+  body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(circle, #fff 0 2px, transparent 3px) 7px 3px / 31px 37px,
+                radial-gradient(circle, #ffe600 0 1.5px, transparent 2.5px) 19px 23px / 43px 29px;
+    animation: glitter .6s steps(2) infinite; }
+  @keyframes glitter { 50% { opacity: 0; transform: translate(3px, 2px); } }`,
+    },
+    matrix: {
+      body: "#00ff66", head: "#00ff66", link: "#ccffcc", box: "rgba(0, 20, 0, .82)",
+      css: `body { background: #000; }
+  #rain { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; }`,
+      html: `<canvas id="rain"></canvas>`,
+      js: `<script>
+// дождь из букв, как в «Матрице»
+var c = document.getElementById("rain"), x = c.getContext("2d"), cols, drops;
+function size() { c.width = innerWidth; c.height = innerHeight; cols = Math.ceil(c.width / 16); drops = []; for (var i = 0; i < cols; i++) drops[i] = Math.random() * -50; }
+size(); addEventListener("resize", size);
+var abc = "アカサタナハマヤラワ0123456789ABCDEFｦｱｳｴｵｶｷｹｺｻｼｽ";
+setInterval(function () {
+  x.fillStyle = "rgba(0, 0, 0, .08)"; x.fillRect(0, 0, c.width, c.height);
+  x.fillStyle = "#0f6"; x.font = "16px monospace";
+  for (var i = 0; i < cols; i++) {
+    x.fillText(abc[Math.floor(Math.random() * abc.length)], i * 16, drops[i] * 16);
+    if (drops[i] * 16 > c.height && Math.random() > .975) drops[i] = 0;
+    drops[i]++;
+  }
+}, 50);
+<\/script>`,
+    },
+    paper: {
+      body: "#202060", head: "#c00000", link: "#0000cc", box: "rgba(255, 255, 255, .7)",
+      css: `body { background: linear-gradient(90deg, transparent 50px, #ff9a9a 50px 52px, transparent 52px),
+    repeating-linear-gradient(#fffbe6 0 27px, #b6d4ff 27px 28px); }`,
+    },
+    sky: {
+      body: "#002050", head: "#1b3f8f", link: "#0000aa", box: "rgba(255, 255, 255, .78)", shadow: "2px 2px 0 #fff",
+      css: `body { background: linear-gradient(#4aa8e8, #bfe6ff) fixed; }
+  body::before, body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60px 26px at 60px 40px, #fff 98%, transparent),
+      radial-gradient(ellipse 40px 30px at 95px 28px, #fff 98%, transparent),
+      radial-gradient(ellipse 45px 22px at 125px 44px, #fff 98%, transparent);
+    background-size: 340px 190px;
+    animation: clouds 40s linear infinite; }
+  body::after { background-size: 520px 260px; background-position: 160px 90px; opacity: .8; animation-duration: 70s; }
+  @keyframes clouds { to { background-position-x: 340px; } }`,
+    },
   };
   const FONTS = {
     comic: '"Comic Sans MS", cursive', times: '"Times New Roman", serif', impact: "Impact, sans-serif", courier: '"Courier New", monospace',
@@ -222,22 +281,23 @@
       const about = esc(f.get("about") || "").replace(/\n/g, "<br>");
       const on = (k) => f.get(k) === "on";
       const img = (p, w, h, alt = "") => `<img src="${base}${p}" width="${w}" height="${h}" alt="${alt}">`;
-      const bg = t.bg;
       return `<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
 <title>${title}</title>
 <style>
-  body { margin: 0; padding: 16px; background: ${bg}; color: ${t.body}; font: 16px Verdana, sans-serif; }
+  body { margin: 0; padding: 16px; color: ${t.body}; font: 16px Verdana, sans-serif; }
+  ${t.css}
   .page { max-width: 640px; margin: 0 auto; padding: 16px; background: ${t.box}; border: 3px ridge ${t.head}; }
-  h1 { margin: 0 0 8px; font: bold 34px ${FONTS[f.get("font")]}; color: ${t.head}; text-align: center; }
+  h1 { margin: 0 0 8px; font: bold 34px ${FONTS[f.get("font")]}; color: ${t.head}; text-align: center; text-shadow: ${t.shadow || "none"}; }
   a { color: ${t.link}; }
   .center { text-align: center; }
   .counter { display: inline-block; padding: 2px 6px; font: bold 16px monospace; letter-spacing: 3px; color: #3f3; background: #000; }
 </style>
 </head>
 <body>
+${t.html || ""}
 <div class="page">
   <h1>${on("pet") ? img("assets/kaoani/c117.gif", 40, 40) + " " : ""}${title}${on("pet") ? " " + img("assets/kaoani/c117.gif", 40, 40) : ""}</h1>
   ${on("marquee") ? `<marquee scrollamount="4">*~*~ Добро пожаловать на мою страничку! ~*~*</marquee>` : ""}
@@ -248,6 +308,7 @@
   ${on("counter") ? `<p class="center">Вы посетитель № <span class="counter">000${Math.floor(1000 + Math.random() * 8999)}</span></p>` : ""}
   ${on("buttons") ? `<p class="center">${img("assets/badges/web10-button.gif", 88, 31, "Web 1.0")} ${img("assets/badges/neocities.gif", 88, 31, "Neocities")} ${img("assets/badges/notepad.gif", 88, 31, "Made with Notepad")}</p>` : ""}
 </div>
+${t.js || ""}
 </body>
 </html>
 `;
