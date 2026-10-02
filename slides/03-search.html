@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03. Поиск | Web 1.0</title>
+  <meta name="description" content="Интерактивная мини-презентация о раннем интернете: личные сайты, dial-up, каталоги, странный дизайн и IndieWeb сегодня.">
+  <link rel="icon" type="image/png" href="../assets/ui/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/ui/apple-touch-icon.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<!--
+  data-root    : путь до корня сайта от этой страницы ("./" здесь, "../" в slides/)
+  data-chapter : номер главы из CHAPTERS в script.js (0 = главная)
+-->
+<body class="page-chapter" data-root="../" data-chapter="3">
+
+<!-- ===== SVG-спрайт: пиксельно-платиновые иконки браузера ===== -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bcd3ff"/><stop offset=".5" stop-color="#5f8ff0"/><stop offset="1" stop-color="#2149b8"/>
+    </linearGradient>
+    <linearGradient id="g-silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c9c9c9"/>
+    </linearGradient>
+  </defs>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M2.5 12 11 3.5V8h10.5v8H11v4.5Z" fill="url(#g-blue)" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-forward" viewBox="0 0 24 24"><path d="M21.5 12 13 3.5V8H2.5v8H13v4.5Z" fill="url(#g-blue)" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-reload" viewBox="0 0 24 24"><path d="M19 13.5A7.2 7.2 0 1 1 15.6 6" fill="none" stroke="#000" stroke-width="5"/><path d="M19 13.5A7.2 7.2 0 1 1 15.6 6" fill="none" stroke="#6fc36a" stroke-width="2.6"/><path d="M12.5 2.2 21 4.8l-5.6 6.4Z" fill="#6fc36a" stroke="#000" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M2.5 12.5 12 3.5l9.5 9H18.5V21h-13v-8.5Z" fill="url(#g-silver)" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 21v-5.5h4V21" fill="url(#g-blue)" stroke="#000" stroke-width="1.3"/><path d="M15.5 6.5V4h2v4.4" fill="#fff" stroke="#000" stroke-width="1.2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path d="m14.6 14.6 6.4 6.4" stroke="#000" stroke-width="4.2" stroke-linecap="round"/><circle cx="9.8" cy="9.8" r="6.6" fill="#e5efff" stroke="#000" stroke-width="2"/><path d="M6.6 8.4a3.6 3.6 0 0 1 3-2.9" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><path d="M8 2h8l6 6v8l-6 6H8l-6-6V8Z" fill="#d93a32" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 10.4h12v3.2H6Z" fill="#fff"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 2.5h12V21l-6-4.6L6 21Z" fill="url(#g-blue)" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-page" viewBox="0 0 24 24"><path d="M5 2h9.5L19 6.5V22H5Z" fill="#fff" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/><path d="M14.5 2v4.5H19" fill="#ddd" stroke="#000" stroke-width="1.2"/><path d="M8 11h8M8 14h8M8 17h5" stroke="#7a7a7a" stroke-width="1.3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M7.5 11V8a4.5 4.5 0 0 1 9 0v3" fill="none" stroke="#000" stroke-width="2.2"/><rect x="4.5" y="11" width="15" height="10.5" rx="1" fill="#e8c35a" stroke="#000" stroke-width="1.4"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-blue)" stroke="#000" stroke-width="1.4"/><path d="M2.5 12h19M12 2.5c-4 4.5-4 14.5 0 19M12 2.5c4 4.5 4 14.5 0 19M4.5 7h15M4.5 17h15" fill="none" stroke="#000" stroke-width=".9"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2.5" y="3" width="19" height="13.5" rx="1" fill="url(#g-silver)" stroke="#000" stroke-width="1.4"/><rect x="5" y="5.4" width="14" height="8.6" fill="#1d3f8f"/><path d="M9 16.5 8 20.5h8l-1-4" fill="#ccc" stroke="#000" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 2.5 22 20.5H2Z" fill="#ffd52e" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 9v5.5" stroke="#000" stroke-width="2.4"/><circle cx="12" cy="17.3" r="1.3"/></symbol>
+</svg>
+
+<a class="skip-link" href="#content">Перейти к содержимому</a>
+
+
+<!-- ===== «Рабочий стол» в клеточку ===== -->
+<div class="desktop">
+
+  <!-- ===== Окно старого браузера ===== -->
+  <div class="browser" id="browser">
+
+    <header class="chrome">
+      <!-- Заголовок окна: полосатый, как в Mac OS 9 -->
+      <div class="titlebar">
+        <span class="titlebar__box" aria-hidden="true"></span>
+        <span class="titlebar__stripes" aria-hidden="true"></span>
+        <p class="titlebar__title">Web 1.0: каким был интернет?</p>
+        <span class="titlebar__stripes" aria-hidden="true"></span>
+        <span class="titlebar__box titlebar__box--zoom" aria-hidden="true"></span>
+        <span class="titlebar__box titlebar__box--shade" aria-hidden="true"></span>
+      </div>
+
+      <!-- Панель навигации -->
+      <div class="toolbar" role="toolbar" aria-label="Навигация">
+        <a class="tbtn" data-nav="prev" href="../index.html" aria-disabled="true">
+          <svg class="ico" aria-hidden="true"><use href="#i-back"/></svg><span>Назад</span>
+        </a>
+        <a class="tbtn" data-nav="next" href="./01-connection.html">
+          <svg class="ico" aria-hidden="true"><use href="#i-forward"/></svg><span>Вперёд</span>
+        </a>
+        <button class="tbtn" type="button" data-action="reload">
+          <svg class="ico" aria-hidden="true"><use href="#i-reload"/></svg><span>Обновить</span>
+        </button>
+        <a class="tbtn" data-nav="home" href="../index.html">
+          <svg class="ico" aria-hidden="true"><use href="#i-home"/></svg><span>Домой</span>
+        </a>
+        <span class="toolbar__sep" aria-hidden="true"></span>
+        <a class="tbtn" href="./03-search.html">
+          <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><span>Поиск</span>
+        </a>
+        <button class="tbtn" type="button" data-action="stop">
+          <svg class="ico" aria-hidden="true"><use href="#i-stop"/></svg><span>Стоп</span>
+        </button>
+
+        <!-- «Throbber»: как буква N у Netscape, только наш логотип. Крутится, пока «грузится» страница -->
+        <div class="throbber" aria-hidden="true">
+          <img src="../assets/ui/logo-bunny.webp" alt="" width="44" height="44">
+        </div>
+      </div>
+
+      <!-- Адресная строка -->
+      <div class="locationbar">
+        <button class="lbtn" type="button" data-bunny-say="В Избранное! Нажми Ctrl+D, так делали все, кто не хотел потерять классный сайт.">
+          <svg class="ico ico--16" aria-hidden="true"><use href="#i-bookmark"/></svg>Закладки
+        </button>
+        <label class="locationbar__label" for="address">Адрес:</label>
+        <div class="address">
+          <svg class="ico ico--16" aria-hidden="true"><use href="#i-page"/></svg>
+          <input id="address" type="text" readonly value="http://chikirao.narod.ru/web10/slides/03-search.html" spellcheck="false">
+        </div>
+      </div>
+
+      <!-- Личная панель закладок = навигация по главам презентации -->
+      <nav class="personalbar" aria-label="Разделы экскурсии">
+        <a href="../index.html"><svg class="ico ico--14" aria-hidden="true"><use href="#i-home"/></svg>Главная</a>
+        <a href="./01-connection.html"><svg class="ico ico--14" aria-hidden="true"><use href="#i-page"/></svg>01 Подключение</a>
+        <a href="./02-design.html"><svg class="ico ico--14" aria-hidden="true"><use href="#i-page"/></svg>02 Дизайн</a>
+        <a href="./03-search.html" aria-current="page"><svg class="ico ico--14" aria-hidden="true"><use href="#i-page"/></svg>03 Поиск</a>
+        <a href="./04-problems.html"><svg class="ico ico--14" aria-hidden="true"><use href="#i-page"/></svg>04 Проблемы</a>
+        <a href="./05-indieweb.html"><svg class="ico ico--14" aria-hidden="true"><use href="#i-page"/></svg>05 IndieWeb</a>
+      </nav>
+    </header>
+
+    <!-- ===== Слайд главы: правьте содержимое <main class="slide"> ===== -->
+    <div class="viewport" id="content" tabindex="-1">
+      <main class="slide" aria-labelledby="slide-title">
+        <header class="slide__head">
+          <p class="slide__kicker"><span class="slide__num">03</span> Остановка 3 из 5</p>
+          <h1 class="slide__title" id="slide-title">Поиск</h1>
+          <img class="slide__rule" src="../assets/gifs/rainbow-line.gif" alt="" width="139" height="5">
+        </header>
+
+        <div class="slide__body">
+          <div class="slide__text">
+            <p class="slide__lead">Здесь будет рассказ про каталоги сайтов, рейтинги-«топы», вебринги и первые поисковики.</p>
+            <img class="construction__bar" src="../assets/gifs/construction-bar.gif" alt="Under construction" width="200" height="30">
+            <div class="construction">
+              <img src="../assets/gifs/construction-area.gif" alt="" width="78" height="53">
+              <p>Слайд строится. Текст выступления и интерактив для него собираем в <code>docs/SPEECH.md</code>.</p>
+            </div>
+          </div>
+          <figure class="slide__figure" aria-hidden="true">
+            <img src="../assets/gifs/search-magnifier.gif" alt="" width="110" height="95">
+          </figure>
+        </div>
+
+        <nav class="slide__pager" aria-label="Переход между главами">
+          <a class="btn" data-nav="prev" href="../index.html">‹ Назад</a>
+          <a class="btn btn--default" data-nav="next" href="../index.html">Дальше ›</a>
+          <a class="linklike" data-nav="home" href="../index.html">На главную</a>
+        </nav>
+      </main>
+    </div>
+
+    <!-- Строка состояния: при наведении на ссылку показывает адрес, как настоящий браузер -->
+    <footer class="statusbar">
+      <span class="statusbar__cell statusbar__cell--grow">
+        <svg class="ico ico--14" aria-hidden="true"><use href="#i-page"/></svg>
+        <span data-status>Документ: Готово</span>
+      </span>
+      <span class="statusbar__cell statusbar__cell--progress" aria-hidden="true"><span class="progress" data-progress></span></span>
+      <span class="statusbar__cell statusbar__cell--pc">
+        <svg class="ico ico--14" aria-hidden="true"><use href="#i-monitor"/></svg>Лучше на ПК
+      </span>
+      <span class="statusbar__cell" title="Соединение не защищено. В 1999-м это никого не смущало.">
+        <svg class="ico ico--14" aria-hidden="true"><use href="#i-lock"/></svg>
+      </span>
+      <span class="statusbar__cell">
+        <svg class="ico ico--14" aria-hidden="true"><use href="#i-globe"/></svg>Интернет
+      </span>
+    </footer>
+  </div>
+</div>
+
+<!-- ===== Окно «О проекте» ===== -->
+<dialog class="window" id="about" aria-labelledby="about-title">
+  <div class="titlebar titlebar--dialog">
+    <span class="titlebar__stripes" aria-hidden="true"></span>
+    <h2 class="titlebar__title" id="about-title">О проекте</h2>
+    <span class="titlebar__stripes" aria-hidden="true"></span>
+  </div>
+  <div class="window__body">
+    <img class="window__icon" src="../assets/gifs/computer-happy.gif" alt="" width="96" height="96">
+    <div class="window__text">
+      <p><b>Web 1.0: каким был интернет?</b></p>
+      <p>Интерактивная мини-презентация в виде сайта. Мы пройдём пять остановок: подключение,
+        дизайн, поиск, ограничения раннего веба и IndieWeb, его современное продолжение.</p>
+      <p>Все кнопки 88×31, блинкиз и гифки настоящие, из архивов старого интернета.
+        Список источников в <code>docs/ASSETS.md</code>.</p>
+      <p class="window__small">Проводник: Чикиряо. Версия 1.0 · 2026</p>
+    </div>
+  </div>
+  <form class="window__actions" method="dialog">
+    <button class="btn btn--default" value="ok">OK</button>
+  </form>
+</dialog>
+
+<!-- Реплики Чикиряо для этой главы: правьте здесь -->
+<ol class="narration" data-narration hidden>
+  <li>Остановка «Поиск». До больших поисковиков сайты искали по каталогам, рейтингам и ссылкам друг друга.</li>
+  <li>Скоро здесь появятся каталоги, «топ-100» и первые поисковые системы.</li>
+</ol>
+
+<div class="buddy" data-buddy>
+  <section class="balloon" data-balloon aria-label="Реплики Чикиряо">
+    <p class="balloon__name">Чикиряо</p>
+    <button class="balloon__close" type="button" data-action="balloon-close" aria-label="Скрыть реплики">×</button>
+    <p class="balloon__text" data-balloon-text aria-live="polite"></p>
+    <div class="balloon__nav">
+      <button class="btn btn--small" type="button" data-action="line-prev">‹ Назад</button>
+      <span class="balloon__count" data-line-count></span>
+      <button class="btn btn--small btn--next" type="button" data-action="line-next">Далее ›</button>
+    </div>
+  </section>
+
+  <div class="rig" data-rig role="button" tabindex="0"
+       aria-label="Чикиряо. Нажмите, чтобы он помахал; перетащите, чтобы передвинуть">
+    <span class="rig__shadow" data-part="shadow"></span>
+    <span class="rig__swing" data-part="swing">
+      <span class="rig__hand" data-part="hand-l"></span>
+      <span class="rig__body" data-part="body"></span>
+      <span class="rig__head" data-part="head"></span>
+      <span class="rig__hand" data-part="hand-r"></span>
+    </span>
+  </div>
+</div>
+
+<script src="../assets/bunny/bunny-rig.js" defer></script>
+<script src="../assets/bunny/bunny-tuning.js" defer></script>
+<script src="../script.js" defer></script>
+</body>
+</html>
