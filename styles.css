@@ -1969,7 +1969,9 @@ code {
 .crt-badges img { width: 176px; height: 62px; image-rendering: pixelated; }
 
 /* Режим «монитор 2004 года»: окно сжимается до 800×600 на фоне фото
-   компьютерного клуба, вокруг чёрная рамка экрана. */
+   компьютерного клуба, вокруг чёрная рамка экрана, сверху CRT-трубка (crt.js).
+   Содержимое не сужается, а уменьшается целиком: окно рисуется шире
+   (--crt-w / --k) и масштабируется в --k раз, поэтому вёрстка не ломается. */
 .page-chapter .desktop {
   top: 0;
   left: 0;
@@ -1977,9 +1979,11 @@ code {
   height: 100vh;
   right: auto;
   bottom: auto;
+  --k: .68;   /* во сколько раз уменьшается содержимое в режиме монитора (его читает и crt.js) */
+  transform-origin: 0 0;
   transition: top .6s cubic-bezier(.4, 0, .2, 1), left .6s cubic-bezier(.4, 0, .2, 1),
               width .6s cubic-bezier(.4, 0, .2, 1), height .6s cubic-bezier(.4, 0, .2, 1),
-              box-shadow .6s;
+              transform .6s cubic-bezier(.4, 0, .2, 1), box-shadow .6s;
 }
 .page-chapter::before {
   content: "";
@@ -1995,10 +1999,22 @@ code {
   --crt-h: min(600px, calc(100vh - 110px));
   top: calc((100vh - var(--crt-h)) / 2 - 28px);
   left: calc((100vw - var(--crt-w)) / 2);
-  width: var(--crt-w);
-  height: var(--crt-h);
-  box-shadow: 0 0 0 12px #000, 0 0 0 13px #444, 0 24px 60px rgba(0, 0, 0, .7);
+  width: calc(var(--crt-w) / var(--k));
+  height: calc(var(--crt-h) / var(--k));
+  transform: scale(var(--k));
+  box-shadow: 0 0 0 calc(12px / var(--k)) #000, 0 0 0 calc(13px / var(--k)) #444,
+              0 calc(24px / var(--k)) calc(60px / var(--k)) rgba(0, 0, 0, .7);
 }
+/* трубка поверх окна: два canvas прямо в body, сквозь них можно кликать */
+.crt-layer {
+  position: fixed;
+  z-index: 44;
+  display: none;
+  pointer-events: none;
+}
+.crt-layer.is-on { display: block; }
+.crt-shade { mix-blend-mode: multiply; }
+.crt-light { mix-blend-mode: screen; }
 .crt-exit {
   position: fixed;
   z-index: 45;

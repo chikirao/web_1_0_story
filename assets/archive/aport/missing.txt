@@ -1,0 +1,17 @@
+r70c5032b6a	https://web.archive.org/web/20001219162400im_/http://193.125.27.52/scripts/adv.dll?w=Aport350&c=&x=1&n=3
+r3b3fce80e1	https://web.archive.org/web/20001219162400im_/http://193.125.27.52/scripts/adv.dll?w=AportMain81x63&c=&x=1&n=3
+rcdb29bb71e	https://web.archive.org/web/20001219162400im_/http://193.125.27.52/scripts/adv.dll?fpn=d:/scripts/banners/pixel.gif&l=rec_grani0
+r9d2f850d0d	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/img/back1.gif
+r3755bbf93f	https://web.archive.org/img/p.gif
+rea531413d9	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/img/aexpress.gif
+r66b40c30f9	https://web.archive.org/web/20001219162400im_/http://193.125.27.52/scripts/adv.dll?w=AportMain120x60&c=&x=1&n=3
+r5315fb6530	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/pocht.gif--
+r486a65f235	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/pocht.gif
+ra8d47f93c9	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/pocht1.gif
+rd809381d3e	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/img/new0.gif
+r3a0f5ef241	https://web.archive.org/web/20001219162400im_/http://193.125.27.52/scripts/adv.dll?w=AportMain120x60_1&c=&x=1&n=3
+r6d2993803d	https://web.archive.org/web/20001219162400im_/http://193.125.27.52/scripts/adv.dll?w=AportMain120x60_2&c=&x=1&n=3
+rfba3d5638b	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/tf2000.gif
+r7eb9b548ee	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/img/atrus_logo1.gif
+r664cded8e9	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/img/back3.gif
+rd5d5da2d67	https://web.archive.org/web/20001219162400im_/http://www.aport.ru/img/omen_logo.gif

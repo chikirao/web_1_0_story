@@ -1,0 +1,89 @@
+a {font-family: arial, helvetica, sans-serif;
+	font-size: 8pt}
+	
+body a:hover  {color :#0033ff}	
+		a:visited {color :#000099}	
+			
+td {font-family: arial, helvetica, sans-serif;
+	font-size: 10pt}		
+
+td.pad
+{
+	 padding: 5px;
+}
+	
+input,select {font-family: arial, helvetica, sans-serif;
+	font-size: 8pt}			
+	
+	
+.bold {font-family: arial, helvetica, sans-serif;
+			   font-size: 10pt;
+        	   font-weight : bold; }
+
+.main {font-family: arial, helvetica, sans-serif;
+		  font-size: 8pt;}
+			   
+.small {font-family: arial, helvetica, sans-serif;
+    	   font-size: 8pt;}
+								
+.smallest {font-family: arial, helvetica, sans-serif;
+    	   font-size: 7pt;}								
+								
+.smallest1 {font-family: arial, helvetica, sans-serif;
+    	   font-size: 11px;}							
+								
+.smallest2 {font-family: arial, helvetica, sans-serif;
+    	   font-size: 9px;}		
+		   
+.none {text-decoration: none;}
+
+td {font-family: arial, helvetica, sans-serif;
+    	   font-size: 8pt;}		   
+								
+.cat1 {
+	FONT: 8pt Tahoma, helvetica, sans-serif; color: #3333dd
+}
+.cat2 {
+	FONT: bold 9pt Tahoma, helvetica, sans-serif; color:#0000dd
+}
+
+A:visited {
+	COLOR: #3333dd
+}
+
+BODY A {
+	COLOR: #0000bb
+}
+
+BODY A:hover {
+	COLOR: #ff0000
+}
+
+
+			   
+			   
+
+
+
+
+
+/*
+     FILE ARCHIVED ON 01:18:00 Dec 10, 2000 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:45:56 Oct 02, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 0.35
+  exclusion.robots: 0.027
+  exclusion.robots.policy: 0.02
+  esindex: 0.006
+  cdx.remote: 10.556
+  LoadShardBlock: 44.399 (3)
+  PetaboxLoader3.datanode: 59.522 (4)
+  load_resource: 166.682
+  PetaboxLoader3.resolve: 132.818
+*/

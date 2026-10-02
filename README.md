@@ -23,7 +23,8 @@ web_1_0_story/
 │   │   ├── bunny-tuning.js    #   ручная подстройка головы (из панели ⚙)
 │   │   └── bunny-webpage.png  #   поза «с комком страницы», для будущих глав
 │   ├── audio/                 # звук модема (dialup.mp3) и аудиограмма (wave-*.png)
-│   ├── js/                    # интерактив отдельных слайдов (connection.js, design.js)
+│   ├── archive/               # старые сайты из Интернет-архива (машина времени, слайд 02)
+│   ├── js/                    # интерактив слайдов (connection.js, design.js) и CRT-монитор (crt.js)
 │   ├── badges/                # кнопки 88×31 (+ своя web10-button.gif)
 │   ├── blinkies/              # блинкиз 150×20 с glitter-graphics
 │   ├── gifs/                  # гифки из архива GeoCities (GifCities)
@@ -32,7 +33,8 @@ web_1_0_story/
 │   └── ui/                    # логотип (webp + исходник png), фавиконки
 ├── tools/
 │   ├── build_bunny.py         # собирает спрайты Чикиряо из игры WEBIVORE
-│   └── make_slides.py         # генерирует заготовки глав из index.html
+│   ├── make_slides.py         # генерирует заготовки глав из index.html
+│   └── mirror_archive.py      # скачивает старые сайты для машины времени (слайд 02)
 ├── docs/
 │   ├── SPEECH.md              # текст выступления и план интерактива по слайдам
 │   └── ASSETS.md              # откуда взят каждый ассет
