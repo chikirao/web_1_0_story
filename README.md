@@ -57,6 +57,8 @@ python -m http.server 4180
 2. **Settings → Pages → Deploy from a branch → main / (root)**.
 3. Сайт будет по адресу `https://chikirao.github.io/web_1_0_story/`.
 
+Инструкция для поддомена `web1.chikirao.ru`: [docs/DOMAIN.md](docs/DOMAIN.md).
+
 ## Главная и режим презентации
 
 - **Главная** остаётся «личным сайтом в окне браузера»: меню, панели, кнопки 88×31.
