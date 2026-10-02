@@ -2,7 +2,7 @@
    Слайд 05 «IndieWeb сегодня»: интерактив
      1. Кольцо Чикиряо: витрина сайтов малого веба
      2. Словарик трендов
-     3. Стена кнопок 88×31 и код нашей кнопки
+     3. Код нашей кнопки 88×31 (стена кнопок свёрстана в HTML)
      4. Мастер домашних страниц: собрать и скачать свою страничку
    ===================================================================== */
 
@@ -159,21 +159,6 @@
 
 
   /* ---------- 3. Кнопки 88×31 ---------- */
-
-  const WALL = [
-    "web10-button.gif", "neocities.gif", "notepad.gif", "netscape_now.gif", "anybrowser.gif", "best1024.gif",
-    "wall/blink.gif", "wall/css3.gif", "wall/atari_webring.gif", "wall/88cdroms.gif", "wall/catscape2.gif",
-    "wall/built_notepad.gif", "wall/8bit.gif", "wall/asciicat.gif", "wall/copy_floppy.gif", "wall/cutefont.gif",
-    "yesterweb.gif", "wall/anythingbut.gif", "wall/but_blinkies.gif", "wall/angelcat3.gif", "wall/cssdif.gif",
-    "wall/bluecat_badge.gif", "wall/amazing_free_stuff.gif", "wall/awebnow.gif", "got_html.gif", "wall/cutesocks.gif",
-    "wall/any88x31.gif", "wall/acidicdarkness.gif", "wall/cssvalid.gif", "nocookie.gif", "wall/absfree.gif",
-    "wall/chilliwebhosting.gif", "wall/blink-0.gif", "valid-html401.gif", "firefox2.gif", "internetarchive.gif",
-  ];
-
-  const wall = $("[data-btnwall]");
-  if (wall) {
-    wall.innerHTML = WALL.map((f) => `<img src="../assets/badges/${f}" width="88" height="31" alt="">`).join("");
-  }
 
   const copyBtn = $("[data-ourbtn-copy]");
   if (copyBtn) {
