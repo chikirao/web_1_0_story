@@ -2502,6 +2502,168 @@ code {
 }
 
 
+/* ---------- 12f. Слайд 05 «IndieWeb сегодня» ---------- */
+
+.neostat, .show, .maker, .guest {
+  background: var(--plat);
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 var(--plat-lo), 5px 5px 0 rgba(0, 0, 0, .2);
+}
+.neostat .titlebar__title, .show .titlebar__title, .maker .titlebar__title, .guest .titlebar__title, .trendwin .titlebar__title { font-size: 13px; }
+
+/* ===== Счётчик Neocities ===== */
+.neostat__body { margin: 10px; padding: 14px 16px; background: #fff; border: 1px solid; border-color: var(--plat-dk) var(--plat-hi) var(--plat-hi) var(--plat-dk); box-shadow: inset 1px 1px 0 #000; }
+.neostat__big {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 4px 12px;
+  font: bold clamp(28px, 3vw, 44px) var(--f-mono);
+  letter-spacing: 3px;
+  color: #3f3;
+  background: #000;
+  border: 3px inset #888;
+}
+.neostat__bars { display: grid; gap: 6px; }
+.neostat__bars li { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 10px; font: 14px var(--f-ui); }
+.neostat__bars i {
+  display: block;
+  width: calc(var(--v) * 1%);
+  height: 16px;
+  background: repeating-linear-gradient(90deg, var(--navy) 0 8px, #4d6fd1 8px 10px);
+  transform-origin: left;
+  animation: neo-grow 1.2s ease-out both;
+}
+@keyframes neo-grow { from { transform: scaleX(0); } }
+.neostat__bars b { font-weight: bold; min-width: 4.5em; text-align: right; }
+.neostat__note { margin-top: 10px; font: 12px var(--f-ui); color: var(--muted); }
+
+/* ===== Витрина-кольцо ===== */
+.show__body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 14px; padding: 12px; }
+.show__shot { display: block; border: 1px solid #000; box-shadow: 3px 3px 0 rgba(0, 0, 0, .25); }
+.show__shot img { display: block; width: 100%; height: auto; }
+.show__shot:hover { outline: 3px solid var(--navy); }
+.show__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  font: clamp(16px, 1.2vw, 20px)/1.5 var(--f-serif);
+  background: #fff;
+  border: 1px solid;
+  border-color: var(--plat-dk) var(--plat-hi) var(--plat-hi) var(--plat-dk);
+  box-shadow: inset 1px 1px 0 #000;
+}
+.show__name { font: bold 1.5em var(--f-serif); color: var(--navy); }
+.show__who { font: 14px var(--f-ui); color: var(--muted); }
+.show__text p + p { margin-top: .5em; }
+.show__info .btn { align-self: flex-start; margin-top: auto; }
+.show__ring { border-top: 2px ridge #fff; }
+
+/* ===== Словарик трендов ===== */
+.trendwin .helpwin__page { min-height: 260px; }
+.trendwin .helpwin__page img { float: right; margin: 0 0 8px 16px; width: auto; height: auto; }
+
+/* ===== Кнопки 88×31 ===== */
+.btnwall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 88px);
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  background: #000 url("./assets/gifs/sparkle-b.gif");
+  border: 3px ridge #c0c0c0;
+}
+.btnwall img { display: block; image-rendering: pixelated; transition: transform .12s; }
+.btnwall img:hover { position: relative; z-index: 1; transform: scale(1.8); }
+.ourbtn { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 10px 14px; margin-top: 10px; }
+.ourbtn__img { image-rendering: pixelated; width: 176px; height: 62px; }
+.ourbtn__code { width: 100%; padding: 6px 8px; font: 13px/1.4 var(--f-mono); resize: none; border: 1px solid; border-color: var(--plat-dk) var(--plat-hi) var(--plat-hi) var(--plat-dk); }
+.ourbtn .btn { grid-column: 2; justify-self: start; }
+
+/* ===== Мастер домашних страниц ===== */
+.maker__body { display: grid; grid-template-columns: minmax(250px, 340px) minmax(0, 1fr); gap: 12px; padding: 12px; }
+.maker__form { display: grid; align-content: start; gap: 10px; font: 14px var(--f-ui); }
+.maker__form > label { display: grid; gap: 4px; }
+.maker__form input[type="text"], .maker__form textarea {
+  width: 100%;
+  padding: 4px 6px;
+  font: 15px var(--f-ui);
+  border: 1px solid;
+  border-color: var(--plat-dk) var(--plat-hi) var(--plat-hi) var(--plat-dk);
+  resize: vertical;
+}
+.maker__form fieldset { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 6px 10px 8px; border: 1px solid var(--plat-dk); }
+.maker__form legend { padding: 0 4px; font-weight: bold; }
+.maker__radio, .maker__check { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+.maker__out { display: flex; flex-direction: column; gap: 10px; }
+.maker__preview { width: 100%; height: clamp(360px, 52vh, 520px); background: #fff; border: 2px inset #fff; }
+.maker__btns { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ===== Гостевая ===== */
+.guest__frame { display: block; width: calc(100% - 20px); height: 640px; margin: 10px; background: #fff; border: 2px inset #fff; }
+.guest__foot { padding: 0 12px 12px; font: 14px var(--f-ui); }
+
+/* ===== Видео ===== */
+.video {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  max-width: 900px;
+  padding: 12px;
+  color: inherit;
+  text-decoration: none;
+  background: var(--plat);
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 var(--plat-lo), 5px 5px 0 rgba(0, 0, 0, .2);
+}
+.video__thumb { position: relative; display: block; border: 1px solid #000; }
+.video__thumb img { display: block; width: 100%; height: auto; }
+.video__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 44px;
+  font-size: 24px;
+  color: #fff;
+  background: rgba(200, 0, 0, .9);
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+}
+.video:hover .video__play { background: #f00; }
+.video__text { display: grid; gap: 6px; font-size: .9em; }
+.video__text b { font: bold 1.2em var(--f-serif); color: var(--navy); }
+.video__kicker { font: 13px var(--f-ui); color: var(--muted); }
+.video:hover b { text-decoration: underline; }
+.theend { display: flex; align-items: center; gap: 10px; font: italic bold clamp(22px, 2vw, 32px) var(--f-serif); }
+
+@media (max-width: 1100px) {
+  .show__body, .maker__body { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 900px) {
+  .show__body, .maker__body { padding: 8px; }
+  .show__info { padding: 12px; }
+  .ring__links .linklike { display: inline-block; min-height: 44px; padding: 10px 4px; }
+  .trendwin .helpwin__page { min-height: 0; }
+  .trendwin .helpwin__page img { max-width: 88px; }
+  .btnwall { grid-template-columns: repeat(auto-fill, 88px); gap: 4px; padding: 8px; }
+  .btnwall img:hover { transform: none; }
+  .ourbtn { grid-template-columns: minmax(0, 1fr); }
+  .ourbtn .btn { grid-column: 1; }
+  .maker__form fieldset { gap: 2px 12px; }
+  .maker__radio, .maker__check { min-height: 36px; }
+  .maker__preview { height: 70svh; }
+  .guest__frame { height: 80svh; margin: 6px; width: calc(100% - 12px); }
+  .video { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .neostat__bars i { animation: none; }
+}
+
+
 /* ---------- 12½. Панель настроек ⚙ (для разработки) ---------- */
 
 .devbtn {

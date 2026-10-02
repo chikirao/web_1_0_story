@@ -64,3 +64,9 @@
 | `search.gif` | `http://geocities.com/rockm59/computer_girl_md_wht.gif` |
 | `hot.gif` | `http://geocities.com/winlink_travel/HotDeals.gif` |
 | `banner.gif` | `http://www.geocities.com:80/ilovegirlsfeet/images/AllClicks1.gif` |
+
+## IndieWeb (слайд 05): `assets/indieweb/`, `assets/badges/wall/`
+- Скриншоты сайтов (`doghouse`, `cameron`, `melonking`, `melonland`, `ribo`, `petrapixel`, а также `cafe32`, `wiby`, `marginalia`, `neocities` про запас) сняты с живых сайтов в октябре 2026, 1024×720. Права на страницы у их авторов, на слайде они как превью со ссылкой.
+- `video.jpg`: превью видео MrAlexBat «А ты знаешь... Что есть ДРУГОЙ ИНТЕРНЕТ?» (YouTube), карточка ведёт на видео.
+- `badges/wall/`: 25 кнопок 88×31 из архива **cyber.dabamos.de/88x31** для стены кнопок.
+- Гостевая книга: Atabook, https://chikirao.atabook.org/ (встроена iframe).

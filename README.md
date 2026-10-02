@@ -24,7 +24,7 @@ web_1_0_story/
 │   │   └── bunny-webpage.png  #   поза «с комком страницы», для будущих глав
 │   ├── audio/                 # звук модема (dialup.mp3) и аудиограмма (wave-*.png)
 │   ├── archive/               # старые сайты из Интернет-архива (машина времени, слайд 02; s-*, q-* для слайда 03)
-│   ├── js/                    # интерактив слайдов (connection.js, design.js, search.js, problems.js) и CRT-монитор (crt.js)
+│   ├── js/                    # интерактив слайдов (connection.js, design.js, search.js, problems.js, indieweb.js) и CRT-монитор (crt.js)
 │   ├── badges/                # кнопки 88×31 (+ своя web10-button.gif)
 │   ├── blinkies/              # блинкиз 150×20 с glitter-graphics
 │   ├── gifs/                  # гифки из архива GeoCities (GifCities)
@@ -68,7 +68,7 @@ python -m http.server 4180
   Всё место отдано слайду с крупным текстом.
 - При переходе с главной окно анимированно разворачивается, при возврате на главную сворачивается обратно.
 - Слайд правится внутри `<main class="slide">`: заголовок, `.slide__body` (текст + картинка), кнопки внизу.
-- Длинный слайд с секциями: `<main class="slide slide--long">` (так сделаны 01 «Подключение», 02 «Дизайн», 03 «Поиск» и 04 «Проблемы»). Интерактив слайдов лежит в `assets/js/` (`connection.js`, `design.js`, `search.js`, `problems.js`).
+- Длинный слайд с секциями: `<main class="slide slide--long">` (так сделаны 01 «Подключение», 02 «Дизайн», 03 «Поиск», 04 «Проблемы» и 05 «IndieWeb»). Интерактив слайдов лежит в `assets/js/` (`connection.js`, `design.js`, `search.js`, `problems.js`, `indieweb.js`).
 - Слайды, сделанные вручную, помечены комментарием `handmade`: `make_slides.py --force` их не перезаписывает.
 
 ## Мобильная версия и проверка

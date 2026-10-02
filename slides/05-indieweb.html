@@ -111,28 +111,275 @@
       </nav>
     </header>
 
-    <!-- ===== Слайд главы: правьте содержимое <main class="slide"> ===== -->
+    <!-- ===== Слайд главы (сделан вручную, make_slides.py его не трогает: handmade) ===== -->
     <div class="viewport" id="content" tabindex="-1">
-      <main class="slide" aria-labelledby="slide-title">
+      <main class="slide slide--long" aria-labelledby="slide-title">
         <header class="slide__head">
           <p class="slide__kicker"><span class="slide__num">05</span> Остановка 5 из 5</p>
           <h1 class="slide__title" id="slide-title">IndieWeb сегодня</h1>
           <img class="slide__rule" src="../assets/gifs/rainbow-line.gif" alt="" width="139" height="5">
+          <p class="slide__lead">
+            Старый интернет не умер. Тысячи людей прямо сейчас делают себе домашние странички
+            с гифками, гостевыми книгами и кнопками 88×31. Не потому, что не умеют иначе,
+            а потому, что так <b>свой уголок</b> снова принадлежит им, а не ленте.
+          </p>
         </header>
 
-        <div class="slide__body">
-          <div class="slide__text">
-            <p class="slide__lead">Здесь будет рассказ про Neocities, личные сайты, вебринги и кнопки 88×31 сегодня.</p>
-            <img class="construction__bar" src="../assets/gifs/construction-bar.gif" alt="Under construction" width="200" height="30">
-            <div class="construction">
-              <img src="../assets/gifs/construction-area.gif" alt="" width="78" height="53">
-              <p>Слайд строится. Текст выступления и интерактив для него собираем в <code>docs/SPEECH.md</code>.</p>
+        <!-- ===== 1. Что такое IndieWeb ===== -->
+        <section class="slide__sec" aria-labelledby="what-title">
+          <h2 class="slide__h2" id="what-title">
+            <img src="../assets/gifs/house-home.gif" alt="" width="55" height="46"> Свой сайт вместо ленты
+          </h2>
+          <div class="slide__split">
+            <div>
+              <p class="slide__p">
+                Соцсети сделали публиковаться очень просто, но всё выглядит одинаково,
+                а что тебе показать, решает алгоритм. <b>IndieWeb</b>, или «малый веб», это люди,
+                которые снова заводят личные сайты: страница выглядит так, как хочет автор,
+                и живёт, пока он сам её не удалит.
+              </p>
+              <p class="slide__p">
+                Главный дом движения: <b>Neocities</b>, бесплатный хостинг, который в 2013 году
+                открыли как наследника GeoCities. Сайты там пишут руками, как в 1999-м,
+                только в современном браузере. И многие авторы родились уже после того,
+                как GeoCities закрыли.
+              </p>
+            </div>
+
+            <div class="neostat" aria-label="Сколько сайтов на Neocities">
+              <div class="titlebar titlebar--dialog">
+                <span class="titlebar__box" aria-hidden="true"></span>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+                <p class="titlebar__title">Сайтов на Neocities</p>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+              </div>
+              <div class="neostat__body">
+                <p class="neostat__big" data-neo-count>1 776 700</p>
+                <ul class="neostat__bars" data-neo-bars>
+                  <li style="--v:3.2"><span>2015</span><i></i><b>57 тыс.</b></li>
+                  <li style="--v:26"><span>2022</span><i></i><b>460 тыс.</b></li>
+                  <li style="--v:34.6"><span>2023</span><i></i><b>616 тыс.</b></li>
+                  <li style="--v:57.4"><span>2025</span><i></i><b>1 млн</b></li>
+                  <li style="--v:100"><span>2026</span><i></i><b>1,78 млн</b></li>
+                </ul>
+                <p class="neostat__note">По данным Neocities и Википедии, октябрь 2026.</p>
+              </div>
             </div>
           </div>
-          <figure class="slide__figure" aria-hidden="true">
-            <img src="../assets/gifs/house.gif" alt="" width="64" height="64">
-          </figure>
-        </div>
+        </section>
+
+        <!-- ===== 2. Витрина ===== -->
+        <section class="slide__sec" aria-labelledby="show-title">
+          <h2 class="slide__h2" id="show-title">
+            <img src="../assets/gifs/globe-small.gif" alt="" width="56" height="58"> Кольцо Чикиряо: сайты, которые стоит открыть
+          </h2>
+          <p class="slide__p">
+            Мы собрали свои любимые домашние страницы в веб-кольцо. Ходи по нему кнопками внизу,
+            а понравившийся сайт открывай целиком: так их лучше всего смотреть.
+          </p>
+
+          <div class="show" data-show>
+            <div class="titlebar titlebar--dialog">
+              <span class="titlebar__box" aria-hidden="true"></span>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+              <p class="titlebar__title" data-show-url>dog-house.neocities.org</p>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+            </div>
+            <div class="show__body">
+              <a class="show__shot" data-show-link href="https://dog-house.neocities.org/home" target="_blank" rel="noopener">
+                <img data-show-img src="../assets/indieweb/doghouse.webp" width="1024" height="720" alt="">
+              </a>
+              <div class="show__info" aria-live="polite">
+                <h3 class="show__name" data-show-name></h3>
+                <p class="show__who" data-show-who></p>
+                <div class="show__text" data-show-text></div>
+                <a class="btn btn--default" data-show-open href="https://dog-house.neocities.org/home" target="_blank" rel="noopener">Открыть сайт ↗</a>
+              </div>
+            </div>
+            <div class="ring__bar show__ring">
+              <p class="ring__name">
+                <img src="../assets/gifs/sparkle-b.gif" alt="" width="25" height="25">
+                Кольцо Чикиряо
+                <img src="../assets/gifs/sparkle-b.gif" alt="" width="25" height="25">
+              </p>
+              <p class="ring__links">
+                <button class="linklike" type="button" data-show-go="-1">&lt;&lt; пред.</button> |
+                <button class="linklike" type="button" data-show-go="random">случайный</button> |
+                <button class="linklike" type="button" data-show-go="1">след. &gt;&gt;</button>
+              </p>
+              <p class="ring__count" data-show-count></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 3. Словарик трендов ===== -->
+        <section class="slide__sec" aria-labelledby="trend-title">
+          <h2 class="slide__h2" id="trend-title">
+            <img src="../assets/gifs/new-star.gif" alt="" width="40" height="30"> Что сейчас в моде
+          </h2>
+          <p class="slide__p">
+            У малого веба свои привычки, и почти все они пришли из девяностых.
+            Пощёлкай словарик.
+          </p>
+
+          <div class="helpwin trendwin" data-trends>
+            <div class="titlebar titlebar--dialog">
+              <span class="titlebar__box" aria-hidden="true"></span>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+              <p class="titlebar__title">Справка: словарик малого веба</p>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+            </div>
+            <div class="helpwin__body">
+              <div>
+                <p class="helpwin__label">Темы:</p>
+                <div class="helpwin__list" role="tablist" aria-label="Тренды малого веба" data-trend-list>
+                  <button type="button" role="tab" aria-selected="true" data-trend="rings">Веб-кольца</button>
+                  <button type="button" role="tab" aria-selected="false" data-trend="guest">Гостевые книги</button>
+                  <button type="button" role="tab" aria-selected="false" data-trend="blinkies">Блинки и гифки</button>
+                  <button type="button" role="tab" aria-selected="false" data-trend="shrines">Шрайны</button>
+                  <button type="button" role="tab" aria-selected="false" data-trend="status">Статусы и питомцы</button>
+                  <button type="button" role="tab" aria-selected="false" data-trend="clubs">Клубы и форумы</button>
+                  <button type="button" role="tab" aria-selected="false" data-trend="search">Поиск по малому вебу</button>
+                </div>
+              </div>
+              <div class="helpwin__page" role="tabpanel" aria-live="polite" data-trend-page></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 4. Кнопки 88×31 ===== -->
+        <section class="slide__sec" aria-labelledby="btn-title">
+          <h2 class="slide__h2" id="btn-title">
+            <img src="../assets/badges/web10-button.gif" alt="" width="88" height="31"> Кнопки 88×31
+          </h2>
+          <div class="slide__split">
+            <div>
+              <p class="slide__p">
+                В девяностые маленькие картинки-ссылки ставили внизу страницы: «Netscape Now!»,
+                «Сделано в Блокноте», «Лучше смотреть в…». Размер 88 на 31 пиксель стал стандартом,
+                и друзья менялись кнопками: ты ставишь мою, я твою.
+              </p>
+              <p class="slide__p">
+                Сегодня это главный значок малого веба. Кнопки рисуют сами, собирают коллекции
+                (в архиве cyber.dabamos.de их тысячи) и вешают в подвал как знак «я свой».
+                У нашего сайта тоже есть кнопка: забирай код и ставь к себе.
+              </p>
+              <div class="ourbtn">
+                <img class="ourbtn__img" src="../assets/badges/web10-button.gif" alt="Web 1.0: каким был интернет?" width="88" height="31">
+                <textarea class="ourbtn__code" readonly rows="3" spellcheck="false" aria-label="Код нашей кнопки" data-ourbtn-code>&lt;a href="https://web1.chikirao.ru/"&gt;&lt;img src="https://web1.chikirao.ru/assets/badges/web10-button.gif" width="88" height="31" alt="Web 1.0"&gt;&lt;/a&gt;</textarea>
+                <button class="btn btn--default" type="button" data-ourbtn-copy>Скопировать код</button>
+              </div>
+            </div>
+            <div class="btnwall" data-btnwall aria-label="Стена кнопок 88×31"></div>
+          </div>
+        </section>
+
+        <!-- ===== 5. Конструктор ===== -->
+        <section class="slide__sec" aria-labelledby="make-title">
+          <h2 class="slide__h2" id="make-title">
+            <img src="../assets/badges/notepad.gif" alt="" width="88" height="31"> Собери свою страничку
+          </h2>
+          <p class="slide__p">
+            Попробуй сам: выбери оформление, и рядом появится страничка в духе 1999 года.
+            Её код можно скачать и залить на Neocities, это бесплатно.
+          </p>
+
+          <div class="maker" data-maker>
+            <div class="titlebar titlebar--dialog">
+              <span class="titlebar__box" aria-hidden="true"></span>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+              <p class="titlebar__title">Мастер домашних страниц</p>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+            </div>
+            <div class="maker__body">
+              <form class="maker__form" data-maker-form>
+                <label>Название сайта
+                  <input type="text" name="title" value="Уголок Чикиряо" maxlength="40" spellcheck="false">
+                </label>
+                <label>О себе
+                  <textarea name="about" rows="3" maxlength="240">Привет! Я делаю сайты, слушаю музыку и собираю гифки. Пишите в гостевую!</textarea>
+                </label>
+                <fieldset>
+                  <legend>Оформление</legend>
+                  <label class="maker__radio"><input type="radio" name="theme" value="space" checked> Космос</label>
+                  <label class="maker__radio"><input type="radio" name="theme" value="pink"> Розовые блёстки</label>
+                  <label class="maker__radio"><input type="radio" name="theme" value="matrix"> Хакер</label>
+                  <label class="maker__radio"><input type="radio" name="theme" value="paper"> Тетрадка</label>
+                  <label class="maker__radio"><input type="radio" name="theme" value="sky"> Небо</label>
+                </fieldset>
+                <fieldset>
+                  <legend>Шрифт заголовка</legend>
+                  <label class="maker__radio"><input type="radio" name="font" value="comic" checked> Comic Sans</label>
+                  <label class="maker__radio"><input type="radio" name="font" value="times"> Times</label>
+                  <label class="maker__radio"><input type="radio" name="font" value="impact"> Impact</label>
+                  <label class="maker__radio"><input type="radio" name="font" value="courier"> Courier</label>
+                </fieldset>
+                <fieldset>
+                  <legend>Украшения</legend>
+                  <label class="maker__check"><input type="checkbox" name="marquee" checked> Бегущая строка</label>
+                  <label class="maker__check"><input type="checkbox" name="pet" checked> Гифка-талисман</label>
+                  <label class="maker__check"><input type="checkbox" name="blinkies" checked> Блинки</label>
+                  <label class="maker__check"><input type="checkbox" name="construction"> «Under construction»</label>
+                  <label class="maker__check"><input type="checkbox" name="counter" checked> Счётчик посещений</label>
+                  <label class="maker__check"><input type="checkbox" name="buttons" checked> Кнопки 88×31</label>
+                </fieldset>
+              </form>
+              <div class="maker__out">
+                <iframe class="maker__preview" data-maker-preview title="Предпросмотр твоей странички" sandbox="allow-same-origin"></iframe>
+                <div class="maker__btns">
+                  <button class="btn btn--default" type="button" data-maker-download>Скачать index.html</button>
+                  <a class="btn" href="https://neocities.org/" target="_blank" rel="noopener">Открыть Neocities ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 6. Гостевая книга ===== -->
+        <section class="slide__sec" aria-labelledby="guest-title">
+          <h2 class="slide__h2" id="guest-title">
+            <img src="../assets/gifs/send-email.gif" alt="" width="45" height="58"> Гостевая книга
+          </h2>
+          <p class="slide__p">
+            Ну и какая домашняя страничка без гостевой книги? Оставь запись: что запомнилось,
+            был ли у тебя свой сайт и какой. Записи появляются после проверки.
+          </p>
+          <div class="guest">
+            <div class="titlebar titlebar--dialog">
+              <span class="titlebar__box" aria-hidden="true"></span>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+              <p class="titlebar__title">Гостевая книга Чикиряо</p>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+            </div>
+            <iframe class="guest__frame" src="https://chikirao.atabook.org/" title="Гостевая книга" loading="lazy"></iframe>
+            <p class="guest__foot">
+              Не грузится? <a href="https://chikirao.atabook.org/" target="_blank" rel="noopener">Открой гостевую в новой вкладке ↗</a>
+            </p>
+          </div>
+        </section>
+
+        <!-- ===== 7. Посмотреть ещё ===== -->
+        <section class="slide__sec" aria-labelledby="more-title">
+          <h2 class="slide__h2" id="more-title">
+            <img src="../assets/gifs/computer-happy.gif" alt="" width="56" height="56"> Посмотреть ещё
+          </h2>
+          <a class="video" href="https://youtu.be/S7kvYaYacHw" target="_blank" rel="noopener">
+            <span class="video__thumb">
+              <img src="../assets/indieweb/video.jpg" width="480" height="360" alt="">
+              <span class="video__play" aria-hidden="true">▶</span>
+            </span>
+            <span class="video__text">
+              <span class="video__kicker">Видео на YouTube</span>
+              <b>«А ты знаешь… Что есть ДРУГОЙ ИНТЕРНЕТ?»</b>
+              <span>MrAlexBat. Хороший рассказ про малый веб, Neocities и тех, кто делает себе
+                сайты сегодня. Если после этой экскурсии захочется своё место в интернете, начни с него.</span>
+            </span>
+          </a>
+        </section>
+
+        <p class="slide__p theend">
+          Спасибо, что прошёл всю экскурсию! <img src="../assets/gifs/sparkle-a.gif" alt="" width="30" height="28">
+        </p>
 
         <nav class="slide__pager" aria-label="Переход между главами">
           <a class="btn" data-nav="prev" href="../index.html">‹ Назад</a>
@@ -187,8 +434,14 @@
 
 <!-- Реплики Чикиряо для этой главы: правьте здесь -->
 <ol class="narration" data-narration hidden>
-  <li>Последняя остановка: IndieWeb. Личные сайты, вебринги и кнопки 88×31 живы и сегодня!</li>
-  <li>Скоро тут будет рассказ про Neocities и современных «жителей» старого веба. Спасибо, что прошли экскурсию со мной!</li>
+  <li>Последняя остановка, и моя любимая. Старый интернет никуда не делся: его снова делают руками.</li>
+  <li>Neocities уже почти два миллиона сайтов. Многие авторы младше GeoCities, но делают странички так же, как в 1999-м.</li>
+  <li>Это наше кольцо любимых сайтов. Жми «след.» и «случайный», а понравившийся открывай целиком, в новой вкладке.</li>
+  <li>В словарике собраны главные привычки малого веба: кольца, гостевые, блинки, шрайны. Пощёлкай.</li>
+  <li>Кнопки 88×31 тут как значки: наведи на стену, и кнопка увеличится. Нашу можно забрать к себе на сайт.</li>
+  <li>А теперь твоя очередь: собери страничку в мастере и скачай её. На Neocities её можно выложить бесплатно.</li>
+  <li>И напоследок оставь запись в гостевой книге. Мне правда интересно, был ли у тебя свой сайт!</li>
+  <li>Спасибо, что дошёл до конца. Ещё увидимся в каком-нибудь веб-кольце!</li>
 </ol>
 
 <div class="buddy" data-buddy>
@@ -218,5 +471,6 @@
 <script src="../assets/bunny/bunny-rig.js" defer></script>
 <script src="../assets/bunny/bunny-tuning.js" defer></script>
 <script src="../script.js" defer></script>
+<script src="../assets/js/indieweb.js" defer></script>
 </body>
 </html>
