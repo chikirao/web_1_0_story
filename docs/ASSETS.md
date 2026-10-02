@@ -70,3 +70,10 @@
 - `video.jpg`: превью видео MrAlexBat «А ты знаешь... Что есть ДРУГОЙ ИНТЕРНЕТ?» (YouTube), карточка ведёт на видео.
 - `badges/wall/`: 25 кнопок 88×31 из архива **cyber.dabamos.de/88x31** для стены кнопок.
 - Гостевая книга: Atabook, https://chikirao.atabook.org/ (встроена iframe).
+
+## Послесловие (слайд 06): `assets/projects/`
+- `glitchylab.webp`, `webivore.webp`: скриншоты живых сайтов glitchylab.com и webivore.chikirao.ru (титульный экран), снимает `tools/shoot_projects.py`.
+- `glitchylab-word.webp`: из первого скриншота вырезано слово «Glitchy» (`tools/make_banner_art.py`).
+- `bunny-src.webp`, `bunny-symbols.webp`: логотип Чикиряо и он же, собранный из символов (для баннера Symbolize), рисует `tools/make_banner_art.py`.
+- `webivore-ball.webp`: вращающийся бумажный шар из финала игры Webivore, 48 кадров, уменьшен до 256×256 из гифки-трофея (`tools/make_banner_art.py`, исходник лежит в проекте игры).
+- Баннеры Symbolize, Sleeper и «И другие» целиком нарисованы HTML и CSS в `slides/06-epilogue.html` и `styles.css` (раздел 12g). Время на баннере Sleeper считает `assets/js/epilogue.js`.

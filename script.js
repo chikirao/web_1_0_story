@@ -49,6 +49,7 @@
     { id: "search",     num: "03", title: "Поиск",                  file: "slides/03-search.html" },
     { id: "problems",   num: "04", title: "Проблемы и ограничения", file: "slides/04-problems.html" },
     { id: "indieweb",   num: "05", title: "IndieWeb сегодня",       file: "slides/05-indieweb.html" },
+    { id: "epilogue",   num: "06", title: "Послесловие",            file: "slides/06-epilogue.html" },
   ];
 
   const body = document.body;
