@@ -50,3 +50,17 @@
 - Любую гифку: положить файл с тем же именем в ту же папку.
 - Кнопки 88×31 в подвале: список `<div class="badges">` в `index.html`.
 - Логотип в правом верхнем углу браузера: `assets/ui/logo-bunny.webp` (путь в `.throbber img` в HTML).
+
+## Реклама (слайд 04): `assets/ads/`
+Картинки для всплывающих окон из **GifCities** (gifcities.org, архив GeoCities). Тексты рекламы выдуманы. `phone.gif` это копия `gifs/phone-ringing.gif`.
+
+| Файл | Исходный адрес |
+|---|---|
+| `congrats.gif` | `http://www.geocities.com/wayneedwards2000/congratulations_red_white_blue_glitter.gif` |
+| `warning.gif` | `http://www.geocities.com/carolyn6813/ImageFile/TypingComputer.gif` |
+| `money.gif` | `http://www.geocities.com/erictbrassellsr/freemoney.gif` |
+| `builder.gif` | `http://geocities.com/ResearchTriangle/Facility/8180/images/ani-constructionguy.gif` |
+| `winner.gif` | `http://www.geocities.com/blessfriends04/smile.gif` |
+| `search.gif` | `http://geocities.com/rockm59/computer_girl_md_wht.gif` |
+| `hot.gif` | `http://geocities.com/winlink_travel/HotDeals.gif` |
+| `banner.gif` | `http://www.geocities.com:80/ilovegirlsfeet/images/AllClicks1.gif` |

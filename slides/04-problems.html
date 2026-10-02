@@ -111,28 +111,226 @@
       </nav>
     </header>
 
-    <!-- ===== Слайд главы: правьте содержимое <main class="slide"> ===== -->
+    <!-- ===== Слайд главы (сделан вручную, make_slides.py его не трогает: handmade) ===== -->
     <div class="viewport" id="content" tabindex="-1">
-      <main class="slide" aria-labelledby="slide-title">
+      <main class="slide slide--long" aria-labelledby="slide-title">
         <header class="slide__head">
           <p class="slide__kicker"><span class="slide__num">04</span> Остановка 4 из 5</p>
-          <h1 class="slide__title" id="slide-title">Проблемы и ограничения</h1>
+          <h1 class="slide__title" id="slide-title">Проблемы</h1>
           <img class="slide__rule" src="../assets/gifs/rainbow-line.gif" alt="" width="139" height="5">
+          <p class="slide__lead">
+            Ранний интернет был медленным, дорогим и капризным. Страницы ломались, письма не доходили,
+            а каждый второй сайт пытался что-нибудь продать. Кое-что из этого ты, наверное, уже заметил.
+          </p>
         </header>
 
-        <div class="slide__body">
-          <div class="slide__text">
-            <p class="slide__lead">Здесь будет рассказ про медленная загрузка, «лучше смотреть в IE», кодировки и битые ссылки.</p>
-            <img class="construction__bar" src="../assets/gifs/construction-bar.gif" alt="Under construction" width="200" height="30">
-            <div class="construction">
-              <img src="../assets/gifs/construction-area.gif" alt="" width="78" height="53">
-              <p>Слайд строится. Текст выступления и интерактив для него собираем в <code>docs/SPEECH.md</code>.</p>
+        <!-- ===== 1. Реклама ===== -->
+        <section class="slide__sec" aria-labelledby="ads-title">
+          <h2 class="slide__h2" id="ads-title">
+            <img src="../assets/gifs/new-star.gif" alt="" width="40" height="30"> Реклама
+          </h2>
+          <div class="slide__split">
+            <div>
+              <p class="slide__p">
+                Бесплатные хостинги, почта и поисковики жили на рекламе. Сначала это были баннеры
+                468×60 вверху страницы, и сайты менялись ими через баннерные сети: показываешь чужой
+                баннер, а твой показывают на других сайтах.
+              </p>
+              <p class="slide__p">
+                Потом появились <b>всплывающие окна</b>. Открываешь страницу, а поверх неё вылезает
+                ещё пять: «Вы миллионный посетитель!», «Ваш компьютер заражён!», «Заработок
+                без вложений!». Закрываешь одно, открываются два. Изобретатель всплывающей рекламы,
+                Итан Цукерман, позже публично за неё извинился.
+              </p>
+              <p class="slide__p">
+                Спасли блокировщики: в 2004 году они появились прямо в браузерах, в Firefox
+                и в обновлении Internet Explorer.
+              </p>
+            </div>
+            <div class="adsbox">
+              <img class="adsbox__banner" src="../assets/ads/banner.gif" alt="Рекламная кнопка «Click Here Now!»" width="234" height="60">
+              <p class="adsbox__note">Это мирный баннер. А вот как выглядел заход на сайт без блокировщика:</p>
+              <button class="btn btn--default" type="button" data-ads-again>Открыть рекламу ещё раз</button>
             </div>
           </div>
-          <figure class="slide__figure" aria-hidden="true">
-            <img src="../assets/gifs/hourglass.gif" alt="" width="120" height="90">
-          </figure>
-        </div>
+        </section>
+
+        <!-- ===== 2. Кодировки ===== -->
+        <section class="slide__sec" aria-labelledby="enc-title">
+          <h2 class="slide__h2" id="enc-title">
+            <img src="../assets/gifs/computer-happy.gif" alt="" width="56" height="56"> Кракозябры
+          </h2>
+          <p class="slide__p">
+            Ещё одна вечная беда рунета: вместо букв на странице мусор. Попробуй переключить
+            кодировку внизу окна, и сам этот текст сломается.
+          </p>
+
+          <div class="encwin" data-enc>
+            <div class="titlebar titlebar--dialog">
+              <span class="titlebar__box" aria-hidden="true"></span>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+              <p class="titlebar__title">Почему вместо букв мусор?</p>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+            </div>
+            <div class="encwin__page" data-enc-text aria-live="polite">
+              <p>Компьютер хранит буквы числами. Для латиницы числа договорились одинаковые,
+                а для русских букв в 90-е было сразу несколько таблиц, или <b>кодировок</b>:
+                KOI8-R пришла из Unix, Windows-1251 из Windows, CP866 из DOS, а у Макинтоша была своя.</p>
+              <p>Сайт написан в одной кодировке, а браузер читает в другой, и вместо букв выходят
+                кракозябры. Поэтому на русских сайтах сверху висели ссылки WIN, KOI, DOS, MAC:
+                выбери ту, в которой у тебя читается.</p>
+              <p>Письма приходили нечитаемыми так часто, что были программы-перекодировщики.
+                Сегодня почти весь интернет в UTF-8, где есть буквы всех языков сразу,
+                и проблема почти исчезла.</p>
+            </div>
+            <div class="encwin__bar">
+              <span class="encwin__label">Кодировка:</span>
+              <div class="encwin__btns" role="radiogroup" aria-label="Кодировка" data-enc-btns>
+                <button class="btn" type="button" role="radio" aria-checked="true" data-enc-as="windows-1251">WIN</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-enc-as="koi8-r">KOI</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-enc-as="ibm866">DOS</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-enc-as="x-mac-cyrillic">MAC</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-enc-as="windows-1252">LAT</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-enc-as="utf-8">UTF-8</button>
+              </div>
+              <p class="encwin__state" data-enc-state>Текст сохранён в Windows-1251 и читается в Windows-1251. Всё совпало.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 3. Положи трубку ===== -->
+        <section class="slide__sec" aria-labelledby="hang-title">
+          <h2 class="slide__h2" id="hang-title">
+            <img src="../assets/gifs/phone-ringing.gif" alt="" width="63" height="42"> «Положи трубку, я в интернете!»
+          </h2>
+          <div class="slide__split">
+            <div>
+              <p class="slide__p">
+                Модем занимал домашний телефон. Пока ты в интернете, дозвониться до вас нельзя,
+                а если кто-то в квартире снимал трубку параллельного телефона, связь рвалась.
+              </p>
+              <p class="slide__p">
+                Хуже всего во время загрузки. Файл качается сорок минут, остались последние
+                проценты, и тут бабушка решает позвонить подруге. Начинай сначала. Спасали
+                программы-докачки вроде ReGet и FlashGet: они умели продолжить с места обрыва,
+                если сервер это позволял.
+              </p>
+            </div>
+
+            <div class="dl" data-dl>
+              <div class="titlebar titlebar--dialog">
+                <span class="titlebar__box" aria-hidden="true"></span>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+                <p class="titlebar__title">Загрузка файла</p>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+              </div>
+              <div class="dl__body">
+                <div class="dl__scene" aria-hidden="true">
+                  <img class="dl__pc" src="../assets/gifs/modem.gif" alt="" width="100" height="76">
+                  <span class="dl__wire" data-dl-wire></span>
+                  <span class="dl__phone">
+                    <img class="dl__phone-idle" src="../assets/gifs/phone-desk.gif" alt="" width="70" height="78">
+                    <img class="dl__phone-ring" src="../assets/gifs/phone-ringing.gif" alt="" width="117" height="78">
+                  </span>
+                </div>
+                <p class="dl__file"><b>trailer_matrix.avi</b> · 12,4 МБ · с сервера ftp.kino.ru</p>
+                <div class="dl__bar" role="progressbar" aria-label="Загрузка файла" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dl-bar><span></span></div>
+                <p class="dl__stats"><span data-dl-done>0,0 из 12,4 МБ</span><span data-dl-time>Прошло 0 мин</span><span>4,9 КБ/с</span></p>
+                <p class="dl__say" data-dl-say aria-live="polite">Нажми «Начать»: 40 минут загрузки пролетят за несколько секунд.</p>
+                <div class="dl__btns">
+                  <button class="btn btn--default" type="button" data-dl-start>Начать загрузку</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 4. Браузеры ===== -->
+        <section class="slide__sec" aria-labelledby="br-title">
+          <h2 class="slide__h2" id="br-title">
+            <img src="../assets/badges/anybrowser.gif" alt="" width="88" height="31"> «Лучше смотреть в Internet Explorer»
+          </h2>
+          <p class="slide__p">
+            В конце 90-х шла <b>война браузеров</b>: Netscape Navigator против Internet Explorer.
+            Каждый придумывал свои теги и понимал чужие по-своему: в Netscape текст мог мигать
+            тегом <code>&lt;blink&gt;</code>, в Explorer бежать строкой <code>&lt;marquee&gt;</code>.
+            Сайт, который хорошо выглядел в одном, разваливался в другом, поэтому внизу писали,
+            в каком браузере смотреть. Посмотри одну и ту же страничку в трёх браузерах.
+          </p>
+
+          <div class="brwin" data-br="ie">
+            <div class="brwin__tabs" role="radiogroup" aria-label="Браузер" data-br-btns>
+              <button class="btn" type="button" role="radio" aria-checked="true" data-br-as="ie">Internet Explorer 5</button>
+              <button class="btn" type="button" role="radio" aria-checked="false" data-br-as="nn">Netscape 4</button>
+              <button class="btn" type="button" role="radio" aria-checked="false" data-br-as="op">Opera 5</button>
+            </div>
+            <div class="brwin__frame">
+              <p class="brwin__title" data-br-title>Мой сайт - Microsoft Internet Explorer</p>
+              <div class="brwin__page">
+                <div class="brp__head">
+                  <span class="brp__logo">~ Клуб любителей кошек ~</span>
+                  <span class="brp__marquee"><span>Добро пожаловать! Обновление от 12.03.2001: новые фото Мурзика!</span></span>
+                </div>
+                <div class="brp__body">
+                  <ul class="brp__menu">
+                    <li>Главная</li><li>Наши кошки</li><li>Фото</li><li>Гостевая</li>
+                  </ul>
+                  <div class="brp__text">
+                    <p class="brp__blink">НОВОЕ!!!</p>
+                    <p>У нас живут три кошки: Мурзик, Пушинка и Барсик. Тут их фото и истории.</p>
+                    <p class="brp__ua">Ваш браузер не поддерживается. Скачайте Internet Explorer 5.5 или выше.</p>
+                  </div>
+                  <div class="brp__side">
+                    <img src="../assets/badges/best1024.gif" alt="Best viewed 1024" width="88" height="31">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="brwin__note" data-br-note aria-live="polite"></p>
+          </div>
+        </section>
+
+        <!-- ===== 5. Почта ===== -->
+        <section class="slide__sec" aria-labelledby="mail-title">
+          <h2 class="slide__h2" id="mail-title">
+            <img src="../assets/gifs/send-email.gif" alt="" width="45" height="58"> Письмо с фоткой
+          </h2>
+          <div class="slide__split">
+            <div>
+              <p class="slide__p">
+                Бесплатный почтовый ящик был размером в несколько мегабайт. Одна фотография
+                со сканера в формате BMP могла весить пять мегабайт: отправлять её по модему
+                двадцать минут, а у друга ящик переполнен, и письмо вернётся назад.
+              </p>
+              <p class="slide__p">
+                Поэтому фото уменьшали и пережимали в JPEG, музыку резали на куски, а большие
+                файлы носили на дискетах и дисках.
+              </p>
+            </div>
+
+            <div class="mail" data-mail>
+              <div class="titlebar titlebar--dialog">
+                <span class="titlebar__box" aria-hidden="true"></span>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+                <p class="titlebar__title">Новое письмо</p>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+              </div>
+              <div class="mail__body">
+                <p class="mail__row"><span>Кому:</span> vasya_2001@mail.ru</p>
+                <p class="mail__row"><span>Тема:</span> фотки с дачи!!!</p>
+                <p class="mail__text">Привет! Отправляю фотку, как обещал.</p>
+                <p class="mail__att" data-mail-att>Вложение: <b>dacha.bmp</b>, 5,2 МБ</p>
+                <p class="mail__quota">Ящик Васи: занято 6,1 из 10 МБ <span class="mail__q"><span data-mail-q style="width:61%"></span></span></p>
+                <div class="mail__bar" data-mail-bar hidden><span></span></div>
+                <p class="mail__say" data-mail-say aria-live="polite"></p>
+                <div class="mail__btns">
+                  <button class="btn btn--default" type="button" data-mail-send>Отправить</button>
+                  <button class="btn" type="button" data-mail-jpg>Пережать в JPEG</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <nav class="slide__pager" aria-label="Переход между главами">
           <a class="btn" data-nav="prev" href="../index.html">‹ Назад</a>
@@ -187,8 +385,13 @@
 
 <!-- Реплики Чикиряо для этой главы: правьте здесь -->
 <ol class="narration" data-narration hidden>
-  <li>Остановка «Проблемы». Ранний веб был медленным и капризным: кодировки, несовместимые браузеры, битые ссылки.</li>
-  <li>Здесь будет честный список того, чего тогда не хватало.</li>
+  <li>Ой. Это не я, это реклама. Закрывай окна крестиком или кнопкой внизу, они и сами пропадут через полминуты. Только не жми «ДА»!</li>
+  <li>Так выглядел заход на многие сайты. Блокировщиков рекламы в браузерах не было до 2004 года.</li>
+  <li>Окно про кодировки: переключай WIN, KOI, DOS, и текст в нём превратится в кракозябры. Верни WIN, и всё починится.</li>
+  <li>Дальше загрузка файла. Нажми «Начать» и дождись звонка. Потом попробуй докачать.</li>
+  <li>Одна и та же страничка в трёх браузерах. Посмотри, что с ней делает Netscape и куда не пускают Opera.</li>
+  <li>И почта: попробуй отправить фото как есть, а потом пережми его в JPEG.</li>
+  <li>Дальше про то, где этот старый интернет живёт сегодня.</li>
 </ol>
 
 <div class="buddy" data-buddy>
@@ -218,5 +421,6 @@
 <script src="../assets/bunny/bunny-rig.js" defer></script>
 <script src="../assets/bunny/bunny-tuning.js" defer></script>
 <script src="../script.js" defer></script>
+<script src="../assets/js/problems.js" defer></script>
 </body>
 </html>

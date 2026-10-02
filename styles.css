@@ -2307,6 +2307,201 @@ code {
 }
 
 
+/* ---------- 12e. Слайд 04 «Проблемы» ---------- */
+
+/* общая рамка окон слайда (как у окон слайдов 02 и 03) */
+.encwin, .dl, .brwin, .mail {
+  background: var(--plat);
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 var(--plat-lo), 5px 5px 0 rgba(0, 0, 0, .2);
+}
+.encwin .titlebar__title, .dl .titlebar__title, .mail .titlebar__title { font-size: 13px; }
+
+/* ===== Всплывающая реклама ===== */
+.popads { position: fixed; inset: 0; z-index: 55; pointer-events: none; }
+.popad {
+  position: absolute;
+  pointer-events: auto;
+  font: 14px/1.35 Arial, sans-serif;
+  color: #000;
+  background: #c0c0c0;
+  border: 2px outset #fff;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, .35);
+  animation: popad-in .18s steps(3) both;
+}
+.popad.is-closing { animation: popad-out .16s steps(2) both; }
+@keyframes popad-in { from { transform: scale(.3); opacity: 0; } }
+@keyframes popad-out { to { transform: scale(.3); opacity: 0; } }
+.popad__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 2px 3px 2px 6px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #fff;
+  background: linear-gradient(90deg, #000080, #1084d0);
+}
+.popad__x {
+  width: 20px;
+  height: 18px;
+  padding: 0;
+  font: bold 14px/1 Arial, sans-serif;
+  color: #000;
+  background: #c0c0c0;
+  border: 2px outset #fff;
+  cursor: pointer;
+}
+.popad__body { display: flex; align-items: center; gap: 10px; padding: 10px; background: #fff; margin: 3px; border: 2px inset #fff; }
+.popad__body img { flex: none; max-width: 110px; max-height: 110px; width: auto; height: auto; }
+.popad__body b { color: #d00; }
+.popad__btns { display: flex; justify-content: center; gap: 8px; padding: 4px 8px 8px; }
+.popad__btn {
+  padding: 4px 10px;
+  font: bold 13px Arial, sans-serif;
+  background: #c0c0c0;
+  border: 2px outset #fff;
+  cursor: pointer;
+}
+.popad__btn--yes { color: #fff; background: #d00; animation: popad-blink 1s steps(1) infinite; }
+@keyframes popad-blink { 50% { background: #008000; } }
+.popad__btn:active, .popad__x:active { border-style: inset; }
+.popads__all { position: fixed; left: 50%; bottom: 16px; z-index: 56; transform: translateX(-50%); font-size: 16px; }
+.popads__all[hidden] { display: none; }
+
+.adsbox { display: grid; justify-items: start; gap: 12px; }
+.adsbox__banner { max-width: 100%; height: auto; border: 1px solid #000; }
+.adsbox__note { font-size: .85em; color: var(--muted); }
+
+/* ===== Кракозябры ===== */
+.encwin__page {
+  margin: 10px;
+  padding: 14px 18px;
+  font: clamp(17px, 1.3vw, 21px)/1.55 "Times New Roman", Times, serif;
+  overflow-wrap: anywhere;
+  background: #fff;
+  border: 1px solid;
+  border-color: var(--plat-dk) var(--plat-hi) var(--plat-hi) var(--plat-dk);
+  box-shadow: inset 1px 1px 0 #000;
+}
+.encwin__page p + p { margin-top: .6em; }
+.encwin__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 0 12px 12px; }
+.encwin__label { font: 14px var(--f-ui); }
+.encwin__btns { display: flex; flex-wrap: wrap; gap: 6px; }
+.encwin__btns .btn { min-width: 64px; font: bold 14px var(--f-mono); }
+.encwin__btns .btn[aria-checked="true"] { color: #fff; background: var(--navy); }
+.encwin__state { flex-basis: 100%; font: 14px/1.4 var(--f-ui); color: var(--muted); }
+.encwin.is-broken .encwin__state { color: var(--hot); }
+
+/* ===== Загрузка и звонок ===== */
+.dl__body { padding: 12px 14px 14px; font: 15px/1.4 var(--f-ui); }
+.dl__scene { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.dl__wire {
+  flex: 1;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, #9aa1ad 0 10px, transparent 10px 14px);
+}
+.dl.is-running .dl__wire {
+  background: repeating-linear-gradient(90deg, #1f9b2f 0 10px, #b7ff9e 10px 14px);
+  background-size: 28px 6px;
+  animation: dl-run .5s linear infinite;
+}
+@keyframes dl-run { to { background-position: 28px 0; } }
+.dl__phone { position: relative; display: grid; place-items: center; width: 117px; height: 78px; }
+.dl__phone img { position: absolute; }
+.dl__phone-ring { display: none; }
+.dl.is-ringing .dl__phone-ring { display: block; }
+.dl.is-ringing .dl__phone-idle { display: none; }
+.dl.is-ringing .dl__scene { animation: dl-shake .12s linear infinite; }
+@keyframes dl-shake { 50% { transform: translateX(2px); } }
+.dl.is-broken .dl__wire { background: repeating-linear-gradient(90deg, #d93a32 0 10px, transparent 10px 14px); }
+.dl.is-done .dl__wire { background: #1f9b2f; }
+.dl__file { margin-bottom: 6px; }
+.dl__bar { height: 20px; padding: 2px; background: #fff; border: 1px solid; border-color: var(--plat-dk) var(--plat-hi) var(--plat-hi) var(--plat-dk); }
+.dl__bar span { display: block; width: 0; height: 100%; background: repeating-linear-gradient(90deg, var(--navy) 0 10px, transparent 10px 12px); }
+.dl.is-broken .dl__bar span { background: repeating-linear-gradient(90deg, #d93a32 0 10px, transparent 10px 12px); }
+.dl__stats { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin-top: 4px; font-size: 13px; color: var(--muted); }
+.dl__say { min-height: 3em; margin-top: 10px; }
+.dl.is-broken .dl__say b { color: var(--hot); }
+.dl__btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+/* ===== Браузеры ===== */
+.brwin__tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px; }
+.brwin__tabs .btn[aria-checked="true"] { color: #fff; background: var(--navy); }
+.brwin__frame { margin: 0 12px; border: 1px solid #000; }
+.brwin__title { padding: 3px 8px; font: bold 13px Arial, sans-serif; color: #fff; background: linear-gradient(90deg, #000080, #1084d0); }
+.brwin[data-br="nn"] .brwin__title { background: #3b4f7a; }
+.brwin[data-br="op"] .brwin__title { background: #a3141c; }
+.brwin__page { min-height: 240px; padding: 10px; font: 15px/1.4 "Times New Roman", Times, serif; background: #fff; }
+.brwin__note { min-height: 3em; padding: 10px 12px 12px; font: 14px/1.45 var(--f-ui); }
+
+/* страничка «как задумано» (Explorer) */
+.brp__head { padding: 8px 10px; color: #fff; background: #6a1b9a; }
+.brp__logo { display: block; font: bold 24px "Comic Sans MS", cursive; color: #ffeb3b; }
+.brp__marquee { display: block; overflow: hidden; white-space: nowrap; font: 14px Arial, sans-serif; }
+.brp__marquee span { display: inline-block; padding-left: 100%; animation: brp-run 9s linear infinite; }
+@keyframes brp-run { to { transform: translateX(-100%); } }
+.brp__body { display: grid; grid-template-columns: 130px 1fr 100px; gap: 10px; margin-top: 10px; }
+.brp__menu { padding: 6px 8px; font: 14px Verdana, sans-serif; background: #e1bee7; }
+.brp__menu li { color: #00c; text-decoration: underline; }
+.brp__blink { font: bold 18px Arial, sans-serif; color: red; }
+.brp__ua { display: none; }
+
+/* Netscape 4: marquee стоит, blink мигает, стили наполовину, колонки разъехались */
+.brwin[data-br="nn"] .brp__head { color: #000; background: none; border: 1px solid #999; }
+.brwin[data-br="nn"] .brp__logo { font: bold 24px "Times New Roman", serif; color: #000; }
+.brwin[data-br="nn"] .brp__marquee span { padding-left: 0; animation: none; }
+.brwin[data-br="nn"] .brp__blink { animation: brp-blink 1s steps(1) infinite; }
+@keyframes brp-blink { 50% { visibility: hidden; } }
+.brwin[data-br="nn"] .brp__body { grid-template-columns: 1fr; }
+.brwin[data-br="nn"] .brp__menu { background: none; margin-left: 60px; list-style: disc; }
+.brwin[data-br="nn"] .brp__side { margin-left: 260px; }
+
+/* Opera: сайт не пускает чужой браузер */
+.brwin[data-br="op"] .brp__head, .brwin[data-br="op"] .brp__menu, .brwin[data-br="op"] .brp__side,
+.brwin[data-br="op"] .brp__text > :not(.brp__ua) { display: none; }
+.brwin[data-br="op"] .brp__body { grid-template-columns: 1fr; }
+.brwin[data-br="op"] .brp__ua { display: block; padding: 40px 10px; font: bold 18px Arial, sans-serif; text-align: center; color: #d00; }
+
+/* ===== Почта ===== */
+.mail__body { padding: 12px 14px 14px; font: 15px/1.45 var(--f-ui); }
+.mail__row { padding: 2px 0; border-bottom: 1px solid var(--plat-dk); }
+.mail__row span { display: inline-block; width: 52px; color: var(--muted); }
+.mail__text { margin: 8px 0; padding: 8px; min-height: 3em; background: #fff; border: 1px solid; border-color: var(--plat-dk) var(--plat-hi) var(--plat-hi) var(--plat-dk); }
+.mail__quota { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 6px; font-size: 13px; }
+.mail__q { flex: 1; min-width: 120px; height: 12px; background: #fff; border: 1px solid #555; }
+.mail__q span { display: block; height: 100%; background: #2a8d3c; transition: width .4s; }
+.mail.is-bounced .mail__q span { background: #d93a32; }
+.mail__bar { height: 14px; margin-top: 8px; padding: 1px; background: #fff; border: 1px solid #555; }
+.mail__bar span { display: block; width: 0; height: 100%; background: var(--navy); }
+.mail__say { min-height: 3em; margin-top: 8px; }
+.mail.is-bounced .mail__say b { color: var(--hot); }
+.mail.is-sent .mail__say b { color: #1f7a2f; }
+.mail__btns { display: flex; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 900px) {
+  .encwin__page { margin: 8px; padding: 12px; }
+  .encwin__btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
+  .encwin__btns .btn, .brwin__tabs .btn { min-height: 44px; }
+  .brwin__tabs { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .brp__body { grid-template-columns: minmax(0, 1fr); }
+  .brp__side { display: none; }
+  .brwin[data-br="nn"] .brp__menu { margin-left: 30px; }
+  .dl__phone { width: 90px; }
+  .dl__phone img { max-width: 90px; height: auto; }
+  .dl__pc { width: 70px; height: auto; }
+  .popad { font-size: 13px; }
+  .popad__body img { max-width: 80px; max-height: 80px; }
+  .popad__x { width: 32px; height: 28px; }
+  .popad__btn { min-height: 36px; }
+  .popads__all { bottom: max(12px, env(safe-area-inset-bottom)); width: calc(100% - 24px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brp__marquee span, .popad__btn--yes, .dl.is-running .dl__wire, .dl.is-ringing .dl__scene { animation: none; }
+}
+
+
 /* ---------- 12½. Панель настроек ⚙ (для разработки) ---------- */
 
 .devbtn {
