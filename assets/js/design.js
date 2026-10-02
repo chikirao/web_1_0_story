@@ -63,7 +63,7 @@
     function fit() {
       const w = screen.clientWidth;
       const room = window.innerHeight * 0.62;
-      const s = Math.max(0.4, Math.min(w / PAGE_W, room / PAGE_H, 1.6));
+      const s = Math.min(w / PAGE_W, room / PAGE_H, 1.6);
       screen.style.setProperty("--tm-s", s.toFixed(3));
     }
 
@@ -79,6 +79,14 @@
       frame.src = local(s);
     }
 
+    const zoom = $("[data-tm-zoom]", tm);
+    zoom.addEventListener("click", () => {
+      const readable = tm.classList.toggle("is-readable");
+      zoom.setAttribute("aria-pressed", String(readable));
+      zoom.textContent = readable ? "Показать целиком" : "Читать крупнее";
+      screen.scrollTo(0, 0);
+      fit();
+    });
     frame.addEventListener("load", () => { if (frame.src) loading.hidden = true; });
     $("[data-tm-prev]", tm).addEventListener("click", () => show(index - 1));
     $("[data-tm-next]", tm).addEventListener("click", () => show(index + 1));
@@ -174,9 +182,15 @@
 
     function keep() {
       // после пересчёта вёрстки держим эту секцию в поле зрения
-      setTimeout(() => viewport.scrollTo({
-        top: viewport.scrollTop + section.getBoundingClientRect().top - viewport.getBoundingClientRect().top - 12,
-      }), 650);
+      setTimeout(() => {
+        const scroller = window.matchMedia("(max-width: 900px)").matches && !body.classList.contains("is-crt")
+          ? window : viewport;
+        const top = scroller === window
+          ? window.scrollY + section.getBoundingClientRect().top - 12
+          : viewport.scrollTop + (section.getBoundingClientRect().top - viewport.getBoundingClientRect().top)
+            / (body.classList.contains("is-crt") ? parseFloat(getComputedStyle(desktop).getPropertyValue("--k")) : 1) - 12;
+        scroller.scrollTo({ top });
+      }, 650);
     }
     function on() {
       body.classList.add("is-crt");

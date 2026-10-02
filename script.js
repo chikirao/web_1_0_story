@@ -56,6 +56,7 @@
   const chapterIndex = Number(body.dataset.chapter || 0);
   const prevChapter = CHAPTERS[chapterIndex - 1];
   const nextChapter = CHAPTERS[chapterIndex + 1];
+  const compactLayout = window.matchMedia("(max-width: 900px)");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -98,6 +99,14 @@
     wire('[data-nav="prev"]', prevChapter);
     wire('[data-nav="next"]', nextChapter);
     $$('[data-nav="home"]').forEach((el) => { el.href = root + "index.html"; });
+    $$(".tbtn").forEach((el) => {
+      const label = $("span", el)?.textContent;
+      if (label) el.setAttribute("aria-label", label);
+    });
+    const bar = $(".personalbar");
+    const active = $("[aria-current=page]", bar);
+    if (active) bar.scrollLeft += active.getBoundingClientRect().left - bar.getBoundingClientRect().left
+      - (bar.clientWidth - active.getBoundingClientRect().width) / 2;
   }
 
   // Переход на другую главу. atEnd: открыть её на последней реплике (шаг «назад»).
@@ -132,7 +141,7 @@
 
   function expandTo(href) {
     const browser = $("#browser");
-    if (!browser || reduceMotion || body.classList.contains("is-expanding")) {
+    if (!browser || reduceMotion || compactLayout.matches || body.classList.contains("is-expanding")) {
       window.location.href = href;
       return;
     }
@@ -148,7 +157,7 @@
     if (!isHome || !session.get("web10:shrink")) return;
     session.remove("web10:shrink");
     const browser = $("#browser");
-    if (!browser || reduceMotion) return;
+    if (!browser || reduceMotion || compactLayout.matches) return;
     pinBrowser(browser);
     body.classList.add("is-shrinking");
     browser.addEventListener("animationend", () => body.classList.remove("is-shrinking"), { once: true });
@@ -328,7 +337,7 @@
       finishTyping();
       textEl.innerHTML = html;
       srText.textContent = textEl.textContent;
-      if (reduceMotion) { Buddy.layoutBalloon(); return; }
+      if (reduceMotion || compactLayout.matches) { Buddy.layoutBalloon(); return; }
       const walker = document.createTreeWalker(textEl, NodeFilter.SHOW_TEXT);
       const nodes = [];
       while (walker.nextNode()) nodes.push({ node: walker.currentNode, full: walker.currentNode.data });
@@ -408,10 +417,41 @@
       Buddy.wave();
     }
 
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "btn buddy__toggle";
+    if (balloon) {
+      balloon.id = "narrator-balloon";
+      toggle.setAttribute("aria-controls", balloon.id);
+      balloon.before(toggle);
+    }
+    function syncToggle() {
+      toggle.setAttribute("aria-expanded", String(!balloon.hidden));
+      toggle.textContent = balloon.hidden ? "Чикиряо: читать реплики" : "Свернуть реплики";
+    }
+    function storageKey() {
+      return compactLayout.matches ? "web10:mobileNarratorOpen" : "web10:balloonHidden";
+    }
+    function adaptNarrator() {
+      const wrap = $("[data-buddy]");
+      if (compactLayout.matches) {
+        $(".chrome").after(wrap);
+        balloon.hidden = session.get(storageKey()) !== "1";
+      } else {
+        body.append(wrap);
+        balloon.hidden = session.get(storageKey()) === "1";
+      }
+      finishTyping();
+      syncToggle();
+      Buddy.layoutBalloon();
+    }
+
     function show() {
       if (!balloon || !balloon.hidden) return;
       balloon.hidden = false;
-      session.remove("web10:balloonHidden");
+      if (compactLayout.matches) session.set(storageKey(), "1");
+      else session.remove(storageKey());
+      syncToggle();
       Buddy.layoutBalloon();
     }
 
@@ -419,7 +459,9 @@
       if (!balloon) return;
       finishTyping();
       balloon.hidden = true;
-      session.set("web10:balloonHidden", "1");
+      if (compactLayout.matches) session.remove(storageKey());
+      else session.set(storageKey(), "1");
+      syncToggle();
     }
 
     function init() {
@@ -428,12 +470,14 @@
       nextBtn.addEventListener("click", next);
       $('[data-action="balloon-close"]').addEventListener("click", hide);
       textEl.addEventListener("click", finishTyping); // клик по тексту: допечатать сразу
-      if (session.get("web10:balloonHidden")) balloon.hidden = true;
+      toggle.addEventListener("click", () => { if (balloon.hidden) show(); else hide(); });
+      compactLayout.addEventListener("change", adaptNarrator);
+      adaptNarrator();
       render();
 
       document.addEventListener("keydown", (e) => {
         if (e.altKey || e.ctrlKey || e.metaKey) return;
-        if (e.target.closest("input, textarea, select, [contenteditable]")) return;
+        if (e.target.closest("input, textarea, select, [contenteditable], [role=slider], [role=tab], [role=radio]")) return;
         if ($("dialog[open]")) return;
         if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); show(); next(); }
         if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); show(); prev(); }
@@ -541,7 +585,10 @@
     const isDizzy = () => dizzyTime() < DIZZY.end;
 
     function measure() {
-      S = window.innerWidth < 680 ? 0.5 : window.innerWidth < 1100 ? 0.62 : 0.72;
+      S = compactLayout.matches ? 0.2 : window.innerWidth < 1100 ? 0.62 : 0.72;
+      rig.setAttribute("aria-label", compactLayout.matches
+        ? "Чикиряо. Нажмите, чтобы прочитать реплики"
+        : "Чикиряо. Нажмите, чтобы он помахал; перетащите, чтобы передвинуть");
       rig.style.setProperty("--fw", `${FW * S}px`);
       rig.style.setProperty("--fh", `${FH * S}px`);
       rig.style.setProperty("--hand", `${RIG.hand.radius * 2 * PPU * S}px`);
@@ -577,6 +624,7 @@
     /* Ввод: короткое нажатие - помахать, движение - перетаскивание */
     function onDown(e) {
       if (e.button !== 0 || isDizzy()) return;
+      if (compactLayout.matches) { Narrator.show(); wave(); return; }
       rig.setPointerCapture(e.pointerId);
       const now = performance.now() / 1000;
       st.pressed = true;
@@ -667,6 +715,11 @@
     /* Облачко рядом с головой; сторона выбирается по свободному месту */
     function layoutBalloon() {
       if (!balloon || balloon.hidden) return;
+      if (compactLayout.matches) {
+        balloon.style.removeProperty("width");
+        balloon.style.removeProperty("transform");
+        return;
+      }
       const vw = window.innerWidth;
       const vh = window.innerHeight;
       const bw = Math.min(320, vw - 24);
@@ -713,8 +766,18 @@
 
     let lastT = performance.now() / 1000;
     let lastBalloon = "";
+    let animationFrame = 0;
+    let mobileVisible = true;
+
+    function resumeAnimation() {
+      if (animationFrame || document.hidden || compactLayout.matches && !mobileVisible) return;
+      lastT = performance.now() / 1000;
+      animationFrame = requestAnimationFrame(tick);
+    }
 
     function tick() {
+      animationFrame = 0;
+      if (document.hidden || compactLayout.matches && !mobileVisible) return;
       const t = performance.now() / 1000;
       const dt = Math.min(0.05, t - lastT);
       lastT = t;
@@ -864,7 +927,7 @@
 
       const key = `${Math.round(st.x)}|${Math.round(st.y)}`;
       if (key !== lastBalloon) { lastBalloon = key; layoutBalloon(); }
-      requestAnimationFrame(tick);
+      animationFrame = requestAnimationFrame(tick);
     }
 
     function init() {
@@ -890,9 +953,16 @@
         if (!st.moved) Object.assign(st, homePosition());
         keepInside();
         lastBalloon = "";
+        resumeAnimation();
       });
+      // На телефоне Чикиряо не перерисовывается, когда его прокрутили за экран.
+      new IntersectionObserver(([entry]) => {
+        mobileVisible = entry.isIntersecting;
+        resumeAnimation();
+      }).observe(rig);
+      document.addEventListener("visibilitychange", resumeAnimation);
       wrap.classList.add("is-ready");
-      requestAnimationFrame(tick);
+      resumeAnimation();
       if (!reduceMotion) setTimeout(wave, 700); // поздоровался
     }
 

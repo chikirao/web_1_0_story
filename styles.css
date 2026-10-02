@@ -1357,6 +1357,8 @@ code {
   box-shadow: 4px 4px 0 rgba(0, 0, 0, .15);
 }
 .dialscene__chain {
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   list-style: none;
@@ -1547,6 +1549,8 @@ code {
 
 /* ===== Фазы записи ===== */
 .phases {
+  margin: 0;
+  padding: 0;
   list-style: none;
   font-size: .78em;
   border: 1px solid var(--line);
@@ -2200,6 +2204,157 @@ code {
   .statusbar__cell--progress, .statusbar__cell--pc { display: none; }
 }
 
+
+/* Мобильная страница прокручивается целиком. Реплики находятся в потоке. */
+.buddy__toggle { display: none; }
+.slide__scroll { max-width: 100%; overflow: auto; }
+.slide__scroll:focus-visible { outline: 2px dotted var(--navy); outline-offset: 3px; }
+.scroll-hint { display: none; }
+.tm__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.tm.is-readable .tm__screen { height: clamp(240px, 55svh, 560px); overflow: auto; }
+.tm.is-readable .tm__frame { width: max(800px, 100%); transform: none; }
+
+@media (max-width: 900px) {
+  .page-chapter { overflow: visible; }
+  .page-chapter .desktop {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    transition: none;
+  }
+  .page-chapter .browser { height: auto; min-height: 100svh; }
+  .page-chapter .viewport { flex: none; overflow: visible; overscroll-behavior: auto; }
+  .page-chapter .statusbar { padding-bottom: max(4px, env(safe-area-inset-bottom)); }
+  .desktop { padding-bottom: 24px; }
+  .infobar { display: none; }
+  .browser, .chrome, .slide, .slide__split > *, .slide__body > * { min-width: 0; }
+  .toolbar .tbtn { min-height: 44px; }
+  .personalbar a { min-height: 44px; flex-shrink: 0; }
+  .address, .page-chapter .address { height: 32px; }
+  .address input { font-size: 16px; }
+  .page-chapter .toolbar { padding: 2px 4px; }
+  .page-chapter .throbber { align-self: center; }
+  .slide {
+    margin: 8px auto;
+    padding: 22px 18px;
+    font-size: 17px;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+  }
+  .hero__lead { font-size: 15px; }
+  .hero__actions .btn { min-height: 44px; }
+  .tile__text { font-size: 13px; }
+  .sparkle--b { right: 0; }
+  .slide__title { font-size: clamp(36px, 8vw, 64px); letter-spacing: -1px; }
+  .slide__kicker { letter-spacing: .5px; line-height: 1.5; }
+  .slide__lead { font-size: 1.08em; }
+  .slide__h2 { font-size: 28px; line-height: 1.15; }
+  .slide__h2 img { display: none; }
+  .slide__body, .slide__split, .slide__cards, .helpwin__body, .fontwin__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .slide__pager { padding: 12px 0 4px; gap: 12px; }
+  .slide__pager .linklike { padding: 10px 0; }
+  .btn, .btn--small, .card .btn { min-height: 44px; padding: 8px 12px; font-size: 14px; white-space: normal; }
+  .balloon__nav .btn { font-size: 13px; }
+  .card__body { padding: 6px 12px 14px; }
+  .card__pic { width: 84px; height: auto; margin-left: 10px; }
+  .dialscene { padding: 14px 12px; }
+  .dialscene__chain { flex-direction: column; flex-wrap: nowrap; gap: 0; }
+  .dialnode { flex-direction: row; width: 100%; min-width: 0; gap: 14px; text-align: left; }
+  .dialnode img { width: 56px; height: 52px; object-fit: contain; }
+  .dialnode span { white-space: normal; font-size: 14px; }
+  .dialwire, .dialwire--long {
+    flex: none;
+    width: 6px;
+    height: 20px;
+    margin: 4px 0 4px 25px;
+    align-self: flex-start;
+    background: repeating-linear-gradient(0deg, #9aa1ad 0 8px, transparent 8px 12px);
+  }
+  .dialwire.is-on { background: repeating-linear-gradient(0deg, #1f9b2f 0 8px, #b7ff9e 8px 12px); background-size: 6px 24px; animation-name: wire-run-mobile; }
+  .dialscene.is-broken .dialwire[data-wire="phone"] { background: repeating-linear-gradient(0deg, #d93a32 0 8px, transparent 8px 12px); }
+  .dialscene__status { padding: 8px; font-size: 14px; }
+  .player__wave { height: 80px; }
+  .player__lcd, .player__ticker { min-width: 0; }
+  .player__controls { flex-wrap: wrap; }
+  .pbtn { flex-shrink: 0; min-height: 44px; }
+  .player__phase { font-size: 13px; }
+  .player__vol { display: flex; width: 100%; justify-content: flex-end; min-height: 44px; }
+  .player__info { display: none; }
+  .phases button { padding: 10px; min-height: 44px; font-size: 14px; }
+  .scroll-hint { display: block; font: 13px/1.5 var(--f-ui); color: var(--muted); margin: 0 0 8px; }
+  .speedtable { min-width: 540px; }
+  .loadimg { width: min(350px, 100%); margin: 0; }
+  .loadimg__frame { width: 100%; height: auto; aspect-ratio: 320 / 302; }
+  .loadimg__btns { flex-wrap: wrap; justify-content: center; }
+  .helpwin__body, .fontwin__body { padding: 8px; gap: 8px; }
+  .helpwin__list, .fontwin__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .helpwin__list button, .fontwin__list button { min-height: 44px; padding: 8px; font-size: 14px; overflow-wrap: anywhere; }
+  .helpwin__page, .fontwin__preview { padding: 12px; }
+  .helpwin__page img { width: 56px; height: auto; }
+  .tm__bar { flex-wrap: wrap; gap: 8px; }
+  .tm__addr { order: -1; flex-basis: 100%; min-height: 36px; }
+  .tm__count { margin-left: auto; }
+  .tm__foot { flex-direction: column; align-items: stretch; }
+  .tm__actions .btn { flex: 1 1 auto; }
+  .archive__badge { float: none; display: block; margin: 0 0 12px; }
+  .archive__form { padding: 10px; align-items: stretch; }
+  .archive__form label { min-width: 0; width: 100%; }
+  .archive__form input, .archive__form select { width: 100%; min-width: 0; height: 44px; }
+  .archive__form .btn { margin: 4px; }
+  .tbldemo { max-width: 100%; overflow: auto; }
+  .tbl { min-width: 560px; zoom: 1; }
+  .fontwin__sample { font-size: 25px; }
+  .construction { align-items: flex-start; }
+  .construction img { width: 48px; height: auto; flex-shrink: 0; }
+  .statusbar__cell--progress, .statusbar__cell--pc { display: none; }
+  .window { max-height: calc(100svh - 24px); overflow: auto; }
+  .window__body { padding: 14px 12px; gap: 10px; }
+  .window__icon { width: 48px; }
+  .window__text { min-width: 0; font-size: 14px; overflow-wrap: anywhere; }
+  .window__actions { flex-wrap: wrap; padding: 8px 12px 14px; }
+  .buddy {
+    position: relative;
+    inset: auto;
+    z-index: auto;
+    min-height: 80px;
+    padding: 14px 12px;
+    margin: 0 4px;
+    background: var(--plat);
+    border-top: 1px solid var(--plat-lo);
+    border-bottom: 1px solid var(--plat-lo);
+    pointer-events: auto;
+  }
+  .buddy__toggle { display: inline-flex; max-width: calc(100% - 72px); }
+  .buddy .rig { left: auto; right: 8px; top: 4px; transform: none !important; cursor: pointer; touch-action: manipulation; }
+  .buddy .balloon { position: relative; inset: auto; width: 100%; margin-top: 14px; transform: none; font-size: 15px; border-radius: 8px; box-shadow: none; }
+  .buddy .balloon::before, .buddy .balloon::after { display: none; }
+  .balloon__text { padding-right: 4px; }
+  .balloon__close { top: 4px; right: 4px; width: 32px; height: 32px; font-size: 18px; }
+  .balloon__name { min-height: 24px; padding-right: 30px; }
+  .page-chapter.is-crt { overflow: hidden; }
+  .page-chapter.is-crt .desktop { position: fixed; --crt-w: calc(100vw - 32px); --crt-h: calc(100svh - 120px); }
+  .page-chapter.is-crt .browser { height: 100%; min-height: 0; }
+  .page-chapter.is-crt .viewport { flex: 1; min-height: 0; overflow: auto; }
+  .page-chapter.is-crt .buddy { display: none; }
+  .crt-exit { max-width: calc(100% - 24px); bottom: max(12px, env(safe-area-inset-bottom)); }
+}
+
+@keyframes wire-run-mobile { to { background-position: 0 24px; } }
+
+@media (max-width: 380px) {
+  .logo { font-size: 54px; }
+  .slide { padding: 20px 12px; font-size: 16px; }
+  .slide__title { font-size: 36px; }
+  .slide__h2 { font-size: 26px; }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .linkme__row { flex-direction: column; }
+  .tour__grid { grid-template-columns: minmax(0, 1fr); }
+  .tile { min-height: 0; }
+}
 
 /* ---------- 14. Меньше движения ---------- */
 

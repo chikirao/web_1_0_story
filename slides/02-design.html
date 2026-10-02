@@ -151,7 +151,7 @@
               <span class="tm__count" data-tm-count>1 / 10</span>
               <button class="btn btn--default" type="button" data-tm-next>Далее ›</button>
             </div>
-            <div class="tm__screen" data-tm-screen>
+            <div class="tm__screen" id="time-machine-screen" data-tm-screen>
               <iframe class="tm__frame" data-tm-frame title="Старый сайт из Интернет-архива"
                       sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
                       referrerpolicy="no-referrer"></iframe>
@@ -162,7 +162,10 @@
             </div>
             <div class="tm__foot">
               <p class="tm__note" data-tm-note></p>
+              <div class="tm__actions">
+                <button class="btn btn--small" type="button" data-tm-zoom aria-pressed="false" aria-controls="time-machine-screen">Читать крупнее</button>
               <a class="btn btn--small" data-tm-open href="https://web.archive.org/" target="_blank" rel="noopener">Открыть в архиве ↗</a>
+              </div>
             </div>
           </div>
         </section>
@@ -226,7 +229,9 @@
             </div>
 
             <!-- Страничка, свёрстанная по-настоящему таблицами, с атрибутами тех лет -->
-            <div class="tbldemo" data-tbldemo>
+            <div>
+              <p class="scroll-hint" id="table-scroll-hint">Эта страница шире экрана. Проведи по ней вбок, чтобы увидеть все ячейки.</p>
+            <div class="tbldemo" data-tbldemo tabindex="0" role="region" aria-label="Пример вёрстки таблицами" aria-describedby="table-scroll-hint">
               <table class="tbl" width="100%" border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td colspan="5" bgcolor="#000080" data-cell='td colspan="5"' class="tbl__head">
@@ -269,6 +274,7 @@
                   </td>
                 </tr>
               </table>
+            </div>
             </div>
           </div>
         </section>
