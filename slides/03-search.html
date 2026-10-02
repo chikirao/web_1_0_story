@@ -111,28 +111,221 @@
       </nav>
     </header>
 
-    <!-- ===== Слайд главы: правьте содержимое <main class="slide"> ===== -->
+    <!-- ===== Слайд главы (сделан вручную, make_slides.py его не трогает: handmade) ===== -->
     <div class="viewport" id="content" tabindex="-1">
-      <main class="slide" aria-labelledby="slide-title">
+      <main class="slide slide--long" aria-labelledby="slide-title">
         <header class="slide__head">
           <p class="slide__kicker"><span class="slide__num">03</span> Остановка 3 из 5</p>
           <h1 class="slide__title" id="slide-title">Поиск</h1>
           <img class="slide__rule" src="../assets/gifs/rainbow-line.gif" alt="" width="139" height="5">
+          <p class="slide__lead">
+            Сайтов становилось тысячи, потом миллионы, а адресов никто не знал. Их записывали
+            на бумажках и печатали в журналах. Искали тремя способами: <b>по каталогу</b>,
+            <b>поисковиком</b> и <b>по соседям</b>, через веб-кольца.
+          </p>
         </header>
 
-        <div class="slide__body">
-          <div class="slide__text">
-            <p class="slide__lead">Здесь будет рассказ про каталоги сайтов, рейтинги-«топы», вебринги и первые поисковики.</p>
-            <img class="construction__bar" src="../assets/gifs/construction-bar.gif" alt="Under construction" width="200" height="30">
-            <div class="construction">
-              <img src="../assets/gifs/construction-area.gif" alt="" width="78" height="53">
-              <p>Слайд строится. Текст выступления и интерактив для него собираем в <code>docs/SPEECH.md</code>.</p>
+        <!-- ===== 1. Каталоги ===== -->
+        <section class="slide__sec" aria-labelledby="dir-title">
+          <h2 class="slide__h2" id="dir-title">
+            <img src="../assets/gifs/house-icon.gif" alt="" width="40" height="40"> Каталоги: интернет как библиотека
+          </h2>
+          <div class="slide__split">
+            <div>
+              <p class="slide__p">
+                В 1994 году два студента Стэнфорда, Джерри Янг и Дэвид Фило, завели список интересных сайтов.
+                Список разросся и стал <b>Yahoo</b>. Это был не поиск, а справочник: сайты раскладывали
+                по рубрикам, как книги на полках, и каждый проверял человек.
+              </p>
+              <p class="slide__p">
+                Чтобы попасть в каталог, автор заполнял заявку и ждал неделями. В 1998 году появился
+                <b>DMOZ</b>, каталог, который вели тысячи добровольцев. У нас были List.ru и каталог Яндекса.
+              </p>
+              <p class="slide__p">
+                Отдельная история: <b>Rambler Top100</b>. Сайт ставил к себе счётчик, и чем больше
+                посетителей, тем выше он в рейтинге своей рубрики. Кнопки счётчиков висели внизу почти
+                каждой страницы.
+              </p>
+            </div>
+
+            <!-- Как выглядела главная каталога: рубрики и подрубрики -->
+            <div class="dirwin" aria-label="Пример каталога: рубрики">
+              <div class="titlebar titlebar--dialog">
+                <span class="titlebar__box" aria-hidden="true"></span>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+                <p class="titlebar__title">Каталог ресурсов</p>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+              </div>
+              <div class="dirwin__page">
+                <p class="dirwin__path"><a href="#dir-title">Каталог</a> &gt; <a href="#dir-title">Развлечения</a> &gt; <a href="#dir-title">Игры</a> &gt; <b>Тамагочи</b> (14)</p>
+                <table class="dirwin__grid">
+                  <tr>
+                    <td><a href="#dir-title"><b>Компьютеры</b></a> (2&nbsp;315)<br><small>Программы, Железо, Интернет…</small></td>
+                    <td><a href="#dir-title"><b>Развлечения</b></a> (4&nbsp;102)<br><small>Игры, Юмор, Музыка…</small></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#dir-title"><b>Наука</b></a> (980)<br><small>Физика, Медицина…</small></td>
+                    <td><a href="#dir-title"><b>Новости и СМИ</b></a> (612)<br><small>Газеты, Радио, ТВ…</small></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#dir-title"><b>Образование</b></a> (744)<br><small>Школы, Вузы, Рефераты…</small></td>
+                    <td><a href="#dir-title"><b>Персональные страницы</b></a> (8&nbsp;731) <img src="../assets/gifs/new-arrow.gif" alt="new" width="32" height="21"></td>
+                  </tr>
+                </table>
+                <p class="dirwin__foot">
+                  <a href="#dir-title">Добавить свой сайт</a> · заявки рассматриваются 2–6 недель
+                </p>
+                <p class="dirwin__badges">
+                  <img src="../assets/badges/rambler.gif" alt="Rambler Top100" width="88" height="31">
+                  <span class="dirwin__counter" title="Счётчик посещений">0 4 2 1 7</span>
+                </p>
+              </div>
             </div>
           </div>
-          <figure class="slide__figure" aria-hidden="true">
-            <img src="../assets/gifs/search-magnifier.gif" alt="" width="110" height="95">
-          </figure>
-        </div>
+        </section>
+
+        <!-- ===== 2. Поисковики эпохи ===== -->
+        <section class="slide__sec" aria-labelledby="eng-title">
+          <h2 class="slide__h2" id="eng-title">
+            <img src="../assets/gifs/search-magnifier.gif" alt="" width="55" height="48"> Первые поисковики
+          </h2>
+          <p class="slide__p">
+            Вручную весь интернет не опишешь. Поисковая машина делает это сама: программа-робот обходит
+            сайты, запоминает слова на страницах и по запросу выдаёт те, где слова совпали.
+          </p>
+
+          <div class="helpwin engwin" data-engines>
+            <div class="titlebar titlebar--dialog">
+              <span class="titlebar__box" aria-hidden="true"></span>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+              <p class="titlebar__title">Поисковые системы 1994–1998</p>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+            </div>
+            <div class="helpwin__body">
+              <div>
+                <p class="helpwin__label">Выберите систему:</p>
+                <div class="helpwin__list" role="tablist" aria-label="Поисковые системы" data-engine-list>
+                  <button type="button" role="tab" aria-selected="true" data-engine="yahoo"><span>Yahoo!</span> <i>1994</i></button>
+                  <button type="button" role="tab" aria-selected="false" data-engine="lycos"><span>Lycos</span> <i>1994</i></button>
+                  <button type="button" role="tab" aria-selected="false" data-engine="altavista"><span>AltaVista</span> <i>1995</i></button>
+                  <button type="button" role="tab" aria-selected="false" data-engine="rambler"><span>Rambler</span> <i>1996</i></button>
+                  <button type="button" role="tab" aria-selected="false" data-engine="ask"><span>Ask Jeeves</span> <i>1997</i></button>
+                  <button type="button" role="tab" aria-selected="false" data-engine="aport"><span>Апорт</span> <i>1997</i></button>
+                  <button type="button" role="tab" aria-selected="false" data-engine="yandex"><span>Яндекс</span> <i>1997</i></button>
+                  <button type="button" role="tab" aria-selected="false" data-engine="google"><span>Google</span> <i>1998</i></button>
+                </div>
+              </div>
+              <div class="helpwin__page" role="tabpanel" aria-live="polite" data-engine-page></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 3. Тогда и сейчас ===== -->
+        <section class="slide__sec" aria-labelledby="vs-title">
+          <h2 class="slide__h2" id="vs-title">
+            <img src="../assets/gifs/http-search.gif" alt="" width="72" height="48"> Тогда и сейчас
+          </h2>
+          <p class="slide__p">
+            Ранние поисковики считали просто: совпали слова, значит подходит. Кто повторил слово
+            сто раз, тот и наверху. Авторы это быстро поняли и прятали на страницах списки слов
+            <b>белым текстом по белому фону</b>. Поэтому искать приходилось умеючи:
+            <code>+погода +москва -реферат</code>, слова в кавычках, <code>AND</code>, <code>NEAR</code>.
+          </p>
+
+          <div class="vs" data-vs>
+            <div class="vs__bar">
+              <span class="vs__label">Запрос:</span>
+              <div class="vs__queries" role="radiogroup" aria-label="Запрос" data-vs-queries>
+                <button class="btn" type="button" role="radio" aria-checked="true" data-q="weather">погода москва</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-q="pancakes">рецепт блинов</button>
+                <button class="btn" type="button" role="radio" aria-checked="false" data-q="winamp">скачать winamp</button>
+              </div>
+              <button class="btn btn--default vs__how" type="button" data-vs-how aria-pressed="false">Как считал поисковик</button>
+            </div>
+            <div class="vs__cols">
+              <div class="vs__old">
+                <p class="vs__head">Поиск, 1998 год</p>
+                <div class="vs__serp" data-vs-old aria-live="polite"></div>
+              </div>
+              <div class="vs__new">
+                <p class="vs__head">Поиск сегодня</p>
+                <div class="vs__now" data-vs-new aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 4. Google и русский поиск ===== -->
+        <section class="slide__sec" aria-labelledby="ru-title">
+          <h2 class="slide__h2" id="ru-title">
+            <img src="../assets/gifs/globe-small.gif" alt="" width="56" height="58"> Google и русский поиск
+          </h2>
+          <div class="slide__split">
+            <div>
+              <p class="slide__p">
+                В 1998 году два аспиранта Стэнфорда, Ларри Пейдж и Сергей Брин, сделали <b>Google</b>.
+                Он смотрел не только на слова, но и на ссылки: если на сайт ссылаются многие, значит он
+                полезный. Ссылка работала как <b>голос</b>. Спрятанный белый текст тут уже не помогал.
+              </p>
+              <p class="slide__p">
+                И страница у него была почти пустая: строка поиска и две кнопки. Остальные поисковики
+                тогда превращались в порталы с новостями, погодой, гороскопом и почтой.
+              </p>
+            </div>
+            <div>
+              <p class="slide__p">
+                Русскому поиску было сложнее. Одно слово живёт в куче форм, и искать надо все сразу.
+                Это называется <b>морфология</b>, и её поддержка была главной гордостью Яндекса.
+              </p>
+              <p class="morph" aria-label="Формы одного слова">
+                <mark>блин</mark> <mark>блина</mark> <mark>блину</mark> <mark>блином</mark>
+                <mark>блины</mark> <mark>блинов</mark> <mark>блинами</mark>
+              </p>
+              <p class="slide__p">
+                А ещё кодировки: одна и та же страница могла прийти в <b>KOI8-R</b>, <b>Windows-1251</b>
+                или ещё в паре вариантов, и поисковик должен был прочитать любую.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 5. Веб-кольцо ===== -->
+        <section class="slide__sec" aria-labelledby="ring-title">
+          <h2 class="slide__h2" id="ring-title">
+            <img src="../assets/gifs/net-computers.gif" alt="" width="59" height="58"> Веб-кольца
+          </h2>
+          <div class="slide__split slide__split--ring">
+            <div>
+              <p class="slide__p">
+                Третий способ, без каталогов и поисковиков. Сайты одной темы договаривались и ставили
+                внизу общую плашку: <b>«предыдущий», «следующий», «случайный»</b>. Нажимаешь и идёшь
+                по кругу от одного фан-сайта к другому.
+              </p>
+              <p class="slide__p">
+                Первые кольца появились в 1994–1995 годах, а сервис WebRing собрал десятки тысяч колец
+                на любую тему. Попробуй пройти по нашему.
+              </p>
+            </div>
+
+            <div class="ring" data-ring>
+              <div class="ring__site" data-ring-site aria-live="polite"></div>
+              <div class="ring__bar">
+                <p class="ring__name">
+                  <img src="../assets/gifs/sparkle-b.gif" alt="" width="25" height="25">
+                  Кольцо любителей тамагочи
+                  <img src="../assets/gifs/sparkle-b.gif" alt="" width="25" height="25">
+                </p>
+                <p class="ring__links">
+                  <button class="linklike" type="button" data-ring-go="-1">&lt;&lt; пред.</button> |
+                  <button class="linklike" type="button" data-ring-go="random">случайный</button> |
+                  <button class="linklike" type="button" data-ring-go="list">все сайты</button> |
+                  <button class="linklike" type="button" data-ring-go="1">след. &gt;&gt;</button>
+                </p>
+                <p class="ring__count" data-ring-count></p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <nav class="slide__pager" aria-label="Переход между главами">
           <a class="btn" data-nav="prev" href="../index.html">‹ Назад</a>
@@ -187,8 +380,13 @@
 
 <!-- Реплики Чикиряо для этой главы: правьте здесь -->
 <ol class="narration" data-narration hidden>
-  <li>Остановка «Поиск». До больших поисковиков сайты искали по каталогам, рейтингам и ссылкам друг друга.</li>
-  <li>Скоро здесь появятся каталоги, «топ-100» и первые поисковые системы.</li>
+  <li>Тут про то, как в старом интернете что-то находили. Адресов никто не помнил, их писали на бумажках.</li>
+  <li>Сначала были каталоги: сайты раскладывали по рубрикам вручную, как книги в библиотеке. Попасть туда можно было только по заявке.</li>
+  <li>В окне «Поисковые системы» пощёлкай названия. Где есть кнопка, можно открыть копию сайта тех лет.</li>
+  <li>Ниже сравнение. Выбери запрос и нажми «Как считал поисковик»: увидишь спрятанный белый текст и почему мусор оказался первым.</li>
+  <li>Google считал ссылки на сайт, а русским поисковикам ещё приходилось разбираться с падежами и кодировками.</li>
+  <li>И третий способ: веб-кольцо. Жми «след.» и «случайный», и ходи от сайта к сайту по кругу.</li>
+  <li>Дальше поговорим, что в этом интернете было неудобно и что ломалось.</li>
 </ol>
 
 <div class="buddy" data-buddy>
@@ -218,5 +416,6 @@
 <script src="../assets/bunny/bunny-rig.js" defer></script>
 <script src="../assets/bunny/bunny-tuning.js" defer></script>
 <script src="../script.js" defer></script>
+<script src="../assets/js/search.js" defer></script>
 </body>
 </html>
