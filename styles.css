@@ -2714,7 +2714,7 @@ code {
   border-top: 1px solid #fff;
 }
 .pbanner__bar b { animation: pb-blink 1s steps(2) infinite; }
-.pbanner:hover .pbanner__bar { color: #000; background: #fff; }
+a.pbanner:hover .pbanner__bar { color: #000; background: #fff; }
 @keyframes pb-blink { 50% { opacity: 0; } }
 
 /* Glitchy Lab: само слово «Glitchy», по которому бегут сломанные полосы */
@@ -2819,7 +2819,6 @@ code {
   text-align: center;
   border: 2px solid #fff;
 }
-.pbanner--more:hover .pb-more__big { color: #000; background: #fff; }
 
 @media (max-width: 560px) {
   .pbanner { aspect-ratio: 480 / 178; }

@@ -142,7 +142,7 @@ def main():
 ''' + page_buddy
         )
         html = re.sub(r"<title>.*?</title>", f'<title>{ch["num"]}. {ch["title"]} | Web 1.0</title>', html)
-        html = html.replace("http://chikirao.narod.ru/web10/index.html", f'http://chikirao.narod.ru/web10/slides/{ch["file"]}')
+        html = html.replace("https://web1.chikirao.ru/index.html", f'https://web1.chikirao.ru/slides/{ch["file"]}')
         out.write_text(html, "utf-8")
         print("создано:", out.name)
 

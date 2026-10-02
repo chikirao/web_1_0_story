@@ -24,7 +24,7 @@
 
   const SITE = {
     // «Адрес» в фальшивой адресной строке - чистая атмосфера
-    fakeHost: "http://chikirao.narod.ru/web10/",
+    fakeHost: "https://web1.chikirao.ru/",
     // Настоящий адрес на GitHub Pages: для кода кнопки «Ссылка на нас»
     publicUrl: "https://chikirao.github.io/web_1_0_story/",
     // Звук дозвона: положите файл и впишите путь, например "assets/audio/dialup.mp3".
