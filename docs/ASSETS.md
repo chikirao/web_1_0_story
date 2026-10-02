@@ -1,6 +1,6 @@
 # Ассеты и источники
 
-Всё, что не нарисовано для проекта, это настоящая графика старого веба. Файлы скачаны и лежат локально, внешних запросов сайт не делает.
+Всё, что не нарисовано для проекта, это настоящая графика старого веба. Файлы скачаны и лежат локально. Снаружи грузятся только счётчик GoatCounter и старые сайты в «машине времени» (слайд 02, прямо с web.archive.org).
 
 ## Чикиряо и логотип: `assets/bunny/`, `assets/ui/`
 | Файл | Откуда |
@@ -22,6 +22,15 @@
 | `dialup.mp3` | [Dial up modem noises.ogg](https://commons.wikimedia.org/wiki/File:Dial_up_modem_noises.ogg), William Termini, общественное достояние (перекодировано в MP3) |
 | `wave-dim.png`, `wave-lit.png` | аудиограмма этой записи, сгенерирована из звука |
 | (разметка фаз) | по спектрограмме [Dial up modem noises explained](https://commons.wikimedia.org/wiki/File:Dial_up_modem_noises_explained_final.png), Oona Räisänen, CC BY-SA 3.0; сама картинка на сайт не выкладывается, указана как источник |
+
+## Фото: `assets/photos/`
+| Файл | Откуда |
+|---|---|
+| `minion.jpg`, `minion-lowres.png` | картинка от автора для демо загрузки на 56k (слайд 01) |
+| `internet-cafe.jpg` | фото компьютерного клуба, 5.11.2004 (дата на снимке), прислал автор; фон режима «монитор 2004 года» (слайд 02) |
+
+## Старые сайты (слайд 02)
+Не копируются: показываются в iframe прямо из [Wayback Machine](https://web.archive.org/) Интернет-архива, режим `if_` (без панели архива). Список снимков в начале `assets/js/design.js`.
 
 ## Блинкиз: `assets/blinkies/`
 **glitter-graphics.com** (раздел Blinkies): `loading`, `im-online`, `computer-addict`, `browser-history`, `webmistress`, `welcome-pixel`, `updated`, `no-internet-housework`.

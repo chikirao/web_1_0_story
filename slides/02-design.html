@@ -111,28 +111,247 @@
       </nav>
     </header>
 
-    <!-- ===== Слайд главы: правьте содержимое <main class="slide"> ===== -->
+    <!-- ===== Слайд главы (сделан вручную, make_slides.py его не трогает: handmade) ===== -->
     <div class="viewport" id="content" tabindex="-1">
-      <main class="slide" aria-labelledby="slide-title">
+      <main class="slide slide--long" aria-labelledby="slide-title">
         <header class="slide__head">
-          <p class="slide__kicker"><span class="slide__num">02</span> Остановка 2 из 5</p>
+          <p class="slide__kicker"><span class="slide__num">02</span> Остановка 2 из 5 · техническая часть</p>
           <h1 class="slide__title" id="slide-title">Дизайн</h1>
           <img class="slide__rule" src="../assets/gifs/rainbow-line.gif" alt="" width="139" height="5">
+          <p class="slide__lead">
+            Сайты писали руками, часто прямо в Блокноте. Дизайнеров и шаблонов почти не было,
+            экраны маленькие, шрифтов пять, а раскладку собирали <b>из таблиц</b>.
+            Зато каждый сайт выглядел по-своему.
+          </p>
         </header>
 
-        <div class="slide__body">
-          <div class="slide__text">
-            <p class="slide__lead">Здесь будет рассказ про простые HTML-страницы, вёрстка таблицами, фоны-обои, блёстки и очень странный дизайн.</p>
-            <img class="construction__bar" src="../assets/gifs/construction-bar.gif" alt="Under construction" width="200" height="30">
-            <div class="construction">
-              <img src="../assets/gifs/construction-area.gif" alt="" width="78" height="53">
-              <p>Слайд строится. Текст выступления и интерактив для него собираем в <code>docs/SPEECH.md</code>.</p>
+        <!-- ===== 1. Машина времени: настоящие старые сайты из Интернет-архива ===== -->
+        <section class="slide__sec" aria-labelledby="tm-title">
+          <h2 class="slide__h2" id="tm-title">
+            <img src="../assets/gifs/globe-small.gif" alt="" width="56" height="58"> Машина времени
+          </h2>
+          <p class="slide__p">
+            Это не скриншоты, а <b>настоящие страницы тех лет</b>. Их сохранил Интернет-архив,
+            и они до сих пор открываются: по ссылкам внутри можно ходить.
+          </p>
+
+          <div class="tm" data-tm>
+            <div class="titlebar titlebar--dialog">
+              <span class="titlebar__box" aria-hidden="true"></span>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+              <p class="titlebar__title">Машина времени: web.archive.org</p>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+            </div>
+            <div class="tm__bar">
+              <button class="btn" type="button" data-tm-prev>‹ Назад</button>
+              <p class="tm__addr" aria-live="polite">
+                <span class="tm__year" data-tm-year>1998</span>
+                <span class="tm__url" data-tm-url>www.yahoo.com</span>
+              </p>
+              <span class="tm__count" data-tm-count>1 / 10</span>
+              <button class="btn btn--default" type="button" data-tm-next>Далее ›</button>
+            </div>
+            <div class="tm__screen" data-tm-screen>
+              <iframe class="tm__frame" data-tm-frame title="Старый сайт из Интернет-архива"
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                      referrerpolicy="no-referrer"></iframe>
+              <p class="tm__loading" data-tm-loading>
+                <img src="../assets/gifs/hourglass.gif" alt="" width="64" height="48">
+                <span>Соединяемся с web.archive.org…</span>
+              </p>
+            </div>
+            <div class="tm__foot">
+              <p class="tm__note" data-tm-note></p>
+              <a class="btn btn--small" data-tm-open href="https://web.archive.org/" target="_blank" rel="noopener">Открыть в архиве ↗</a>
             </div>
           </div>
-          <figure class="slide__figure" aria-hidden="true">
-            <img src="../assets/gifs/paint-bucket.gif" alt="" width="87" height="100">
-          </figure>
-        </div>
+        </section>
+
+        <!-- ===== 2. Интернет-архив ===== -->
+        <section class="panel card archive" aria-labelledby="ia-title">
+          <h2 class="panel__title card__title" id="ia-title">Интернет-архив</h2>
+          <div class="card__body archive__body">
+            <a class="archive__badge" href="https://web.archive.org/" target="_blank" rel="noopener" title="web.archive.org">
+              <img src="../assets/badges/internetarchive.gif" alt="Internet Archive" width="88" height="31">
+            </a>
+            <p>
+              Откуда взялись эти страницы? С <b>1996 года</b> некоммерческая организация
+              <b>Internet Archive</b> из Сан-Франциско обходит интернет роботом и сохраняет копии сайтов.
+              В 2001-м открыли <b>Wayback Machine</b>: любой может посмотреть, каким был сайт в нужный день.
+            </p>
+            <p>
+              Сейчас там <b>больше триллиона страниц</b>. Многих сайтов давно нет, а в архиве они остались.
+              Например, огромная часть GeoCities, бесплатного хостинга домашних страниц, который закрыли в 2009-м.
+            </p>
+            <form class="archive__form" data-archive-form action="https://web.archive.org/web/" target="_blank">
+              <label>Адрес сайта
+                <input type="text" name="url" value="narod.ru" spellcheck="false" autocomplete="off" required>
+              </label>
+              <label>Год
+                <select name="year" data-archive-year></select>
+              </label>
+              <button class="btn btn--default" type="submit">Открыть в архиве ↗</button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ===== 3. Вёрстка таблицами ===== -->
+        <section class="slide__sec" aria-labelledby="tables-title">
+          <h2 class="slide__h2" id="tables-title">
+            <img src="../assets/gifs/web-paint.gif" alt="" width="70" height="47"> Вёрстка таблицами
+          </h2>
+          <div class="slide__split slide__split--tables">
+            <div>
+              <p class="slide__p">
+                CSS появился в 1996-м, но браузеры понимали его плохо и каждый по-своему.
+                Поэтому раскладку страницы собирали <b>из таблицы</b>: шапка в верхней строке,
+                меню в левой ячейке, текст в средней, кнопки справа.
+              </p>
+              <p class="slide__p">
+                Таблице ставили <code>border="0"</code>, и посетитель рамок не видел. Отступы делали
+                прозрачной картинкой 1×1 пиксель, <b>spacer.gif</b>, растянутой до нужного размера.
+                Блок со скруглёнными углами резали на 9 ячеек с картинками уголков.
+              </p>
+              <button class="btn btn--default tbl-toggle" type="button" data-xray aria-pressed="false">Показать таблицы</button>
+              <pre class="srcwin" aria-label="Кусок HTML-кода этой страницы"><code>&lt;table width="100%" border="0"
+       cellpadding="4" cellspacing="0"&gt;
+  &lt;tr&gt;
+    &lt;td colspan="5" bgcolor="#000080"&gt;…&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td width="120" bgcolor="#c0c0c0"&gt;меню&lt;/td&gt;
+    &lt;td&gt;&lt;img src="spacer.gif" width="10"&gt;&lt;/td&gt;
+    &lt;td valign="top"&gt;текст&lt;/td&gt;
+    …</code></pre>
+            </div>
+
+            <!-- Страничка, свёрстанная по-настоящему таблицами, с атрибутами тех лет -->
+            <div class="tbldemo" data-tbldemo>
+              <table class="tbl" width="100%" border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td colspan="5" bgcolor="#000080" data-cell='td colspan="5"' class="tbl__head">
+                    <img src="../assets/gifs/sparkle-a.gif" alt="" width="30" height="28">
+                    <font color="#ffff00" face="Comic Sans MS, cursive" size="5">~*~ Мой сайт ~*~</font>
+                    <img src="../assets/gifs/sparkle-a.gif" alt="" width="30" height="28">
+                  </td>
+                </tr>
+                <tr>
+                  <td width="120" valign="top" bgcolor="#c0c0c0" data-cell='td width="120"' class="tbl__nav">
+                    <font face="Verdana" size="2">
+                      <a href="#tables-title">Главная</a><br>
+                      <a href="#tables-title">Обо мне</a><br>
+                      <a href="#tables-title">Фотки</a> <img src="../assets/gifs/new-arrow.gif" alt="new" width="32" height="21"><br>
+                      <a href="#tables-title">Гостевая</a><br>
+                      <a href="#tables-title">Ссылки</a>
+                    </font>
+                  </td>
+                  <td width="10" data-cell="spacer.gif" class="tbl__spacer"><img src="../assets/ui/spacer.gif" alt="" width="10" height="1"></td>
+                  <td valign="top" bgcolor="#ffffff" data-cell="td valign=&quot;top&quot;">
+                    <font face="Times New Roman" size="4"><b>Добро пожаловать!</b></font>
+                    <p><font face="Verdana" size="2">Это моя домашняя страничка. Тут я пишу про себя, про игры
+                      и выкладываю картинки. Пишите в гостевую!</font></p>
+                    <table width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffcc" data-cell="table внутри td" class="tbl__news">
+                      <tr><td bgcolor="#ff9900" data-cell="td"><font face="Verdana" size="2" color="#ffffff"><b>Новости</b></font></td></tr>
+                      <tr><td data-cell="td"><font face="Verdana" size="1">12.03.2001: добавил раздел «Фотки».<br>Сайт строится!</font>
+                        <img src="../assets/gifs/construction-sign.gif" alt="" width="40" height="38" align="right"></td></tr>
+                    </table>
+                  </td>
+                  <td width="10" data-cell="spacer.gif" class="tbl__spacer"><img src="../assets/ui/spacer.gif" alt="" width="10" height="1"></td>
+                  <td width="96" valign="top" align="center" data-cell='td width="96"'>
+                    <img src="../assets/badges/netscape_now.gif" alt="Netscape Now!" width="88" height="31"><br>
+                    <img src="../assets/badges/notepad.gif" alt="Made with Notepad" width="88" height="31"><br>
+                    <img src="../assets/badges/best1024.gif" alt="Best viewed 1024" width="88" height="31">
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="5" align="center" bgcolor="#e0e0e0" data-cell='td colspan="5"'>
+                    <font face="Arial" size="1">© 2001 · Вы посетитель № <b>004217</b></font>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 4. Шрифты ===== -->
+        <section class="slide__sec" aria-labelledby="fonts-title">
+          <h2 class="slide__h2" id="fonts-title">
+            <img src="../assets/gifs/sparkle-b.gif" alt="" width="25" height="25"> Пять шрифтов на весь интернет
+          </h2>
+          <div class="slide__split">
+            <div>
+              <p class="slide__p">
+                Шрифт сайта берётся <b>с компьютера посетителя</b>. Если такого шрифта у него нет,
+                браузер покажет стандартный Times New Roman. Поэтому все пользовались одними и теми же
+                шрифтами, которые стояли почти на любой Windows.
+              </p>
+              <p class="slide__p">
+                В 1996 году Microsoft раздала бесплатный набор <b>Core fonts for the Web</b>:
+                Arial, Times New Roman, Courier New, Verdana, Georgia, Comic Sans, Impact.
+                На них и держался почти весь интернет.
+              </p>
+            </div>
+
+            <div class="fontwin" data-fontwin>
+              <div class="titlebar titlebar--dialog">
+                <span class="titlebar__box" aria-hidden="true"></span>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+                <p class="titlebar__title">Шрифт</p>
+                <span class="titlebar__stripes" aria-hidden="true"></span>
+              </div>
+              <div class="fontwin__body">
+                <div class="fontwin__list" role="radiogroup" aria-label="Шрифт" data-font-list>
+                  <button type="button" role="radio" aria-checked="true" data-font='"Times New Roman", Times, serif'
+                          data-note="Шрифт по умолчанию. Если автор ничего не указал, страница была в нём.">Times New Roman</button>
+                  <button type="button" role="radio" aria-checked="false" data-font="Arial, Helvetica, sans-serif"
+                          data-note="Простой шрифт без засечек. Почти на каждом втором сайте.">Arial</button>
+                  <button type="button" role="radio" aria-checked="false" data-font="Verdana, Geneva, sans-serif"
+                          data-note="1996 год, сделан специально для экрана: широкий, читается даже мелким.">Verdana</button>
+                  <button type="button" role="radio" aria-checked="false" data-font="Georgia, serif"
+                          data-note="Тоже 1996 год и тоже для экрана, только с засечками.">Georgia</button>
+                  <button type="button" role="radio" aria-checked="false" data-font='"Comic Sans MS", cursive'
+                          data-note="1995 год, рисовали для подписей в мультяшной программе Microsoft Bob. Стал шрифтом всех домашних страничек.">Comic Sans MS</button>
+                  <button type="button" role="radio" aria-checked="false" data-font='"Courier New", Courier, monospace'
+                          data-note="Как на печатной машинке, все буквы одной ширины. Им показывали код.">Courier New</button>
+                  <button type="button" role="radio" aria-checked="false" data-font="Impact, sans-serif"
+                          data-note="Узкий и жирный, для заголовков. Потом стал шрифтом мемов.">Impact</button>
+                  <button type="button" role="radio" aria-checked="false" data-font='"Chikirao Fancy Script"'
+                          data-note="Автор видел у себя красивый шрифт, а у посетителя его нет. Браузер подставил Times New Roman.">Мой красивый шрифт</button>
+                </div>
+                <div class="fontwin__preview">
+                  <p class="fontwin__sample" data-font-sample>Добро пожаловать на мою страничку! Тут фотки, музыка и гостевая книга.</p>
+                  <p class="fontwin__note" data-font-note aria-live="polite">Шрифт по умолчанию. Если автор ничего не указал, страница была в нём.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 5. Экран 800×600 ===== -->
+        <section class="slide__sec" aria-labelledby="crt-title">
+          <h2 class="slide__h2" id="crt-title">
+            <svg class="ico crt-ico" aria-hidden="true"><use href="#i-monitor"/></svg> Экран 800×600
+          </h2>
+          <div class="slide__split slide__split--crt">
+            <div>
+              <p class="slide__p">
+                Мониторы были пузатые, на 14–15 дюймов, с разрешением <b>800×600</b>.
+                У везунчиков 1024×768. Под это и верстали, а внизу страницы писали
+                «Лучше всего смотреть при 800×600».
+              </p>
+              <p class="slide__p">
+                Посмотрим, как этот слайд выглядел бы на экране в компьютерном клубе 2004 года.
+              </p>
+              <button class="btn btn--default crt-btn" type="button" data-crt>
+                <svg class="ico ico--16" aria-hidden="true"><use href="#i-monitor"/></svg> <span>Включить монитор 2004 года</span>
+              </button>
+            </div>
+            <p class="crt-badges">
+              <img src="../assets/badges/best1024.gif" alt="Best viewed 1024×768" width="88" height="31">
+              <img src="../assets/badges/anybrowser.gif" alt="Viewable with any browser" width="88" height="31">
+            </p>
+          </div>
+        </section>
 
         <nav class="slide__pager" aria-label="Переход между главами">
           <a class="btn" data-nav="prev" href="../index.html">‹ Назад</a>
@@ -187,8 +406,13 @@
 
 <!-- Реплики Чикиряо для этой главы: правьте здесь -->
 <ol class="narration" data-narration hidden>
-  <li>Остановка «Дизайн». Сайты верстали таблицами, а украшали гифками, блёстками и бегущими строками.</li>
-  <li>Тут скоро будет галерея самых странных страниц того времени.</li>
+  <li>Тут про то, как выглядели сайты. Дизайнеров почти не было: страницу писали руками в Блокноте и украшали чем могли.</li>
+  <li>Вверху машина времени. Это не картинки, а настоящие старые страницы из Интернет-архива. Листай кнопками «Назад» и «Далее», по ссылкам внутри тоже можно ходить.</li>
+  <li>Интернет-архив сохраняет сайты с 1996 года. Если помнишь адрес старого сайта, впиши его в форму и посмотри, каким он был.</li>
+  <li>Раскладку собирали из таблиц с невидимыми рамками. Нажми «Показать таблицы»: станут видны все ячейки и прозрачные картинки-распорки.</li>
+  <li>Шрифт брался с компьютера посетителя, поэтому выбор был маленький. Пощёлкай шрифты в окне, последний покажет, что бывало, если нужного шрифта у посетителя нет.</li>
+  <li>И самое честное: нажми «Включить монитор 2004 года», и слайд сожмётся до 800×600, как на экране в компьютерном клубе.</li>
+  <li>Дальше разберёмся, как в таком интернете вообще что-то находили.</li>
 </ol>
 
 <div class="buddy" data-buddy>
@@ -218,5 +442,6 @@
 <script src="../assets/bunny/bunny-rig.js" defer></script>
 <script src="../assets/bunny/bunny-tuning.js" defer></script>
 <script src="../script.js" defer></script>
+<script src="../assets/js/design.js" defer></script>
 </body>
 </html>
