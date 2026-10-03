@@ -42,6 +42,11 @@
       text: `<p>Розовый пиксельный сайт с блинками, счётчиком и гостевой. Но главное в нём:
         уроки для новичков, как сделать свой сайт, и генератор раскладок.</p>
         <p>Новички и сегодня учатся HTML по таким урокам, как в 90-е учились по чужим страницам.</p>` },
+    { shot: "piggie", format: "png", url: "https://piggie.party/", name: "piggie.party", who: "Личный сайт GNOCCHI",
+      text: `<p>Яркая домашняя страница с авторскими рисунками, персонажами, галереей
+        и разделами о любимых играх. Шапка и меню нарисованы специально для сайта.</p>
+        <p>Рядом гостевая, веб-кольца и коллекция кнопок соседей 88×31. Свои кнопки автор
+        тоже предлагает забрать к себе.</p>` },
   ];
 
   const show = $("[data-show]");
@@ -59,7 +64,7 @@
     function go(i) {
       at = (i + SITES.length) % SITES.length;
       const s = SITES[at];
-      img.src = `../assets/indieweb/${s.shot}.webp`;
+      img.src = `../assets/indieweb/${s.shot}.${s.format || "webp"}`;
       img.alt = `Главная страница ${s.name}`;
       link.href = open.href = s.url;
       urlEl.textContent = s.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
@@ -79,7 +84,7 @@
       } else go(at + Number(g));
     });
     // заранее подгружаем скриншоты, чтобы листалось без задержки
-    SITES.forEach((s) => { new Image().src = `../assets/indieweb/${s.shot}.webp`; });
+    SITES.forEach((s) => { new Image().src = `../assets/indieweb/${s.shot}.${s.format || "webp"}`; });
     go(0);
   }
 

@@ -25,7 +25,8 @@ web_1_0_story/
 │   │   └── bunny-webpage.png  #   поза «с комком страницы», для будущих глав
 │   ├── audio/                 # звук модема (dialup.mp3) и аудиограмма (wave-*.png)
 │   ├── archive/               # старые сайты из Интернет-архива (машина времени, слайд 02; s-*, q-* для слайда 03)
-│   ├── js/                    # интерактив слайдов (connection.js, design.js, search.js, problems.js, indieweb.js, epilogue.js) и CRT-монитор (crt.js)
+│   ├── js/                    # интерактив слайдов и CRT-монитор (crt.js); сравнения слайда 05: indieweb-comparisons.js
+│   ├── css/                   # дополнительные стили сравнений слайда 05
 │   ├── projects/              # картинки баннеров слайда 06 (tools/shoot_projects.py, tools/make_banner_art.py)
 │   ├── badges/                # кнопки 88×31 (+ своя web10-button.gif)
 │   ├── blinkies/              # блинкиз 150×20 с glitter-graphics

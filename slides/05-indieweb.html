@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="../assets/ui/favicon.png">
   <link rel="apple-touch-icon" href="../assets/ui/apple-touch-icon.png">
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../assets/css/indieweb-comparisons.css">
 </head>
 
 <!--
@@ -168,6 +169,136 @@
               </div>
             </div>
           </div>
+        </section>
+
+        <!-- ===== Одна публикация в двух местах ===== -->
+        <section class="slide__sec" aria-labelledby="post-title">
+          <h2 class="slide__h2" id="post-title">
+            <img src="../assets/gifs/computer-happy.gif" alt="" width="48" height="48"> Одна публикация, два места
+          </h2>
+          <p class="slide__p">Текст и гифки одинаковые. Переключи вид и посмотри, сколько места остаётся для оформления.</p>
+          <div class="webcompare" data-post-demo>
+            <div class="titlebar titlebar--dialog">
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+              <p class="titlebar__title">Коллекция гифок Чикиряо</p>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+            </div>
+            <div class="webcompare__tabs" role="tablist" aria-label="Где опубликована коллекция">
+              <button type="button" role="tab" id="post-tab-social" aria-controls="post-panel-social" aria-selected="true" data-post-view="social">В соцсети</button>
+              <button type="button" role="tab" id="post-tab-personal" aria-controls="post-panel-personal" aria-selected="false" tabindex="-1" data-post-view="personal">На своём сайте</button>
+            </div>
+            <div class="webcompare__body">
+              <div id="post-panel-social" role="tabpanel" aria-labelledby="post-tab-social" data-post-panel="social">
+                <div class="postdemo__screen">
+                  <article class="postdemo__feed">
+                    <div class="postdemo__author">
+                      <img src="../assets/ui/logo-bunny.webp" alt="" width="46" height="46">
+                      <p><strong>Чикиряо</strong><small>Публикация в ленте</small></p>
+                    </div>
+                    <h3>Моя коллекция гифок</h3>
+                    <p>Собрал три гифки из старого интернета: компьютер, глобус и письмо. Пусть живут здесь.</p>
+                    <div class="postdemo__gifs">
+                      <img src="../assets/gifs/computer-happy.gif" alt="Танцующий компьютер" width="72" height="72">
+                      <img src="../assets/gifs/globe-small.gif" alt="Вращающийся глобус" width="56" height="58">
+                      <img src="../assets/gifs/send-email.gif" alt="Почтовый конверт" width="45" height="58">
+                    </div>
+                    <p class="postdemo__actions">Нравится · Комментарий · Поделиться</p>
+                  </article>
+                </div>
+              </div>
+              <div id="post-panel-personal" role="tabpanel" aria-labelledby="post-tab-personal" data-post-panel="personal">
+                <div class="postdemo__page" data-personal-page data-theme="space">
+                  <div class="postdemo__layout">
+                    <article class="postdemo__collection">
+                      <h3>Моя коллекция гифок</h3>
+                      <p>Собрал три гифки из старого интернета: компьютер, глобус и письмо. Пусть живут здесь.</p>
+                      <div class="postdemo__gifs">
+                        <img src="../assets/gifs/computer-happy.gif" alt="Танцующий компьютер" width="72" height="72">
+                        <img src="../assets/gifs/globe-small.gif" alt="Вращающийся глобус" width="56" height="58">
+                        <img src="../assets/gifs/send-email.gif" alt="Почтовый конверт" width="45" height="58">
+                      </div>
+                      <div class="postdemo__decor" data-post-decor>
+                        <img src="../assets/badges/web10-button.gif" alt="Web 1.0" width="88" height="31">
+                        <img src="../assets/badges/notepad.gif" alt="Made with Notepad" width="88" height="31">
+                        <img src="../assets/blinkies/welcome-pixel.gif" alt="Welcome" width="150" height="20">
+                      </div>
+                    </article>
+                    <nav class="postdemo__sidebar" aria-label="Разделы личной страницы в примере">
+                      <h4>Уголок Чикиряо</h4>
+                      <p>Здесь живут мои коллекции и ссылки на соседей.</p>
+                      <a href="#show-title">Любимые сайты</a>
+                      <a href="#btn-title">Моя кнопка 88×31</a>
+                      <a href="#guest-title">Гостевая книга</a>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <div class="postdemo__settings" data-post-settings hidden>
+                <fieldset>
+                  <legend>Фон страницы</legend>
+                  <label><input type="radio" name="post-theme" value="space" checked> Космос</label>
+                  <label><input type="radio" name="post-theme" value="paper"> Бумага</label>
+                </fieldset>
+                <label><input type="checkbox" data-post-decor-toggle checked> Кнопки и блинки</label>
+              </div>
+            </div>
+            <p class="webcompare__note" data-post-note aria-live="polite">В ленте автор выбирает содержание публикации. Её оформление и доступные элементы задаёт платформа.</p>
+          </div>
+          <p class="era__foot">Лента здесь условная: это пример привычного шаблона публикации.</p>
+        </section>
+
+        <!-- ===== Личные сайты двух эпох ===== -->
+        <section class="slide__sec" aria-labelledby="era-title">
+          <h2 class="slide__h2" id="era-title">
+            <img src="../assets/gifs/house-home.gif" alt="" width="55" height="46"> Личный сайт: тогда и сейчас
+          </h2>
+          <p class="slide__p">Две настоящие страницы. Любимые вещи автора остались, а способы их показать изменились.</p>
+          <div class="webcompare" data-era-demo>
+            <div class="titlebar titlebar--dialog">
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+              <p class="titlebar__title">От GeoCities к piggie.party</p>
+              <span class="titlebar__stripes" aria-hidden="true"></span>
+            </div>
+            <div class="webcompare__tabs" role="tablist" aria-label="Личные сайты двух эпох">
+              <button type="button" role="tab" id="era-tab-old" aria-controls="era-panel-old" aria-selected="true" data-era-view="old">GeoCities, 1998</button>
+              <button type="button" role="tab" id="era-tab-now" aria-controls="era-panel-now" aria-selected="false" tabindex="-1" data-era-view="now">piggie.party, сегодня</button>
+            </div>
+            <div class="webcompare__body">
+              <div id="era-panel-old" role="tabpanel" aria-labelledby="era-tab-old" data-era-panel>
+                <div class="era__content">
+                  <a class="era__screen" href="https://geocities.restorativland.org/Tokyo/1265/" target="_blank" rel="noopener">
+                    <img src="../assets/indieweb/cecil-1998.png" alt="Cecil's Street Fighter page: повторяющийся фон с Вегой, коллаж и ссылки на фан-сайты" width="1265" height="712">
+                  </a>
+                  <div class="era__caption">
+                    <h3>Cecil’s Street Fighter page</h3>
+                    <p>GeoCities, последнее изменение: 17 сентября 1998</p>
+                    <p>Любимая игра на фоне, музыка, тигр, цветы и картинки-ссылки. Страница собрана из всего, что нравилось автору.</p>
+                    <a class="btn btn--default" href="https://geocities.restorativland.org/Tokyo/1265/" target="_blank" rel="noopener">Открыть в архиве ↗</a>
+                  </div>
+                </div>
+              </div>
+              <div id="era-panel-now" role="tabpanel" aria-labelledby="era-tab-now" data-era-panel>
+                <div class="era__content">
+                  <a class="era__screen" href="https://piggie.party/" target="_blank" rel="noopener">
+                    <img src="../assets/indieweb/piggie.png" alt="piggie.party: оранжево-зелёное оформление, авторские персонажи и навигация по личным разделам" width="1265" height="712">
+                  </a>
+                  <div class="era__caption">
+                    <h3>piggie.party</h3>
+                    <p>Личный сайт GNOCCHI</p>
+                    <p>Собственная графика, общий стиль и навигация по рисункам, персонажам и увлечениям. Гостевая и обмен кнопками 88×31 тоже на месте.</p>
+                    <a class="btn btn--default" href="https://piggie.party/" target="_blank" rel="noopener">Открыть сайт ↗</a>
+                  </div>
+                </div>
+              </div>
+              <button class="btn era__toggle" type="button" aria-controls="era-details" aria-expanded="false" data-era-details-toggle>Что сохранилось, что изменилось?</button>
+              <div class="era__details" id="era-details" data-era-details hidden>
+                <p><b>Сохранилось:</b> личные увлечения, необычные украшения, гостевые и ссылки на соседние сайты через кнопки 88×31.</p>
+                <p><b>Изменилось в этих примерах:</b> разрозненные картинки уступили место общей палитре, авторской графике и более понятному разделению на разделы.</p>
+                <p>Индивидуальность не требует повторять все неудобства старых страниц.</p>
+              </div>
+            </div>
+          </div>
+          <p class="era__foot">Показаны локальные снимки от 3 октября 2026. Дата старой страницы указана в <a href="https://geocities.restorativland.org/Tokyo/" target="_blank" rel="noopener">каталоге архива GeoCities</a>.</p>
         </section>
 
         <!-- ===== 2. Витрина ===== -->
@@ -473,6 +604,8 @@
 <ol class="narration" data-narration hidden>
   <li>Последняя остановка, и моя любимая. Старый интернет никуда не делся: его снова делают руками.</li>
   <li>На Neocities уже почти два миллиона сайтов. Многие авторы слишком молоды, чтобы помнить GeoCities, но делают странички так же, как в 1999-м.</li>
+  <li>В сравнении одна и та же коллекция гифок. Переключи на свой сайт: там можно сменить фон и убрать украшения. Текст при этом останется тем же.</li>
+  <li>Рядом два настоящих личных сайта: Cecil из GeoCities и современный piggie.party. Переключай их и сравнивай, как авторы показывают свои увлечения.</li>
   <li>Это моё кольцо любимых сайтов. Жми «след.» и «случайный», а понравившийся открывай целиком, в новой вкладке.</li>
   <li>В словарике собраны главные привычки малого веба: кольца, гостевые, блинки, шрайны. Пощёлкай.</li>
   <li>Кнопки 88×31 такие крошечные, потому что интернет был медленный, а маленькая картинка грузилась быстро. Наведи на стену, и кнопка увеличится. Мою можно забрать к себе на сайт.</li>
@@ -509,5 +642,6 @@
 <script src="../assets/bunny/bunny-tuning.js" defer></script>
 <script src="../script.js" defer></script>
 <script src="../assets/js/indieweb.js" defer></script>
+<script src="../assets/js/indieweb-comparisons.js" defer></script>
 </body>
 </html>

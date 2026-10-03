@@ -66,6 +66,9 @@
 | `banner.gif` | `http://www.geocities.com:80/ilovegirlsfeet/images/AllClicks1.gif` |
 
 ## IndieWeb (слайд 05): `assets/indieweb/`, `assets/badges/wall/`
+- `cecil-1998.png`: снимок [Cecil’s Street Fighter page](https://geocities.restorativland.org/Tokyo/1265/) из сохранённого GeoCities. В [каталоге Tokyo](https://geocities.restorativland.org/Tokyo/) указано последнее изменение 17 сентября 1998. Сам скриншот снят 3 октября 2026.
+- `piggie.png`: снимок [piggie.party](https://piggie.party/), личного сайта GNOCCHI, снят 3 октября 2026. Права на графику и страницу у автора. В сравнении и кольце есть ссылка на оригинал.
+- Пример «Одна публикация, два места»: условная лента и авторская страница Чикиряо с одинаковым текстом. Используются уже перечисленные гифки, кнопки и логотип сайта.
 - Скриншоты сайтов (`doghouse`, `cameron`, `melonking`, `melonland`, `ribo`, `petrapixel`, а также `cafe32`, `wiby`, `marginalia`, `neocities` про запас) сняты с живых сайтов в октябре 2026, 1024×720. Права на страницы у их авторов, на слайде они как превью со ссылкой.
 - `video.jpg`: превью видео MrAlexBat «А ты знаешь... Что есть ДРУГОЙ ИНТЕРНЕТ?» (YouTube), карточка ведёт на видео.
 - `badges/wall/`: 25 кнопок 88×31 из архива **cyber.dabamos.de/88x31** для стены кнопок.
