@@ -214,9 +214,7 @@
   border: 4px ridge #cfcfcf;
   box-shadow: 0 0 0 3px #000, 0 0 26px 6px rgba(255, 110, 0, .7);
 }
-.hell__gifs img { height: 58px; width: auto; max-width: 72px; object-fit: contain; image-rendering: pixelated; }
-.hell__gifs img[width="40"] { width: 56px; height: 56px; }
-.hell__gifs .hell__kitty { height: 88px; max-width: 92px; }
+.hell__gifs img { height: 88px; width: auto; max-width: 110px; object-fit: contain; image-rendering: pixelated; }
 .hell__buttons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
 .hell__buttons img { image-rendering: pixelated; border: 2px solid #000; box-shadow: 0 0 10px 2px rgba(255, 120, 0, .8); }
 .era__screen { display: block; background: #fff; border: 2px inset #fff; }
@@ -241,9 +239,7 @@
   .hell__head { justify-items: center; text-align: center; }
   .hellframe { margin: 0 auto; max-width: 300px; }
   .hell__gifs { gap: 10px; padding: 16px 10px; }
-  .hell__gifs img { height: 46px; }
-  .hell__gifs img[width="40"] { width: 46px; height: 46px; }
-  .hell__gifs .hell__kitty { height: 70px; }
+  .hell__gifs img { height: 64px; max-width: 80px; }
   .postdemo__gifs { gap: 8px; padding: 18px 8px; }
   .postdemo__gifs img { width: 56px; height: 56px; }
   .era__content { grid-template-columns: minmax(0, 1fr); }
