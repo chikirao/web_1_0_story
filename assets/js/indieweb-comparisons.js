@@ -1,4 +1,4 @@
-/* Два сравнения: публикация в ленте и на своём сайте, личные сайты двух эпох. */
+/* Два сравнения: публикация в ленте и на огненном личном сайте, личные сайты двух эпох. */
 (() => {
   "use strict";
 
@@ -31,24 +31,20 @@
 
   const post = document.querySelector("[data-post-demo]");
   if (post) {
-    const settings = post.querySelector("[data-post-settings]");
-    const page = post.querySelector("[data-personal-page]");
     const note = post.querySelector("[data-post-note]");
     setupTabs(post, "[data-post-view]", (tab) => {
       const personal = tab.dataset.postView === "personal";
       post.querySelectorAll("[data-post-panel]").forEach((panel) => {
         panel.hidden = panel.dataset.postPanel !== tab.dataset.postView;
       });
-      settings.hidden = !personal;
       note.textContent = personal
-        ? "Те же гифки и тот же текст. Здесь автор выбирает фон, расположение, шрифт и соседние разделы."
+        ? "На своём сайте автор решает всё сам: фон, рамки, шрифт, расположение и украшения."
         : "В ленте автор выбирает содержание публикации. Её оформление и доступные элементы задаёт платформа.";
     });
-    settings.addEventListener("change", () => {
-      page.dataset.theme = settings.querySelector('[name="post-theme"]:checked').value;
-      const decorated = settings.querySelector("[data-post-decor-toggle]").checked;
-      page.querySelectorAll("[data-post-decor]").forEach((item) => { item.hidden = !decorated; });
-    });
+    // пламя дрожит, только если посетитель не просил убрать анимацию
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      post.querySelectorAll("[data-hell-seed]").forEach((seed) => seed.beginElement?.());
+    }
   }
 
   const era = document.querySelector("[data-era-demo]");

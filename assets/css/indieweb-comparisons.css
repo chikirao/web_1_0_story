@@ -35,33 +35,189 @@
 .postdemo__gifs { display: flex; align-items: center; justify-content: space-evenly; gap: 14px; margin: 22px 0; padding: 22px 12px; background: #f5f6f8; }
 .postdemo__gifs img { width: 72px; height: 72px; object-fit: contain; image-rendering: pixelated; }
 .postdemo__actions { padding-top: 14px; border-top: 1px solid #d7dce1; color: #59616a; font-size: 15px; }
-.postdemo__page {
-  --page-ink: #fff5dc;
-  --page-link: #ffe785;
-  padding: 24px;
-  color: var(--page-ink);
-  background: #16142f url("../gifs/sparkle-b.gif");
-  border: 2px inset #fff;
-  font: 19px/1.5 Georgia, serif;
+/* ===== Огненный личный сайт: лава, хром, заклёпки, рок и мотоциклы (без чертей) ===== */
+.hell__defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.hell {
+  --fire-1: #fff4a8;
+  --fire-2: #ffc21a;
+  --fire-3: #ff6a00;
+  --fire-4: #d41300;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 22px;
+  align-content: start;
+  min-height: 560px;
+  padding: 0 26px 26px;
+  overflow: hidden;
+  color: #fff3c4;
+  background: linear-gradient(to top, #ffb000 0, #ff5a00 9%, #c01000 24%, #6c0600 46%, #2a0300 68%, #0d0000 100%);
+  border: 4px solid #000;
+  box-shadow: inset 0 0 0 3px #b9b9b9, inset 0 0 0 5px #000, inset 0 0 40px 6px rgba(255, 90, 0, .55);
 }
-.postdemo__page[data-theme="paper"] { --page-ink: #302b45; --page-link: #5c2676; background: #fff4d5; }
-.postdemo__page h3 { margin: 0 0 8px; color: var(--page-link); font: italic bold clamp(26px, 3vw, 42px)/1.2 Georgia, serif; }
-.postdemo__page a { color: var(--page-link); }
-.postdemo__layout { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 22px; }
-.postdemo__collection { padding: 20px; background: #242143; border: 2px ridge #d1bbdf; }
-.postdemo__page[data-theme="paper"] .postdemo__collection { background: #fffdf1; border-color: #a989b3; }
-.postdemo__page .postdemo__gifs { background: transparent; border: 1px dashed currentColor; }
-.postdemo__sidebar { display: grid; align-content: start; gap: 15px; padding: 18px; background: #242143; border: 1px solid #d1bbdf; }
-.postdemo__page[data-theme="paper"] .postdemo__sidebar { background: #fffdf1; border-color: #a989b3; }
-.postdemo__sidebar h4 { font-size: 23px; }
-.postdemo__sidebar a { display: block; }
-.postdemo__decor { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 16px; }
-.postdemo__decor img { image-rendering: pixelated; }
-.postdemo__settings { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding: 14px 4px 2px; font: 16px var(--f-ui); }
-.postdemo__settings fieldset { display: flex; flex-wrap: wrap; gap: 12px; border: 1px solid var(--plat-dk); padding: 7px 12px; }
-.postdemo__settings legend { padding: 0 4px; font-weight: bold; }
-.postdemo__settings label { display: flex; align-items: center; gap: 6px; min-height: 32px; cursor: pointer; }
-.postdemo__settings input { accent-color: var(--navy); }
+/* языки пламени у нижнего края: градиенты-«язычки», рваные от шума */
+.hell__flames {
+  position: absolute;
+  inset: auto -30px -30px;
+  z-index: -2;
+  height: 62%;
+  background:
+    radial-gradient(ellipse 34px 150px at 8% 100%, var(--fire-1) 0 14%, var(--fire-2) 34%, var(--fire-3) 58%, transparent 74%),
+    radial-gradient(ellipse 46px 210px at 27% 100%, var(--fire-1) 0 10%, var(--fire-2) 30%, var(--fire-3) 56%, transparent 74%),
+    radial-gradient(ellipse 30px 130px at 44% 100%, var(--fire-1) 0 14%, var(--fire-2) 36%, var(--fire-3) 60%, transparent 76%),
+    radial-gradient(ellipse 52px 240px at 62% 100%, var(--fire-1) 0 10%, var(--fire-2) 30%, var(--fire-3) 56%, transparent 74%),
+    radial-gradient(ellipse 36px 160px at 80% 100%, var(--fire-1) 0 14%, var(--fire-2) 34%, var(--fire-3) 58%, transparent 74%),
+    radial-gradient(ellipse 42px 190px at 95% 100%, var(--fire-1) 0 12%, var(--fire-2) 32%, var(--fire-3) 58%, transparent 74%);
+  filter: url(#hell-flames);
+  opacity: .95;
+}
+/* искры поднимаются вверх */
+.hell__embers {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, #ffe27a 0 1.5px, transparent 2.5px) 0 0 / 83px 97px,
+    radial-gradient(circle, #ff9a1a 0 1.5px, transparent 2.5px) 31px 47px / 61px 73px,
+    radial-gradient(circle, #fff0b0 0 1px, transparent 2px) 17px 13px / 47px 59px;
+  opacity: .8;
+  animation: hell-embers 5s linear infinite;
+}
+@keyframes hell-embers { to { background-position: 7px -97px, 24px -26px, 12px -46px; } }
+/* клетчатая лента гонок */
+.hell__checker {
+  height: 20px;
+  margin: 0 -26px;
+  background: repeating-conic-gradient(#000 0 25%, #fff 0 50%) 0 0 / 20px 20px;
+  border-bottom: 3px solid #000;
+  box-shadow: 0 3px 0 #b9b9b9, 0 6px 14px rgba(255, 120, 0, .6);
+}
+.hell__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  gap: 30px;
+  align-items: center;
+  padding-top: 6px;
+}
+.hell__head { display: grid; gap: 18px; justify-items: start; }
+
+/* огненная надпись: градиент от белого жара к красному, пламя лижет буквы */
+.hellfire {
+  position: relative;
+  margin: 0;
+  font: 400 clamp(44px, 7.6vw, 98px)/.98 Impact, Haettenschweiler, "Arial Black", sans-serif;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: transparent;
+  background: linear-gradient(to top, #e30a00 0, #ff4d00 22%, #ff9d0a 48%, #ffe14a 74%, #fffbd0 100%);
+  background-size: 100% 130%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 1px #7a1200;
+  filter: url(#hell-lick) drop-shadow(0 0 5px #ff5a00) drop-shadow(0 -6px 14px #ff3a00);
+  animation: hellfire-glow 1.4s ease-in-out infinite alternate;
+}
+/* вторая копия позади: язык пламени над буквами */
+.hellfire::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: #ff7a00;
+  -webkit-text-stroke: 8px #ff4a00;
+  transform: translateY(-9px) scaleY(1.07);
+  transform-origin: 50% 100%;
+  filter: blur(5px);
+  opacity: .8;
+}
+@keyframes hellfire-glow {
+  from { background-position: 0 0; }
+  to { background-position: 0 -26%; filter: url(#hell-lick) drop-shadow(0 0 9px #ff7a00) drop-shadow(0 -10px 20px #ff2a00); }
+}
+
+/* хромированные таблички */
+.hell__plate {
+  display: inline-block;
+  margin: 0;
+  padding: 7px 18px 6px;
+  color: #1a0000;
+  font: 22px/1 Impact, Haettenschweiler, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: linear-gradient(#fff 0, #cfcfcf 45%, #6f6f6f 52%, #dcdcdc 100%);
+  border: 3px solid #000;
+  box-shadow: 0 0 0 2px #ff7a00, 0 0 18px 2px rgba(255, 90, 0, .8);
+  text-shadow: 0 1px 0 #fff;
+}
+.hell__plate--name { justify-self: center; margin-top: 14px; }
+
+/* рамка для фото: сталь, заклёпки, пламя вокруг */
+.hellframe { position: relative; isolation: isolate; margin: 0; padding: 26px 22px 6px; text-align: center; }
+.hellframe__fire {
+  position: absolute;
+  inset: -26px -34px 6px;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 34px 120px at 12% 100%, var(--fire-1) 0 12%, var(--fire-2) 34%, var(--fire-3) 58%, transparent 74%),
+    radial-gradient(ellipse 40px 150px at 38% 100%, var(--fire-1) 0 12%, var(--fire-2) 34%, var(--fire-3) 58%, transparent 74%),
+    radial-gradient(ellipse 34px 130px at 64% 100%, var(--fire-1) 0 12%, var(--fire-2) 34%, var(--fire-3) 58%, transparent 74%),
+    radial-gradient(ellipse 38px 140px at 90% 100%, var(--fire-1) 0 12%, var(--fire-2) 34%, var(--fire-3) 58%, transparent 74%),
+    radial-gradient(ellipse at 50% 50%, var(--fire-3) 0 52%, var(--fire-4) 74%, transparent 78%);
+  filter: url(#hell-flames) blur(1px);
+}
+.hellframe__steel {
+  position: relative;
+  padding: 14px;
+  background: linear-gradient(135deg, #f7f7f7 0, #8a8a8a 16%, #fdfdfd 30%, #555 50%, #dedede 68%, #777 84%, #f1f1f1 100%);
+  border: 4px solid #000;
+  box-shadow: 0 0 0 3px #ff7a00, 0 0 0 6px #000, 0 0 28px 10px rgba(255, 90, 0, .85), 8px 10px 0 6px rgba(0, 0, 0, .55);
+}
+/* заклёпки по углам */
+.hellframe__steel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, #fff 0 1.5px, #8c8c8c 2.5px, #202020 5px, transparent 6px) 0 0 / 14px 14px no-repeat,
+    radial-gradient(circle at 50% 50%, #fff 0 1.5px, #8c8c8c 2.5px, #202020 5px, transparent 6px) 100% 0 / 14px 14px no-repeat,
+    radial-gradient(circle at 50% 50%, #fff 0 1.5px, #8c8c8c 2.5px, #202020 5px, transparent 6px) 0 100% / 14px 14px no-repeat,
+    radial-gradient(circle at 50% 50%, #fff 0 1.5px, #8c8c8c 2.5px, #202020 5px, transparent 6px) 100% 100% / 14px 14px no-repeat;
+}
+.hellframe__steel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 66% 50%;
+  border: 4px solid #000;
+  outline: 3px solid #ff9a0a;
+  filter: contrast(1.1) saturate(1.15);
+  box-shadow: inset 0 0 22px 4px rgba(255, 70, 0, .65);
+}
+
+/* полоса с гифками: чёрная кожа с заклёпками */
+.hell__gifs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 14px 18px;
+  padding: 22px 26px;
+  background:
+    radial-gradient(circle, #d8d8d8 0 1.5px, #555 2.5px, transparent 3.5px) 0 0 / 26px 100% repeat-x,
+    linear-gradient(#1b1010, #0b0505);
+  border: 4px ridge #cfcfcf;
+  box-shadow: 0 0 0 3px #000, 0 0 26px 6px rgba(255, 110, 0, .7);
+}
+.hell__gifs img { height: 58px; width: auto; max-width: 72px; object-fit: contain; image-rendering: pixelated; }
+.hell__gifs img[width="40"] { width: 56px; height: 56px; }
+.hell__buttons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
+.hell__buttons img { image-rendering: pixelated; border: 2px solid #000; box-shadow: 0 0 10px 2px rgba(255, 120, 0, .8); }
 .era__screen { display: block; background: #fff; border: 2px inset #fff; }
 .era__screen img { display: block; width: 100%; height: auto; }
 .era__content { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 18px; align-items: start; }
@@ -76,16 +232,21 @@
   .webcompare__tabs { padding: 8px; }
   .webcompare__tabs button { flex: 1 1 160px; min-height: 44px; padding: 10px; }
   .webcompare__body { padding: 8px; }
-  .postdemo__screen, .postdemo__page { padding: 12px; }
-  .postdemo__feed, .postdemo__collection { padding: 14px; }
-  .postdemo__layout { grid-template-columns: minmax(0, 1fr); }
+  .postdemo__screen { padding: 12px; }
+  .postdemo__feed { padding: 14px; }
+  .hell { padding: 0 12px 16px; }
+  .hell__checker { margin: 0 -12px; }
+  .hell__main { grid-template-columns: minmax(0, 1fr); }
+  .hell__head { justify-items: center; text-align: center; }
+  .hellframe { margin: 0 auto; max-width: 300px; }
+  .hell__gifs { gap: 10px; padding: 16px 10px; }
+  .hell__gifs img { height: 46px; }
+  .hell__gifs img[width="40"] { width: 46px; height: 46px; }
   .postdemo__gifs { gap: 8px; padding: 18px 8px; }
   .postdemo__gifs img { width: 56px; height: 56px; }
-  .postdemo__settings { align-items: stretch; }
-  .postdemo__settings fieldset { flex: 1 1 100%; }
   .era__content { grid-template-columns: minmax(0, 1fr); }
   .era__caption h3 { font-size: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .postdemo__page { background-image: none; }
+  .hell__embers, .hellfire { animation: none; }
 }
