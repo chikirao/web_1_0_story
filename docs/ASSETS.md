@@ -38,6 +38,9 @@
 
 Для слайда 03 там же лежат главные страницы поисковиков 1996–1998 годов (`s-*`) и настоящие страницы выдачи Яндекса 2001 и AltaVista 2000 (`q-*`). Со страниц `s-*` скрипт `tools/shoot_archive.py` снимает скриншоты 800×600 в `assets/search/*.webp`.
 
+## Хеллоу Китти: `assets/gifs/kitty-*.gif`
+[picgifs.com](https://www.picgifs.com/graphics/hello-kitty/) (раздел Hello kitty graphics): 4 гифки для огненного сайта на слайде 05. Hello Kitty принадлежит Sanrio, гифки взяты как старые фан-графики для учебной презентации.
+
 ## Блинкиз: `assets/blinkies/`
 **glitter-graphics.com** (раздел Blinkies): `loading`, `im-online`, `computer-addict`, `browser-history`, `webmistress`, `welcome-pixel`, `updated`, `no-internet-housework`.
 
